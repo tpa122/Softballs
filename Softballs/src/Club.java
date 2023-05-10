@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Club {
 	
 	private String name;
+	private boolean isPlayer;
 	private ArrayList<Athlete> athletes;
-
 	private ArrayList<Athlete> reserves;
 	private ArrayList<Athlete> batters;
 	private ArrayList<Athlete> pitchers;

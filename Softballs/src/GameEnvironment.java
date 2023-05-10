@@ -58,6 +58,4 @@ public class GameEnvironment {
 		money = newMoney;
 	}
 	
-	
-
 }
