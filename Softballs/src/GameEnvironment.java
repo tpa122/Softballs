@@ -62,11 +62,14 @@ public class GameEnvironment {
 		difficulty = newDif;
 	}
 	
+	public void makeMarket() {
+		
+	}
+	
 	
 	public static void main(String[] args) {
-		GameEnvironment testGame = new GameEnvironment();
-		testGame.setCurrentWeek(1);
-		Setup testA = new Setup(testGame);
-		System.out.println(testA.getStartAthletes());
+		GameEnvironment mainGame = new GameEnvironment();
+		Setup setupGame = new Setup(mainGame);
+		System.out.println(setupGame.getStartAthletes());
 	}
 }

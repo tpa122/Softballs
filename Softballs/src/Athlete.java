@@ -3,7 +3,7 @@ import java.util.Random;
 
 
 public class Athlete {
-	
+		
 	private static String[] firstNames = {"James","Robert", "John", "David", "Sam", "Ben", "Oliver", "Thomas", "Daniel", "Tobias", "Joe"};
 	private static String[] lastNames = {"Smith", "Anderson", "Jones", "Taylor", "Williams", "Paull", "Bensley", "Allen"};
 	private String name;
@@ -35,14 +35,15 @@ public class Athlete {
 			}
 			if (type == 3 && pitching< 100) {
 				pitching ++;
-			}
-		}		
+			}			
+		}
+		//price = this.calcprice();
 	}
 	
 	public String toString() {
 		return this.getName() + this.getStats();
 	}
-	
+		
 	public String getName() {
 		return name;
 	}
@@ -66,6 +67,7 @@ public class Athlete {
 		batting = newList.get(1);
 		fielding = newList.get(2);
 		pitching = newList.get(3);
+		//this.calcprice();
 	}
 	
 	public boolean getIsInjured() {
@@ -84,7 +86,7 @@ public class Athlete {
 		chanceToQuit = newChance;
 	}
 	
-	public int getPrice() {
-		return price;
-	}	
+	//public int getPrice() {
+		//return price;
+	//}	
 }
