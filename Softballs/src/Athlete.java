@@ -1,17 +1,47 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Athlete {
 	
+	private static String[] firstNames = {"James","Robert", "John", "David", "Sam", "Ben", "Oliver", "Thomas", "Daniel", "Tobias", "Joe"};
+	private static String[] lastNames = {"Smith", "Anderson", "Jones", "Taylor", "Williams", "Paull", "Bensley", "Allen"};
 	private String name;
-	private int stanima;
-	private int batting;
-	private int fielding;
-	private int pitching;
+	private int stanima = 0;
+	private int batting = 0;
+	private int fielding = 0;
+	private int pitching = 0;
 	private boolean isInjured;
-	private int chanceToQuit;
+	private int chanceToQuit = 0;
 	private int price;
 	
+	public Athlete(int currentWeek) {		
+		Random rand  = new Random();
+		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
+		
+		int baseStat = rand.nextInt(11);
+		baseStat = baseStat + 15 + currentWeek;
+		baseStat = baseStat * 400 / 40;
+		for (int i = 0; i <= baseStat; i ++) {
+			int type = rand.nextInt(4);
+			if (type == 0 && stanima < 100) {
+				stanima ++;
+			}
+			if (type == 1 && batting< 100) {
+				batting ++;
+			}
+			if (type == 2 && fielding< 100) {
+				fielding ++;
+			}
+			if (type == 3 && pitching< 100) {
+				pitching ++;
+			}
+		}		
+	}
+	
+	public String toString() {
+		return this.getName() + this.getStats();
+	}
 	
 	public String getName() {
 		return name;

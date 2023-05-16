@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class GameEnvironment {
 	private Club club;
-	private int currentWeek;
+	private int currentWeek = 1;
 	private int endWeek;
 	private ArrayList<Item> items;
 	private int points;
 	private int money;
-	private String difficuilty;
+	private int difficulty;
 	
 
 	public Club getClub() {
@@ -58,4 +58,15 @@ public class GameEnvironment {
 		money = newMoney;
 	}
 	
+	public void setDifficulty(int newDif) {
+		difficulty = newDif;
+	}
+	
+	
+	public static void main(String[] args) {
+		GameEnvironment testGame = new GameEnvironment();
+		testGame.setCurrentWeek(1);
+		Setup testA = new Setup(testGame);
+		System.out.println(testA.getStartAthletes());
+	}
 }
