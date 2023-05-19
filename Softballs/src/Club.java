@@ -9,14 +9,20 @@ public class Club {
 	private ArrayList<Athlete> batters = new ArrayList<Athlete>();
 	private ArrayList<Athlete> pitchers = new ArrayList<Athlete>();
 	
+	public Club() {
+		
+	}
+	
 	public Club(int currentWeek) {
-		for (int i = 0; i < 12; i++) {
-			athletes.add(new Athlete(currentWeek));
-			this.setPitchers(athletes.subList(0, 2));
-			this.setBatters(athletes.subList(2, 7));
-			this.setReserves(athletes.subList(7, 12));
-			
-		}
+		
+	}
+	
+	public Club(String clubName)	{
+		name = clubName;
+	}
+	
+	public int getTeamSize()	{
+		return athletes.size();
 	}
 	
 	public String getName() {
@@ -35,17 +41,16 @@ public class Club {
 		athletes = newAthletes;
 	}
 	
-	public void setReserves(ArrayList<Athlete> newAthletes) {
-		reserves = newAthletes;
+//	Adding an athlete to the team from the market
+	public void addAthlete(Athlete athleteToAdd)	{
+//		Check if team is not full
+		if(athletes.size() < 12 && athletes.size() >= 0)	{
+//			If team is not full, add athlete to athletes ArrayList and to                                   ADD TO BATTERS and/or PITCHERS
+//			open spot on either batters or pitchers
+			athletes.add(athleteToAdd);
+		}
 	}
 	
-	public void setBatters(ArrayList<Athlete> newAthletes) {
-		batters = newAthletes;
-	}
-	
-	public void setPitchers(ArrayList<Athlete> newAthletes) {
-		pitchers = newAthletes;
-	}	
 	
 	public boolean getIsPlayer() {
 		return isPlayer;
