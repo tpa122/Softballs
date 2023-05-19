@@ -32,6 +32,11 @@ public class Club {
 			}
 		}
 	}
+
+	
+	public int getTeamSize()	{
+		return athletes.size();
+	}
 	
 	
 	public String getName() {
@@ -62,6 +67,18 @@ public class Club {
 	public void setAthletes(ArrayList<Athlete> newAthletes) {
 		athletes = newAthletes;
 	}
+	
+
+//	Adding an athlete to the team from the market
+	public void addAthlete(Athlete athleteToAdd)	{
+//		Check if team is not full
+		if(athletes.size() < 12 && athletes.size() >= 0)	{
+//			If team is not full, add athlete to athletes ArrayList and to                                   ADD TO BATTERS and/or PITCHERS
+//			open spot on either batters or pitchers
+			athletes.add(athleteToAdd);
+		}
+	}
+	
 	
 	public boolean getIsPlayer() {
 		return isPlayer;

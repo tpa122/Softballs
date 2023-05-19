@@ -26,22 +26,44 @@ public class Market {
 		}
 	}
 	
+//	
+	
+	/**
+	 * @param athleteToBuy
+	 */
 	public void purchaseAthlete(Athlete athleteToBuy)	{
 //		Get current player funds
 		int currentFunds = environment.getMoney();
 //		If the player has the funds, purchase the athlete, add to their athlete arraylist and remove
 //		the athlete from market
-		if(currentFunds >= athleteToBuy.getPrice())	{
-			currentFunds = currentFunds - athleteToBuy.getPrice();
-			environment.setMoney(currentFunds);
-			
+		
+//		Existing athlete becomes
+		
+//		Check if team full (not >= 12)
+		if(playerClub.getTeamSize() < 12)	{
+//			Check if the player has the funds to purchase a player
+			if(currentFunds >= athleteToBuy.getPrice())	{
+				currentFunds = currentFunds - athleteToBuy.getPrice();
+				environment.setMoney(currentFunds);
+				
+//				add to team, add to reserve. When selected, call method
+				playerClub.addAthlete(athleteToBuy);
+			}	else	{
+				System.out.println("Missing funds required to purchase");
+			}
+		
 		}	else	{
-			System.out.println("Missing funds required to purchase");
+			System.out.println("Team already full, sell a member to make room.");
 		}
+		
+		
+		
+
 
 		
 //		Remove player from market
 		purchasableAthletes.remove(athleteToBuy);
+		System.out.println(purchasableAthletes);
 	}
 	
 	public void purchaseItem(Item itemToBuy)	{
@@ -49,9 +71,10 @@ public class Market {
 		int currentFunds = environment.getMoney();
 //		If the player has the funds, purchase the item, add the item to their inventory
 //		and remove the item from the market
-		if(currentFunds >= itemToBuy.getPrice())	{ // ADD getPrice() function
+		if(currentFunds >= itemToBuy.getPrice())	{
 			currentFunds = currentFunds - itemToBuy.getPrice();
 			environment.setMoney(currentFunds);
+			environment.addItem();					// create addItem() method
 			
 		}	else	{
 			System.out.println("Missing funds required to purchase");
@@ -71,3 +94,9 @@ public class Market {
 
 	
 }
+
+
+
+
+
+
