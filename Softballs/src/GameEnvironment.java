@@ -17,6 +17,13 @@ public class GameEnvironment {
 //Stadium
 	private ArrayList<Club> opponents = new ArrayList<Club>();
 	private ArrayList<Club> played = new ArrayList<Club>();
+	
+//Market
+	private ArrayList<Athlete> purchasableAthletes = new ArrayList<Athlete>();
+	private ArrayList<Athlete> purchasedAthletes = new ArrayList<Athlete>();
+	private ArrayList<Item> purchasableItems = new ArrayList<Item>();
+	private ArrayList<Integer> purchasedItems = new ArrayList<Integer>();
+
 
 	
 	
@@ -59,6 +66,23 @@ public class GameEnvironment {
 	
 	public ArrayList<Club> getPlayed(){
 		return played;
+	}
+	
+	
+	public ArrayList<Athlete> getPurchasableAthletes(){
+		return purchasableAthletes;
+	}
+	
+	public ArrayList<Athlete> getPurchasedAthletes(){
+		return purchasedAthletes;
+	}
+	
+	public ArrayList<Item> getPurchasableItems(){
+		return purchasableItems;
+	}
+	
+	public ArrayList<Integer> getPurchasedItems(){
+		return purchasedItems;
 	}
 	
 	
@@ -106,6 +130,23 @@ public class GameEnvironment {
 			newClub.opponentClub(getCurrentWeek());
 			opponents.add(newClub);		
 		}
+		
+		//Create market arrays
+		for(int i = 0; i < 3; i ++)	{
+			purchasableAthletes.add(new Athlete(currentWeek));
+		}
+		Item item1 = new Item("Treadmill", 10, 0, 0, 0, 10);
+		Item item2 = new Item("Improved Bat", 0, 10, 0, 0, 10);
+		Item item3 = new Item("Improved Gloves", 0, 0, 10, 0, 10);
+		Item item4 = new Item("Wrist Roller", 0, 0, 0, 10, 10);
+		purchasableItems.add(item1);
+		purchasableItems.add(item2);
+		purchasableItems.add(item3);
+		purchasableItems.add(item4);
+		purchasedItems.add(3);
+		purchasedItems.add(3);
+		purchasedItems.add(3);
+		purchasedItems.add(3);
 	}
 
 	
@@ -127,6 +168,10 @@ public class GameEnvironment {
 	
 	public void launchStadium() {
 		Stadium gameStadium = new Stadium(this);
+	}
+	
+	public void launchMarket() {
+		Market gameMarket = new Market(this);
 	}
 	
 	

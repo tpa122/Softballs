@@ -147,9 +147,4 @@ public class Match {
 		base.set(runs - 1, runScorer);
 		
 	}
-	
-	
-	public static void main(String[] args) {
-	}
-
 }
