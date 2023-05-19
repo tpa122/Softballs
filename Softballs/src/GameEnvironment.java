@@ -66,10 +66,28 @@ public class GameEnvironment {
 		
 	}
 	
+	public void launchSetup() {
+		Setup setupGame = new Setup(this);
+	}
+	
+	public void closeSetupScreen() {
+		launchMainMenu();
+	}
+	
+	public void launchMainMenu() {
+		MainMenu menu = new MainMenu(this);
+	}
+	
+	public void launchStadium() {
+		Stadium stad = new Stadium(this);
+	}
 	
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();
-		Setup setupGame = new Setup(mainGame);
-		System.out.println(setupGame.getStartAthletes());
+		Club playerClub = new Club();
+		playerClub.opponentClub(2);
+		mainGame.setClub(playerClub);
+		mainGame.launchMainMenu();
+				
 	}
 }
