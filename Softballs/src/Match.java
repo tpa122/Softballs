@@ -19,26 +19,32 @@ public class Match {
 		this.innings(environment.getClub(), opponent, 1);
 		this.innings(opponent, environment.getClub(), 1);
 		//environment.getClub().addRun();
-		System.out.print("You: " + environment.getClub().getRuns());
-		System.out.print("Them: " + opponent.getRuns());
+		System.out.println(environment.getClub().getName() + ": " + environment.getClub().getRuns());
+		System.out.println(opponent.getName() + ": " + opponent.getRuns());
 		outcome();
+		environment.launchMainMenu();
 	}
 	
 	public void outcome() {
 		if (environment.getClub().getRuns() > opponent.getRuns()) {
-			System.out.println("Win");
+			System.out.println("You Won");
+			environment.addMoney(200);
+		}
+		else {
+			System.out.println("You Lost");
 		}
 	}
 	
 	public ArrayList<Athlete> innings(Club pitching, Club batting, int half) {
 		if (batting == environment.getClub()) {
 			//Call GUI batting sprite
-			System.out.println("Batting");
+			System.out.println("You are Batting");
 		}
 		else {
 			//Call GUI fielding sprite
-			System.out.println("Fielding");
+			System.out.println("You are Fielding");
 		}
+		
 		
 		//System.out.println(base);
 		ArrayList<Athlete> outList = new ArrayList<Athlete>();
@@ -111,8 +117,12 @@ public class Match {
 			}
 			//System.out.println();
 		}
-		
-		//System.out.println(batting.runs);
+		outs = 0;
+		System.out.println(batting.getName() + ": " + batting.getRuns() + " runs");
+		for (int i = 1; i < 4; i++) {
+			System.out.println("(Out) " + outList.get(i).getName() + ", (Pitcher) " + outList.get(0).getName());
+		}
+		System.out.println();
 		
 		return outList;
 	}

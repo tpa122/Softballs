@@ -72,11 +72,11 @@ public class Setup {
 	
 	public void chooseDifficulty(String difficultyInt) {
 		if (difficultyInt.equals("0")) {
-			environment.setMoney(1000);
+			environment.addMoney(1000);
 			environment.setDifficulty(0);
 		}
 		else if (difficultyInt.equals("1")) {
-			environment.setMoney(800);
+			environment.addMoney(800);
 			environment.setDifficulty(1);
 		}
 		else {
