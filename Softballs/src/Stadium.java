@@ -2,21 +2,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Stadium {
+//Base fields
 	private GameEnvironment environment;
-	//private ArrayList<Club> opponents = new ArrayList<Club>();
-	//private ArrayList<Club> played = new ArrayList<Club>();
 	public Scanner myObj = new Scanner(System.in);
 
 	
+
+	
+//Constructor
 	
 	public Stadium(GameEnvironment newEnvironment) {
 		environment = newEnvironment;	
 		commandLine();
 	}
+
+
 	
-//	public ArrayList<Club> getOpponents(){
-//		return opponents;
-//	}
+//Methods
 	
 	public void playMatch(Club selectedOp) {
 		if (environment.getPlayed().contains(selectedOp)) {
@@ -39,6 +41,10 @@ public class Stadium {
 			Match newMatch = new Match(environment, selectedOp);
 		}
 	}
+
+	
+	
+//Command Line
 	
 	public void commandLine() {
 		System.out.println("0: Main menu");
@@ -46,7 +52,7 @@ public class Stadium {
 		System.out.println("1: " + environment.getOpponents().get(0).getName() + ", 2: " + environment.getOpponents().get(1).getName() + ", 3: " + environment.getOpponents().get(2).getName());
 		String input = myObj.nextLine();
 		if (input.equals("0")) {
-			
+			environment.launchMainMenu();
 		}
 		else {
 			int parsedInput = Integer.parseInt(input);
