@@ -60,7 +60,7 @@ public class SetupUI {
 		frmSetup.dispose();
 	}
 	public void launchTeamSelect()	{
-		environment.launchTeamSelect(this);
+		environment.launchTeamSelect(this, setupManager);
 	}
 	
 	/**

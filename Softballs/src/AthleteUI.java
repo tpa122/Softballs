@@ -8,16 +8,58 @@ import java.awt.GridLayout;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AthleteUI extends JPanel {
 
+	private String athleteName;
+	private int athleteStamina;
+	private int athleteBatting;
+	private int athleteFielding;
+	private int athletePitching;
+	private SelectTeam selectTeamUI;
+	private Athlete athlete = new Athlete(1);
+	
+	
+	
+	
 	/**
 	 * Create the panel.
 	 */
+	
+	
+	
 	public AthleteUI() {
+//		String name, int stamina, int batting, int fielding, int pitching, SelectTeam teamSelect
+		athleteName = athlete.getName();
+		athleteStamina = athlete.getStats().get(0);
+		athleteBatting = athlete.getStats().get(1);;
+		athleteFielding = athlete.getStats().get(2);;
+		athletePitching = athlete.getStats().get(3);;
+		
+		
 		setLayout(null);
 		
-		JLabel lblPlayerName = new JLabel("Name");
+		JCheckBox chckbxNewCheckBox = new JCheckBox("");
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxNewCheckBox.isSelected())	{
+//					selectTeamUI.addToTeam();
+					System.out.println("Athlete " + athleteName + " selected");
+				}	else	{
+					System.out.println("Athlete " + athleteName + " unselected");
+				}
+			}
+		});
+		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.RIGHT);
+		chckbxNewCheckBox.setVerticalAlignment(SwingConstants.TOP);
+		chckbxNewCheckBox.setBounds(0, 0, 174, 230);
+		chckbxNewCheckBox.setOpaque(false);
+		add(chckbxNewCheckBox);
+		
+		JLabel lblPlayerName = new JLabel(athleteName);
 		lblPlayerName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayerName.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblPlayerName.setBounds(10, 87, 150, 25);
@@ -31,7 +73,7 @@ public class AthleteUI extends JPanel {
 		lblNewLabel_1.setBounds(30, 0, 110, 100);
 		add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Stamina");
+		JLabel lblNewLabel_2 = new JLabel(String.valueOf(athleteStamina));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_2.setBounds(20, 121, 60, 14);
 		add(lblNewLabel_2);
@@ -51,30 +93,29 @@ public class AthleteUI extends JPanel {
 		lblNewLabel_2_1_1_1.setBounds(20, 171, 60, 14);
 		add(lblNewLabel_2_1_1_1);
 		
-		JLabel lblStaminaCount = new JLabel("0");
+		JLabel lblStaminaCount = new JLabel(String.valueOf(athleteStamina));
+		lblStaminaCount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStaminaCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblStaminaCount.setBounds(90, 121, 14, 14);
+		lblStaminaCount.setBounds(76, 121, 28, 14);
 		add(lblStaminaCount);
 		
-		JLabel lblBattingCount = new JLabel("0");
+		JLabel lblBattingCount = new JLabel(String.valueOf(athleteBatting));
+		lblBattingCount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBattingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblBattingCount.setBounds(90, 146, 14, 14);
+		lblBattingCount.setBounds(76, 146, 28, 14);
 		add(lblBattingCount);
 		
-		JLabel lblFieldingCount = new JLabel("0");
+		JLabel lblFieldingCount = new JLabel(String.valueOf(athleteFielding));
+		lblFieldingCount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFieldingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFieldingCount.setBounds(90, 171, 14, 14);
+		lblFieldingCount.setBounds(76, 171, 28, 14);
 		add(lblFieldingCount);
 		
-		JLabel lblPitchingCount = new JLabel("0");
+		JLabel lblPitchingCount = new JLabel(String.valueOf(athletePitching));
+		lblPitchingCount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPitchingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPitchingCount.setBounds(90, 196, 14, 14);
+		lblPitchingCount.setBounds(76, 196, 28, 14);
 		add(lblPitchingCount);
-		
-		JLabel lblNewLabel_2_2_1 = new JLabel("/100");
-		lblNewLabel_2_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_2_1.setBounds(120, 123, 40, 14);
-		add(lblNewLabel_2_2_1);
 
 	}
 }

@@ -23,6 +23,7 @@ public class Setup {
 		return startAthletes;
 	}
 	
+	
 	public void displayStartAthletes() {
 		for (int i = 0; i < 15; i++) {
 			System.out.println(i + ": " + startAthletes.get(i));

@@ -8,10 +8,18 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
 
 public class SelectTeam {
 
 	private JFrame frame;
+	private Setup setupManager;
+	private ArrayList<Athlete> athletes = new ArrayList<Athlete>();
 
 	/**
 	 * Launch the application.
@@ -32,9 +40,17 @@ public class SelectTeam {
 	/**
 	 * Create the application.
 	 */
-	public SelectTeam() {
+	public SelectTeam(Setup setupGame) {
+		setupManager = setupGame;
 		initialize();
 		frame.setVisible(true);
+	}
+	
+	public void addToTeam(Athlete athleteToAdd)	{
+		athletes.add(athleteToAdd);
+	}
+	public ArrayList<Athlete> getSetupTeam()	{
+		return athletes;
 	}
 
 	/**
@@ -44,14 +60,29 @@ public class SelectTeam {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
-		for(int i=0; i<=15; i++) {
-			AthleteUI athlete[] = new AthleteUI[i];
+		for(int i=1; i<=15; i++) {
+			AthleteUI athlete = new AthleteUI();
+			frame.getContentPane().add(athlete);
 		}
+		JLabel lblNewLabel = new JLabel("");
+		frame.getContentPane().add(lblNewLabel);
+		JLabel lblNewLabel_1 = new JLabel("");
+		frame.getContentPane().add(lblNewLabel_1);
+		//	Next button	
+		JButton btnNewButton = new JButton("Next");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.getContentPane().add(btnNewButton);
 		
-		AthleteUI athleteUI = new AthleteUI();
-		athleteUI.setBounds(70, 22, 158, 238);
-		frame.getContentPane().add(athleteUI);
+		JLabel lblNewLabel_2 = new JLabel("");
+		frame.getContentPane().add(lblNewLabel_2);
+		JLabel lblNewLabel_3 = new JLabel("");
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		frame.getContentPane().setLayout(new GridLayout(0, 5, 0, 0));
+		
 	}
 }
