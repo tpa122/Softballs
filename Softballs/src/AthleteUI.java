@@ -17,11 +17,11 @@ public class AthleteUI extends JPanel {
 	public AthleteUI() {
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Name");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel.setBounds(10, 87, 150, 25);
-		add(lblNewLabel);
+		JLabel lblPlayerName = new JLabel("Name");
+		lblPlayerName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPlayerName.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblPlayerName.setBounds(10, 87, 150, 25);
+		add(lblPlayerName);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setEnabled(false);
@@ -43,7 +43,7 @@ public class AthleteUI extends JPanel {
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("Pitching");
 		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1_1.setBounds(30, 196, 60, 14);
+		lblNewLabel_2_1_1.setBounds(20, 196, 60, 14);
 		add(lblNewLabel_2_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("Fielding");
@@ -51,25 +51,25 @@ public class AthleteUI extends JPanel {
 		lblNewLabel_2_1_1_1.setBounds(20, 171, 60, 14);
 		add(lblNewLabel_2_1_1_1);
 		
-		JLabel lblNewLabel_2_2 = new JLabel("0");
-		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_2.setBounds(90, 121, 14, 14);
-		add(lblNewLabel_2_2);
+		JLabel lblStaminaCount = new JLabel("0");
+		lblStaminaCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblStaminaCount.setBounds(90, 121, 14, 14);
+		add(lblStaminaCount);
 		
-		JLabel lblNewLabel_2_1_2 = new JLabel("0");
-		lblNewLabel_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1_2.setBounds(90, 146, 14, 14);
-		add(lblNewLabel_2_1_2);
+		JLabel lblBattingCount = new JLabel("0");
+		lblBattingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblBattingCount.setBounds(90, 146, 14, 14);
+		add(lblBattingCount);
 		
-		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("0");
-		lblNewLabel_2_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1_1_1_1.setBounds(90, 171, 14, 14);
-		add(lblNewLabel_2_1_1_1_1);
+		JLabel lblFieldingCount = new JLabel("0");
+		lblFieldingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFieldingCount.setBounds(90, 171, 14, 14);
+		add(lblFieldingCount);
 		
-		JLabel lblNewLabel_2_1_1_2 = new JLabel("0");
-		lblNewLabel_2_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1_1_2.setBounds(90, 196, 14, 14);
-		add(lblNewLabel_2_1_1_2);
+		JLabel lblPitchingCount = new JLabel("0");
+		lblPitchingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPitchingCount.setBounds(90, 196, 14, 14);
+		add(lblPitchingCount);
 		
 		JLabel lblNewLabel_2_2_1 = new JLabel("/100");
 		lblNewLabel_2_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));

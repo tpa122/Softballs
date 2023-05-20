@@ -154,8 +154,8 @@ public class GameEnvironment {
 	
 //Launching Menus	
 	
-	public void launchSetup() {
-		Setup setupGame = new Setup(this);
+	public void launchSetup(Setup setUpGame) {
+		SetupUI setupMenu = new SetupUI(setUpGame);
 	}
 	
 	public void closeSetupScreen() {
@@ -174,6 +174,11 @@ public class GameEnvironment {
 		Market gameMarket = new Market(this);
 	}
 	
+	public void launchTeamSelect(SetupUI setupMenu)	{
+		
+		setupMenu.closeWindow();
+		SelectTeam teamSelectWindow = new SelectTeam();
+	}
 	
 	
 	
@@ -181,11 +186,13 @@ public class GameEnvironment {
 	
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();
-		Club playerClub = new Club();
-		playerClub.opponentClub(2);
-		mainGame.setClub(playerClub);
-		mainGame.refresh();
-		mainGame.launchMainMenu();
+		Setup setUpGame = new Setup(mainGame);
+//		Club playerClub = new Club();
+//		playerClub.opponentClub(2);
+//		mainGame.setClub(playerClub);
+//		mainGame.refresh();
+//		mainGame.launchMainMenu();
+		mainGame.launchSetup(setUpGame);
 				
 	}
 }

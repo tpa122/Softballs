@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Setup {
-	private GameEnvironment environment;
+	public GameEnvironment environment;
 	private ArrayList<Athlete> startAthletes = new ArrayList<Athlete>();
 	private ArrayList<Athlete> selectedAthletes = new ArrayList<Athlete>();
 	public Scanner myObj = new Scanner(System.in);
@@ -15,7 +15,7 @@ public class Setup {
 		}
 		Club newClub = new Club();
 		environment.setClub(newClub);
-		this.commandLine();
+//		this.commandLine();
 	}
 
 	
@@ -64,6 +64,7 @@ public class Setup {
 		else {
 			environment.getClub().setName(clubName);			
 		}
+//		System.out.println("Team name:" + clubName);
 	}
 	
 	public void chooseWeek(int weeklLength) {
@@ -114,36 +115,45 @@ public class Setup {
 	}
 	
 	
-	public void commandLine() {
-	    System.out.println("Enter Team Name");
-	    
-	    String teamName = myObj.nextLine();
-	    this.setClubName(teamName);
-	    System.out.println(environment.getClub().getName());
-	    
-	    System.out.println("Selected difficulty: 0 Normal, 1 Hard");
-	    String inputDiff= myObj.nextLine();
-	    this.chooseDifficulty(inputDiff);
-	    
-	    System.out.println("Enter the number corresponding to each athlete to add or remove them from your team");
-	    System.out.println("Type Y to confirm selection");
-	    this.displayStartAthletes();
-	    String inputAthletes;
-	    inputAthletes = myObj.nextLine();
-	    do {
-	    	try {		    		
-	    		int parsedInput = Integer.parseInt(inputAthletes);
-	    		this.adjustSelected(startAthletes.get(parsedInput));
-	    		inputAthletes = myObj.nextLine();
-	    	} catch (NumberFormatException e) {
-	    		System.out.println("Invalid input");
-	    		inputAthletes = myObj.nextLine();
-	    	}
-	    }
-	    while (!inputAthletes.equals("Y"));
-	    
-	    this.chooseAthlete();
-	    environment.closeSetupScreen();
+//	public void commandLine() {
+//	    System.out.println("Enter Team Name");
+//	    
+//	    String teamName = myObj.nextLine();
+//	    this.setClubName(teamName);
+//	    System.out.println(environment.getClub().getName());
+//	    
+//	    System.out.println("Selected difficulty: 0 Normal, 1 Hard");
+//	    String inputDiff= myObj.nextLine();
+//	    this.chooseDifficulty(inputDiff);
+//	    
+//	    System.out.println("Enter the number corresponding to each athlete to add or remove them from your team");
+//	    System.out.println("Type Y to confirm selection");
+//	    this.displayStartAthletes();
+//	    String inputAthletes;
+//	    inputAthletes = myObj.nextLine();
+//	    do {
+//	    	try {		    		
+//	    		int parsedInput = Integer.parseInt(inputAthletes);
+//	    		this.adjustSelected(startAthletes.get(parsedInput));
+//	    		inputAthletes = myObj.nextLine();
+//	    	} catch (NumberFormatException e) {
+//	    		System.out.println("Invalid input");
+//	    		inputAthletes = myObj.nextLine();
+//	    	}
+//	    }
+//	    while (!inputAthletes.equals("Y"));
+//	    
+//	    this.chooseAthlete();
+//	    environment.closeSetupScreen();
+//	}
+	
+	public void launchSetup() {
+		SetupUI setupWindow = new SetupUI(this);
+	}
+	
+	public static void main(String[] args) {
+//		GameEnvironment mainGame = new GameEnvironment();
+//		mainGame.launchSetup();
 	}
 	
 }
