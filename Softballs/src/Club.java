@@ -99,6 +99,22 @@ public class Club {
 		athletes = newAthletes;
 	}
 	
+	public void setPlaying(ArrayList<Athlete> newPlayers) {
+		playing = newPlayers;
+	}
+	
+	public void setReserves(ArrayList<Athlete> newReserves) {
+		reserves = newReserves;
+	}
+	
+	public void setBatters(ArrayList<Athlete> newBatters) {
+		batters = newBatters;
+	}
+	
+	public void setPitchers(ArrayList<Athlete> newPitchers) {
+		pitchers = newPitchers;
+	}
+	
 	
 	public void addRun() {
 		runs += 1;
@@ -117,19 +133,19 @@ public class Club {
 //Others
 	
 	public void swapPlayers(Athlete playingA, Athlete newplaying) {
-		playing.remove(playingA);
+		int playingIndex = playing.indexOf(playingA);
+		playing.set(playingIndex, newplaying);
 		reserves.add(playingA);
-		playing.add(newplaying);
 		if (reserves.contains(newplaying)) {
 			reserves.remove(newplaying);
 		}
 		if (batters.contains(playingA)) {
-			batters.remove(playingA);
-			batters.add(newplaying);
+			int battersIndex = batters.indexOf(playingA);
+			batters.set(battersIndex, newplaying);
 		}
 		if (pitchers.contains(playingA)) {
-			pitchers.remove(playingA);
-			pitchers.remove(newplaying);
+			int pitchersIndex = pitchers.indexOf(playingA);
+			pitchers.set(pitchersIndex, newplaying);
 		}
 	}
 	

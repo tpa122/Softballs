@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Athlete {
 //Names	
-	private static String[] firstNames = {"James","Robert", "John", "David", "Sam", "Ben", "Oliver", "Thomas", "Daniel", "Tobias", "Joe"};
-	private static String[] lastNames = {"Smith", "Anderson", "Jones", "Taylor", "Williams", "Paull", "Bensley", "Allen"};
+	private static String[] firstNames = {"James","Robert", "John", "David", "Sam", "Ben", "Oliver", "Thomas", "Daniel", "Tobias", "Joe", "Guy", "Matt", "Graham", "Steve"};
+	private static String[] lastNames = {"Smith", "Anderson", "Jones", "Taylor", "Williams", "Paull", "Bensley", "Allen", "Steel", "Rogers", "Whall", "Brown"};
 
 //Info and Stats
 	private String name;
@@ -16,7 +16,8 @@ public class Athlete {
 	private int pitching = 0;
 	
 	private boolean isInjured;
-	private int chanceToQuit = 0;
+	private double chanceToQuit = 0;
+	private double chanceToIncrease = 0.02;
 	
 
 	
@@ -29,7 +30,7 @@ public class Athlete {
 		
 		int baseStat = rand.nextInt(11);
 		baseStat = baseStat + 15 + currentWeek;
-		baseStat = baseStat * 400 / 40;
+		baseStat = baseStat * 10;
 		for (int i = 0; i <= baseStat; i ++) {
 			int type = rand.nextInt(4);
 			if (type == 0 && stanima < 100) {
@@ -45,6 +46,8 @@ public class Athlete {
 				pitching ++;
 			}			
 		}
+		
+		refreshStanima();
 	}
 
 	public String toString() {
@@ -84,8 +87,12 @@ public class Athlete {
 		return isInjured;
 	}
 	
-	public int getChanceToQuit() {
+	public double getChanceToQuit() {
 		return chanceToQuit;		
+	}
+	
+	public double getChanceToIncrease() {
+		return chanceToIncrease;
 	}
 
 	
@@ -96,11 +103,17 @@ public class Athlete {
 	}
 	
 	public void refreshStanima() {
+		isInjured = false;
+		chanceToIncrease = 0.02;
 		currentStanima = stanima;
 	}
 	
 	public void drainStanima(int amount) {
 		currentStanima -= amount;
+		if (currentStanima <= 0) {
+			currentStanima = 0;
+			setIsInjured(true);
+		}
 	}
 		
 	public void addStats(ArrayList<Integer> newList) {
@@ -113,9 +126,16 @@ public class Athlete {
 	
 	public void setIsInjured(boolean setInjury) {
 		isInjured = setInjury;
+		addChanceToQuit(0.01);
 	}
 	
-	public void setChanceToQuit(int newChance) {
-		chanceToQuit = newChance;
+	public void addChanceToQuit(double addedChance) {
+		chanceToQuit += addedChance;
 	}
+	
+	public void addChanceToIncrease(double addedChance) {
+		chanceToQuit += addedChance;
+	}
+	
+	
 }

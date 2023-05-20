@@ -6,32 +6,46 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MarketUI {
 
 	private JFrame frmMarket;
+	
+	private GameEnvironment environment;
+	private Market marketManager;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MarketUI window = new MarketUI();
-					window.frmMarket.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MarketUI window = new MarketUI();
+//					window.frmMarket.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public MarketUI() {
+	public MarketUI(GameEnvironment incomingEnvironment, Market incomingMarket) {
+		environment = incomingEnvironment;
+		marketManager = incomingMarket;
 		initialize();
+		
+		frmMarket.setVisible(true);
+	}
+	
+	
+	public void closeWindow() {
+		frmMarket.dispose();
 	}
 
 	/**
@@ -69,5 +83,15 @@ public class MarketUI {
 		btnPurchase.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnPurchase.setBounds(1119, 621, 135, 33);
 		frmMarket.getContentPane().add(btnPurchase);
+		
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchMainMenu();
+			}
+		});
+		backButton.setBounds(560, 599, 89, 23);
+		frmMarket.getContentPane().add(backButton);
 	}
 }

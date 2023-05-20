@@ -12,28 +12,37 @@ import java.awt.event.ActionEvent;
 public class MainMenuUI {
 
 	private JFrame frmMainMenu;
+	
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainMenuUI window = new MainMenuUI();
-					window.frmMainMenu.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MainMenuUI window = new MainMenuUI();
+//					window.frmMainMenu.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public MainMenuUI() {
+	public MainMenuUI(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frmMainMenu.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmMainMenu.dispose();
+		
 	}
 
 	/**
@@ -47,6 +56,12 @@ public class MainMenuUI {
 		frmMainMenu.getContentPane().setLayout(null);
 		
 		JButton btnStadium = new JButton("Stadium");
+		btnStadium.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchStadium();
+			}
+		});
 		btnStadium.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnStadium.setBounds(552, 270, 147, 33);
 		frmMainMenu.getContentPane().add(btnStadium);
@@ -54,6 +69,8 @@ public class MainMenuUI {
 		JButton btnBye = new JButton("Bye");
 		btnBye.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchBye();
 			}
 		});
 		btnBye.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -61,11 +78,23 @@ public class MainMenuUI {
 		frmMainMenu.getContentPane().add(btnBye);
 		
 		JButton btnMarket = new JButton("Market");
+		btnMarket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchMarket();
+			}
+		});
 		btnMarket.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnMarket.setBounds(552, 348, 147, 33);
 		frmMainMenu.getContentPane().add(btnMarket);
 		
 		JButton btnManageClub = new JButton("Manage Club");
+		btnManageClub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchManage();
+			}
+		});
 		btnManageClub.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnManageClub.setBounds(552, 400, 147, 33);
 		frmMainMenu.getContentPane().add(btnManageClub);
@@ -75,25 +104,16 @@ public class MainMenuUI {
 		btnExit.setBounds(552, 450, 147, 33);
 		frmMainMenu.getContentPane().add(btnExit);
 		
-		JLabel lblWeek = new JLabel("Week:");
+		JLabel lblWeek = new JLabel("Week: " + Integer.toString(environment.getCurrentWeek()));
 		lblWeek.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblWeek.setBounds(33, 42, 55, 33);
+		lblWeek.setBounds(33, 42, 122, 33);
 		frmMainMenu.getContentPane().add(lblWeek);
 		
-		JLabel lblWeekCount = new JLabel("1");
-		lblWeekCount.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblWeekCount.setBounds(94, 42, 55, 33);
-		frmMainMenu.getContentPane().add(lblWeekCount);
-		
-		JLabel lblPoints = new JLabel("Points:");
+		JLabel lblPoints = new JLabel("Points: " + Integer.toString(environment.getPoints()));
 		lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblPoints.setBounds(583, 206, 55, 33);
+		lblPoints.setBounds(583, 206, 132, 33);
 		frmMainMenu.getContentPane().add(lblPoints);
 		
-		JLabel lbPointsCount = new JLabel("0");
-		lbPointsCount.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lbPointsCount.setBounds(644, 206, 55, 33);
-		frmMainMenu.getContentPane().add(lbPointsCount);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/baseball.png")));
@@ -105,15 +125,10 @@ public class MainMenuUI {
 		lblSoftballsLogo.setBounds(228, 10, 780, 185);
 		frmMainMenu.getContentPane().add(lblSoftballsLogo);
 		
-		JLabel lblMoney = new JLabel("Money:");
+		JLabel lblMoney = new JLabel("Money: " + Integer.toString(environment.getMoney()));
 		lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblMoney.setBounds(1089, 42, 55, 33);
+		lblMoney.setBounds(1089, 42, 132, 33);
 		frmMainMenu.getContentPane().add(lblMoney);
-		
-		JLabel lblMoneyCount = new JLabel("0");
-		lblMoneyCount.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblMoneyCount.setBounds(1150, 42, 55, 33);
-		frmMainMenu.getContentPane().add(lblMoneyCount);
 	}
 
 }

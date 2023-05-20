@@ -108,14 +108,14 @@ public class GameEnvironment {
 	
 	
 	public void addPoints(int newPoints) {
-		points = newPoints;
+		points += newPoints;
 	}
 	
 	public void addMoney(int newMoney) {
 		money += newMoney;
 	}
 	
-	public void addCurrentWeek(int newWeek) {
+	public void addCurrentWeek() {
 		currentWeek += 1;
 	}
 
@@ -147,6 +147,10 @@ public class GameEnvironment {
 		purchasedItems.add(3);
 		purchasedItems.add(3);
 		purchasedItems.add(3);
+		
+		for (Athlete currentAthlete : club.getAthletes()) {
+			currentAthlete.refreshStanima();
+		}
 	}
 
 	
@@ -162,17 +166,39 @@ public class GameEnvironment {
 		launchMainMenu();
 	}
 	
+	
+	
 	public void launchMainMenu() {
-		MainMenu menu = new MainMenu(this);
+		MainMenuUI menu = new MainMenuUI(this);
 	}
 	
 	public void launchStadium() {
 		Stadium gameStadium = new Stadium(this);
+		StadiumUI stadiumWindow = new StadiumUI(this, gameStadium);
+	}
+	
+	public void launchBye() {
+		Bye gameBye = new Bye(this);
+		ByeUI byeWindow = new ByeUI(this, gameBye);
+	}
+	
+	public void launchManage() {
+		Manage gameManage = new Manage(this);
+		ManageUI manageWindow = new ManageUI(this, gameManage);
 	}
 	
 	public void launchMarket() {
 		Market gameMarket = new Market(this);
+		MarketUI marketWindow = new MarketUI(this, gameMarket);		
 	}
+	
+	
+	
+	
+	
+	
+	
+
 	
 	public void launchTeamSelect(SetupUI setupMenu)	{
 		
@@ -186,13 +212,13 @@ public class GameEnvironment {
 	
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();
-		Setup setUpGame = new Setup(mainGame);
-//		Club playerClub = new Club();
-//		playerClub.opponentClub(2);
-//		mainGame.setClub(playerClub);
-//		mainGame.refresh();
-//		mainGame.launchMainMenu();
-		mainGame.launchSetup(setUpGame);
+//		Setup setUpGame = new Setup(mainGame);
+		Club playerClub = new Club();
+		playerClub.opponentClub(2);
+		mainGame.setClub(playerClub);
+		mainGame.refresh();
+		mainGame.launchMainMenu();
+//		mainGame.launchSetup(setUpGame);
 				
 	}
 }

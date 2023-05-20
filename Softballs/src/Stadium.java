@@ -13,7 +13,7 @@ public class Stadium {
 	
 	public Stadium(GameEnvironment newEnvironment) {
 		environment = newEnvironment;	
-		commandLine();
+		//commandLine();
 	}
 
 
@@ -46,19 +46,19 @@ public class Stadium {
 	
 //Command Line
 	
-	public void commandLine() {
-		System.out.println("0: Main menu");
-		System.out.println("Enter the number corresponding to each opponent to vs them");
-		System.out.println("1: " + environment.getOpponents().get(0).getName() + ", 2: " + environment.getOpponents().get(1).getName() + ", 3: " + environment.getOpponents().get(2).getName());
-		String input = myObj.nextLine();
-		if (input.equals("0")) {
-			environment.launchMainMenu();
-		}
-		else {
-			int parsedInput = Integer.parseInt(input);
-			playMatch(environment.getOpponents().get(parsedInput - 1));
-		}
-
-	}
+//	public void commandLine() {
+//		System.out.println("0: Main menu");
+//		System.out.println("Enter the number corresponding to each opponent to vs them");
+//		System.out.println("1: " + environment.getOpponents().get(0).getName() + ", 2: " + environment.getOpponents().get(1).getName() + ", 3: " + environment.getOpponents().get(2).getName());
+//		String input = myObj.nextLine();
+//		if (input.equals("0")) {
+//			environment.launchMainMenu();
+//		}
+//		else {
+//			int parsedInput = Integer.parseInt(input);
+//			playMatch(environment.getOpponents().get(parsedInput - 1));
+//		}
+//
+//	}
 
 }

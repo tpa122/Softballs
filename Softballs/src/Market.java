@@ -39,7 +39,7 @@ public class Market {
 //		Set initial values for the market
 		environment = incomingEnvironment;
 		playerClub = environment.getClub();
-		commandLine();
+		//commandLine();
 	}
 	
 	/**

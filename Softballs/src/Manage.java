@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class Manage {
 	private GameEnvironment  environment;
@@ -16,10 +18,20 @@ public class Manage {
 	
 //Methods
 	
+	public void setPlayers(ArrayList<Athlete> playersList) {
+		playerClub.setPlaying(playersList);
+	}
+	
+	
+	
+	
+	
 	public void useItem(Item itemUsed, Athlete selectedAthlete) {
 		environment.getItems().remove(itemUsed);
 		selectedAthlete.addStats(itemUsed.getStats());
 	}
+	
+	
 	
 	
 
