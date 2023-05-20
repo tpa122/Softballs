@@ -200,10 +200,11 @@ public class GameEnvironment {
 	
 
 	
-	public void launchTeamSelect(SetupUI setupMenu)	{
 		
+
+	public void launchTeamSelect(SetupUI setupMenu, Setup setupGame)	{
 		setupMenu.closeWindow();
-		SelectTeam teamSelectWindow = new SelectTeam();
+		SelectTeam teamSelectWindow = new SelectTeam(setupGame);
 	}
 	
 	
