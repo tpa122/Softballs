@@ -26,8 +26,9 @@ public class Manage {
 	
 	
 	
-	public void useItem(Item itemUsed, Athlete selectedAthlete) {
-		environment.getItems().remove(itemUsed);
+	public void useItem(int itemIndex, Athlete selectedAthlete) {
+		Item itemUsed = new Item(itemIndex);
+		environment.removeItem(itemIndex);
 		selectedAthlete.addStats(itemUsed.getStats());
 	}
 	

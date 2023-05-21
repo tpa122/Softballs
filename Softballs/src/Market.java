@@ -94,16 +94,16 @@ public class Market {
 	/**
 	 * @param itemToBuy			The item the player wants to purchase
 	 */
-	public void purchaseItem(Item itemToBuy)	{
+	public void purchaseItem(int itemIndex)	{
+		Item itemToBuy = new Item(0);
 		int currentFunds = environment.getMoney();
-		int itemIndex = environment.getPurchasableItems().indexOf(itemToBuy);
-		int amountRemaining = environment.getPurchasedItems().get(itemIndex);
+		int amountRemaining = environment.getPurchasableItems().get(itemIndex);
 
 		if (currentFunds >= itemToBuy.getPrice()) {
 			if (amountRemaining > 0) {
 				environment.addMoney(-itemToBuy.getPrice());			
-				environment.getItems().add(itemToBuy);	
-				environment.getPurchasedItems().set(itemIndex, amountRemaining - 1);
+				environment.addItems(itemIndex);	
+				environment.getPurchasableItems().set(itemIndex, amountRemaining - 1);
 			}
 			else {
 				System.out.println("Item sold out");
