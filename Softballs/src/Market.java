@@ -115,6 +115,7 @@ public class Market {
 	}
 	
 	
+	
 	public void sellAthlete(Athlete athleteToSell) {
 		playerClub.removePlayer(athleteToSell);
 		environment.addMoney(athleteToSell.getPrice());

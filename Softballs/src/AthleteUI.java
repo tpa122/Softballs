@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class AthleteUI extends JPanel {
 
@@ -20,7 +21,8 @@ public class AthleteUI extends JPanel {
 	private int athleteFielding;
 	private int athletePitching;
 	private SelectTeam selectTeamUI;
-	private Athlete athlete = new Athlete(1);
+	private Athlete athlete;
+	private MarketUI playerMarket;
 	
 	
 	
@@ -31,33 +33,18 @@ public class AthleteUI extends JPanel {
 	
 	
 	
-	public AthleteUI() {
+	public AthleteUI(MarketUI incomingMarket, Athlete incomingAthlete) {
 //		String name, int stamina, int batting, int fielding, int pitching, SelectTeam teamSelect
+		athlete = incomingAthlete;
 		athleteName = athlete.getName();
 		athleteStamina = athlete.getStats().get(0);
 		athleteBatting = athlete.getStats().get(1);;
 		athleteFielding = athlete.getStats().get(2);;
 		athletePitching = athlete.getStats().get(3);;
+		playerMarket = incomingMarket;
 		
 		
 		setLayout(null);
-		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (chckbxNewCheckBox.isSelected())	{
-//					selectTeamUI.addToTeam();
-					System.out.println("Athlete " + athleteName + " selected");
-				}	else	{
-					System.out.println("Athlete " + athleteName + " unselected");
-				}
-			}
-		});
-		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.RIGHT);
-		chckbxNewCheckBox.setVerticalAlignment(SwingConstants.TOP);
-		chckbxNewCheckBox.setBounds(0, 0, 174, 230);
-		chckbxNewCheckBox.setOpaque(false);
-		add(chckbxNewCheckBox);
 		
 		JLabel lblPlayerName = new JLabel(athleteName);
 		lblPlayerName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -116,6 +103,6 @@ public class AthleteUI extends JPanel {
 		lblPitchingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPitchingCount.setBounds(76, 196, 28, 14);
 		add(lblPitchingCount);
-
+		
 	}
 }
