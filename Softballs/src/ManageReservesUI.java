@@ -1,21 +1,26 @@
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
+
+
+
+import java.awt.EventQueue;
+import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class ManageReservesUI {
 
-	private JFrame frame;
-	
 	private GameEnvironment environment;
 	private Manage manageManager;
+
+
+	private JFrame frame;
+
+	
 
 
 
@@ -25,11 +30,10 @@ public class ManageReservesUI {
 	public ManageReservesUI(GameEnvironment incomingEnvironment, Manage incomingManage) {
 		environment = incomingEnvironment;
 		manageManager = incomingManage;
-		initialize();
 		
+		initialize();
 		frame.setVisible(true);
 	}
-	
 	
 	public void closeWindow() {
 		frame.dispose();
@@ -40,84 +44,50 @@ public class ManageReservesUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 810, 492);
+		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton backButton = new JButton("Back");
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				closeWindow();
-				environment.launchMainMenu();
-			}
-		});
-		
-		JPanel athletePanel = new JPanel();
-		athletePanel.setBounds(51, 87, 710, 160);
-		frame.getContentPane().add(athletePanel);
-		
+		JPanel pnlTopBar = new TopBar(environment);
+		frame.getContentPane().add(pnlTopBar);
 
 		
+//		JPanel pnlTopBar = new JPanel();
+//		pnlTopBar.setBounds(0, 0, 1008, 28);
+//		frame.getContentPane().add(pnlTopBar);
+//		pnlTopBar.setLayout(null);
+//		
+//		JLabel lblWeek = new JLabel("Week: " + environment.getCurrentWeek());
+//		lblWeek.setFont(new Font("Tahoma", Font.PLAIN, 16));
+//		lblWeek.setBounds(23, 4, 100, 20);
+//		pnlTopBar.add(lblWeek);
+//		
+//		JLabel lblPoints = new JLabel("Points: " + environment.getPoints());
+//		lblPoints.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
+//		lblPoints.setBounds(454, 4, 100, 20);
+//		pnlTopBar.add(lblPoints);
+//		
+//		JLabel lblMoney = new JLabel("Money: " + environment.getMoney());
+//		lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 16));
+//		lblMoney.setBounds(885, 4, 100, 20);
+//		pnlTopBar.add(lblMoney);
 		
-		athleteNameField = new JTextField();
-		athleteNameField.setBounds(10, 89, 122, 20);
-		athleteNameField.setColumns(10);
-		backButton.setBounds(366, 388, 89, 23);
-		frame.getContentPane().add(backButton);
+		JLabel lblReserves = new JLabel("Reserves");
+		lblReserves.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblReserves.setHorizontalAlignment(SwingConstants.CENTER);
+		lblReserves.setBounds(304, 28, 400, 40);
+		frame.getContentPane().add(lblReserves);
 		
-		
-		ButtonGroup group = new ButtonGroup();
-		
-		for (Athlete currentAthlete : environment.getClub().getAthletes()) {
-			JRadioButton athleteRadioButton = new JRadioButton(currentAthlete.toString());
-			athleteRadioButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					selectedAthlete = currentAthlete;
-					athleteNameField.setText(selectedAthlete.getName());
-					statsLabel.setText(selectedAthlete.getStats().toString());
-					
-					//Temp solution
-				}
-			});
-			group.add(athleteRadioButton);
-			athletePanel.add(athleteRadioButton);
-			athleteRadioButton.setSelected(true);
-			selectedAthlete = currentAthlete;
-			athleteNameField.setText(selectedAthlete.getName());
-			statsLabel.setText(selectedAthlete.getStats().toString());
-		}
-		
-		for (Item currentItem : environment.getItems()) {
-			JButton itemButton = new JButton(currentItem.toString());
-			itemButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					closeWindow();
-					manageManager.useItem(currentItem, selectedAthlete);
-					environment.launchManage();
-					}
-				});
-			itemPanel.add(itemButton);		
-		}
+		JButton btnAthletes = new JButton("Athletes");
+		btnAthletes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnAthletes.setBounds(0, 28, 304, 40);
+		frame.getContentPane().add(btnAthletes);
 		
 		JButton btnPositions = new JButton("Positions");
-		btnPositions.setBounds(533, 11, 228, 43);
+		btnPositions.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnPositions.setBounds(704, 28, 304, 40);
 		frame.getContentPane().add(btnPositions);
-		
-		clubNameField = new JTextField(environment.getClub().getName());
-		clubNameField.setBounds(51, 54, 330, 31);
-		frame.getContentPane().add(clubNameField);
-		clubNameField.setColumns(10);
-		
-		JLabel mngReservesLabel = new JLabel("Manage Reserves");
-		mngReservesLabel.setBounds(295, 11, 228, 43);
-		frame.getContentPane().add(mngReservesLabel);
-		
-		JButton mngAthletesButton = new JButton("Manage Athletes");
-		mngAthletesButton.setBounds(57, 11, 228, 43);
-		frame.getContentPane().add(mngAthletesButton);
-			
-		
-
 	}
 
 }

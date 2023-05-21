@@ -4,6 +4,9 @@ import java.util.ArrayList;
 public class Bye {
 	private GameEnvironment environment;
 	private Club playerClub;
+	private ArrayList<Athlete> quitingAthletes = new ArrayList<Athlete>();
+	private ArrayList<Athlete> increasingAthletes = new ArrayList<Athlete>();
+
 	
 	
 	
@@ -32,7 +35,6 @@ public class Bye {
 		chanceStats.add(5);
 		chanceStats.add(5);
 		
-		ArrayList<Athlete> removeList = new ArrayList<Athlete>();
 
 		for (Athlete currentAthlete : playerClub.getAthletes()) {
 			var quitRoll = Math.random();
@@ -41,13 +43,14 @@ public class Bye {
 
 			if (statRoll <= currentAthlete.getChanceToIncrease()) {
 				currentAthlete.addStats(chanceStats);
+				increasingAthletes.add(currentAthlete);
 			}
 			if (quitRoll <= currentAthlete.getChanceToQuit()) {
-				removeList.add(currentAthlete);
+				quitingAthletes.add(currentAthlete);
 			}
 		}
 		
-		for (Athlete removingAthlete : removeList) {
+		for (Athlete removingAthlete : quitingAthletes) {
 			playerClub.removePlayer(removingAthlete);
 		}
 		
@@ -56,11 +59,17 @@ public class Bye {
 			var joinRoll = Math.random();
 			if (joinRoll <= 0.1) {
 				Athlete joinedAthlete = new Athlete(environment.getCurrentWeek());
+
 				playerClub.getAthletes().add(joinedAthlete);
 				playerClub.getReserves().add(joinedAthlete);
+				environment.refresh();
+				RandomEventUI eventWindow = new RandomEventUI(environment, quitingAthletes, increasingAthletes, joinedAthlete);
+				return;
 			}
 		}
-		
 		environment.refresh();
+		RandomEventUI eventWindow = new RandomEventUI(environment, quitingAthletes, increasingAthletes, new Athlete(0));
+
+		
 	}	
 }

@@ -17,9 +17,15 @@ public class AthleteSmallUI extends JPanel{
 	private String batting;
 	private String fielding;
 	private String pitching;
+	private int totalStats;
 	
 	private JPanel athletePanel;
 	private JLabel lblAthleteName;
+	private JLabel lblAthleteStaminaNum;
+	private JLabel lblAthleteBattingNum;
+	private JLabel lblAthleteFieldingNum;
+	private JLabel lblAthletePitchingNum;
+	
 
 
 
@@ -28,7 +34,6 @@ public class AthleteSmallUI extends JPanel{
 	 * Create the application.
 	 */
 	public AthleteSmallUI(Athlete incomingAthlete) {
-		setBorder(new LineBorder(new Color(0, 0, 0)));
 		name = incomingAthlete.getName();
 		currentStamina = Integer.toString(incomingAthlete.getCurrentStanima());
 		
@@ -37,6 +42,19 @@ public class AthleteSmallUI extends JPanel{
 		batting = Integer.toString(stats.get(1));
 		fielding = Integer.toString(stats.get(2));
 		pitching = Integer.toString(stats.get(3));
+		totalStats = stats.get(0) + stats.get(1) + stats.get(2) + stats.get(3);
+		if (totalStats == 400) {
+			setBorder(new LineBorder(new Color(255, 200, 0)));
+		}
+		else if (totalStats >= 320){
+			setBorder(new LineBorder(new Color(255, 0, 255)));
+		} else if (totalStats >= 250) {
+			setBorder(new LineBorder(new Color(0, 0, 255)));
+		} else {
+			setBorder(new LineBorder(new Color(0, 255, 0)));
+			
+		}
+		
 		
 		initialize();
 	}
@@ -71,31 +89,47 @@ public class AthleteSmallUI extends JPanel{
 		lblAthletePitching.setBounds(10, 103, 46, 14);
 		add(lblAthletePitching);
 		
-		JLabel lblAthleteStaminaNum = new JLabel(currentStamina + "/" + stamina);
+		lblAthleteStaminaNum = new JLabel(currentStamina + "/" + stamina);
 		lblAthleteStaminaNum.setBounds(64, 37, 46, 14);
 		lblAthleteStaminaNum.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblAthleteStaminaNum);
 		
-		JLabel lblAthleteBattingNum = new JLabel(batting);
+		lblAthleteBattingNum = new JLabel(batting);
 		lblAthleteBattingNum.setBounds(64, 59, 46, 14);
 		lblAthleteBattingNum.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblAthleteBattingNum);
 		
-		JLabel lblAthleteFieldingNum = new JLabel(fielding);
+		lblAthleteFieldingNum = new JLabel(fielding);
 		lblAthleteFieldingNum.setBounds(64, 81, 46, 14);
 		lblAthleteFieldingNum.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblAthleteFieldingNum);
 		
-		JLabel lblAthletePitchingNum = new JLabel(pitching);
+		lblAthletePitchingNum = new JLabel(pitching);
 		lblAthletePitchingNum.setBounds(64, 103, 46, 14);
 		lblAthletePitchingNum.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblAthletePitchingNum);	
-		
+	
 
 	}
 	
 	public JLabel getLblAthleteName() {
 		return lblAthleteName;
+	}
+	
+	public JLabel getLblAthleteStaminaNum() {
+		return lblAthleteStaminaNum;
+	}
+	
+	public JLabel getLblAthleteBattingNum() {
+		return lblAthleteBattingNum;
+	}
+	
+	public JLabel getLblAthleteFieldingNum() {
+		return lblAthleteFieldingNum;
+	}
+	
+	public JLabel getLblAthletePitchingNum() {
+		return lblAthletePitchingNum;
 	}
 
 }

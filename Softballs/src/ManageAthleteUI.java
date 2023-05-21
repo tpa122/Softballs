@@ -22,6 +22,8 @@ public class ManageAthleteUI {
 	
 	private GameEnvironment environment;
 	private Manage manageManager;
+	private Athlete selectedAthlete;
+	private AthleteSmallUI selectedAthleteCard;
 
 	private JFrame frame;
 	private JTextField txtClubName;
@@ -44,6 +46,14 @@ public class ManageAthleteUI {
 	public void closeWindow() {
 		frame.dispose();
 	}
+	
+	public Athlete getSelectedAthlete() {
+		return selectedAthlete;
+	}
+	
+	public AthleteSmallUI getSelectedAthleteCard() {
+		return selectedAthleteCard;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -54,26 +64,10 @@ public class ManageAthleteUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel pnlTopBar = new JPanel();
-		pnlTopBar.setBounds(0, 0, 1008, 28);
+		
+		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
-		pnlTopBar.setLayout(null);
-		
-		JLabel lblWeek = new JLabel("Week: " + environment.getCurrentWeek());
-		lblWeek.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblWeek.setBounds(23, 4, 100, 20);
-		pnlTopBar.add(lblWeek);
-		
-		JLabel lblPoints = new JLabel("Points: " + environment.getPoints());
-		lblPoints.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPoints.setBounds(454, 4, 100, 20);
-		pnlTopBar.add(lblPoints);
-		
-		JLabel lblMoney = new JLabel("Money: " + environment.getMoney());
-		lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblMoney.setBounds(885, 4, 100, 20);
-		pnlTopBar.add(lblMoney);
+
 		
 		JLabel lblAthletes = new JLabel("Athletes");
 		lblAthletes.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -97,6 +91,11 @@ public class ManageAthleteUI {
 		txtClubName.setColumns(10);
 		
 		JButton btnChangeClubName = new JButton("Change");
+		btnChangeClubName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.getClub().setName(txtClubName.getText());
+			}
+		});
 		btnChangeClubName.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnChangeClubName.setBounds(518, 91, 100, 28);
 		frame.getContentPane().add(btnChangeClubName);
@@ -168,6 +167,61 @@ public class ManageAthleteUI {
 		lblDisplayPitchingNum.setBounds(98, 289, 80, 20);
 		pnlDisplayAthlete.add(lblDisplayPitchingNum);
 		
+		JPanel pnlItems = new JPanel();
+		pnlItems.setBounds(40, 391, 480, 125);
+		frame.getContentPane().add(pnlItems);
+		pnlItems.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		for (int i = 0; i < 4; i++) {
+			int index = i;
+			Item currentItem = new Item(i);
+			ItemUI pnlItemCard = new ItemUI(currentItem);
+			int itemAmount = environment.getItems().get(i);
+			
+			JLabel lblItemAmount = new JLabel(Integer.toString(itemAmount));
+			lblItemAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
+			lblItemAmount.setHorizontalAlignment(SwingConstants.CENTER);
+			lblItemAmount.setBounds(4, 4, 25, 25);
+			pnlItemCard.add(lblItemAmount);
+			
+			if (itemAmount > 0) {
+				JButton btnItemCard = new JButton("");
+				btnItemCard.setBounds(0, 0, 120, 125);
+				btnItemCard.setOpaque(false);
+				pnlItemCard.add(btnItemCard);
+				btnItemCard.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (environment.getClub().getAthletes().contains(getSelectedAthlete())) {
+							getSelectedAthlete().addStats(currentItem.getStats());
+							getSelectedAthleteCard().getLblAthleteStaminaNum().setText(Integer.toString(getSelectedAthlete().getCurrentStanima()) + "/" + Integer.toString(getSelectedAthlete().getStat(0)));
+							getSelectedAthleteCard().getLblAthleteBattingNum().setText(Integer.toString(getSelectedAthlete().getStat(1)));
+							getSelectedAthleteCard().getLblAthleteFieldingNum().setText(Integer.toString(getSelectedAthlete().getStat(2)));
+							getSelectedAthleteCard().getLblAthletePitchingNum().setText(Integer.toString(getSelectedAthlete().getStat(3)));
+							lblDisplayStaminaNum.setText(Integer.toString(getSelectedAthlete().getCurrentStanima()) + "/" + Integer.toString(getSelectedAthlete().getStat(0)));
+							lblDisplayBattingNum.setText(Integer.toString(getSelectedAthlete().getStat(1)));
+							lblDisplayFieldingNum.setText(Integer.toString(getSelectedAthlete().getStat(2)));
+							lblDisplayPitchingNum.setText(Integer.toString(getSelectedAthlete().getStat(3)));
+							
+							
+							environment.removeItem(index);
+							lblItemAmount.setText(Integer.toString(environment.getItems().get(index)));
+							if (environment.getItems().get(index) <= 0) {
+								btnItemCard.setEnabled(false);
+							}
+							
+						}
+						
+
+						
+					}
+				});
+
+			}
+						
+			pnlItems.add(pnlItemCard);
+		}
+		
+		
 		JPanel pnlAthletes = new JPanel();
 		pnlAthletes.setBounds(40, 130, 720, 250);
 		frame.getContentPane().add(pnlAthletes);
@@ -189,8 +243,10 @@ public class ManageAthleteUI {
 			
 			rdbtnAthleteCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					selectedAthlete = currentAthlete;
+					selectedAthleteCard = pnlAthleteCard;
 					txtAthleteName.setText(currentAthlete.getName());
-					lblDisplayStaminaNum.setText(Integer.toString(currentAthlete.getStat(0)) + "/" + currentAthlete.getCurrentStanima());
+					lblDisplayStaminaNum.setText(Integer.toString(currentAthlete.getCurrentStanima()) + "/" + Integer.toString(currentAthlete.getStat(0)));
 					lblDisplayBattingNum.setText(Integer.toString(currentAthlete.getStat(1)));
 					lblDisplayFieldingNum.setText(Integer.toString(currentAthlete.getStat(2)));
 					lblDisplayPitchingNum.setText(Integer.toString(currentAthlete.getStat(3)));
@@ -203,8 +259,7 @@ public class ManageAthleteUI {
 							}
 
 						}
-					});
-					
+					});				
 				}
 			});
 			
@@ -212,17 +267,14 @@ public class ManageAthleteUI {
 			pnlAthleteCard.add(rdbtnAthleteCard);
 			pnlAthletes.add(pnlAthleteCard);
 		}
+		
 		for (int i = counter; i < 13; i ++) {
 			JPanel pnlFillGrid = new JPanel();
 			pnlFillGrid.setLayout(null);
 			pnlAthletes.add(pnlFillGrid);
 		}
 		
-		JPanel pnlItems = new JPanel();
-		pnlItems.setBounds(40, 391, 720, 135);
-		frame.getContentPane().add(pnlItems);
-		pnlItems.setLayout(null);
-		
+	
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

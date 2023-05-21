@@ -23,7 +23,7 @@ public class Item {
 			name = "Big Bat";
 		} else if (itemType == 2) {
 			fielding = 10;
-			name = "Glove of Grace";
+			name = "SureField";
 		} else {
 			pitching = 10;
 			name = "Wrist Roller";

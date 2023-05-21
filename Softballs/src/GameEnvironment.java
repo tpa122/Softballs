@@ -193,6 +193,11 @@ public class GameEnvironment {
 		//ManageUI manageWindo = new ManageUI(this, gameManage);
 	}
 	
+	public void launchManageReserves() {
+		Manage gameManage = new Manage(this);
+		ManageReservesUI manageReservesWindow = new ManageReservesUI(this, gameManage);
+	}
+	
 	public void launchMarket() {
 		Market gameMarket = new Market(this);
 		MarketUI marketWindow = new MarketUI(this, gameMarket);		
@@ -224,6 +229,10 @@ public class GameEnvironment {
 		playerClub.opponentClub(2);
 		mainGame.setClub(playerClub);
 		mainGame.refresh();
+		mainGame.addItems(0);
+		mainGame.addItems(0);
+		mainGame.addItems(3);
+
 		mainGame.launchMainMenu();
 //		mainGame.launchSetup(setUpGame);
 				

@@ -132,6 +132,18 @@ public class Athlete {
 		batting += newList.get(1);
 		fielding += newList.get(2);
 		pitching += newList.get(3);
+		if (stanima > 100) {
+			stanima = 100;
+		}
+		if (batting > 100) {
+			batting = 100;
+		}
+		if (fielding > 100) {
+			fielding = 100;
+		}
+		if (pitching > 100) {
+			pitching = 100;
+		}
 	}
 	
 	

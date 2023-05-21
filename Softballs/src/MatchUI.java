@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
 
 public class MatchUI {
 
@@ -54,24 +56,9 @@ public class MatchUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1280, 720);
+		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JLabel battingNameLabel = new JLabel(matchManager.getBatting().getName());
-		battingNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 51));
-		battingNameLabel.setBounds(49, 11, 570, 69);
-		frame.getContentPane().add(battingNameLabel);
-		
-		JLabel batttingRunsLabel = new JLabel(String.valueOf(matchManager.getBatting().getRuns()));
-		batttingRunsLabel.setFont(new Font("Tahoma", Font.PLAIN, 51));
-		batttingRunsLabel.setBounds(973, 11, 234, 69);
-		frame.getContentPane().add(batttingRunsLabel);
-		
-		JLabel inningsLabel = new JLabel("1st Innings");
-		inningsLabel.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		inningsLabel.setBounds(708, 34, 183, 38);
-		frame.getContentPane().add(inningsLabel);
 		
 		JLabel out1Label = new JLabel("(Out) " + matchManager.getOutList().get(1).getName() + ", (Pitcher) " + matchManager.getOutList().get(0).getName());
 		out1Label.setBounds(60, 132, 346, 32);
@@ -90,10 +77,10 @@ public class MatchUI {
 			injuryLabel.setBounds(60, 313 + i*20, 300, 50);
 			frame.getContentPane().add(injuryLabel);
 		}
-
 		
-		JButton proceedButton = new JButton("Proceed");
-		proceedButton.addActionListener(new ActionListener() {
+		
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
 				if (iterativeNum == 3) {
@@ -104,8 +91,44 @@ public class MatchUI {
 				}
 			}
 		});
-		proceedButton.setBounds(1000, 586, 153, 50);
-		frame.getContentPane().add(proceedButton);
+		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnContinue.setBounds(822, 465, 120, 40);
+		frame.getContentPane().add(btnContinue);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(0, 0, 1008, 69);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblBattingName = new JLabel(matchManager.getBatting().getName());
+		lblBattingName.setBounds(25, 0, 570, 69);
+		panel.add(lblBattingName);
+		lblBattingName.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		
+		JLabel batttingRunsLabel = new JLabel(String.valueOf(matchManager.getBatting().getRuns()));
+		batttingRunsLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		batttingRunsLabel.setBounds(883, 0, 100, 69);
+		panel.add(batttingRunsLabel);
+		batttingRunsLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		
+		int innings = iterativeNum / 2;
+		if (innings == 0) {
+			JLabel inningsLabel = new JLabel("1st Innings");
+			inningsLabel.setBounds(707, 21, 143, 38);
+			panel.add(inningsLabel);
+			inningsLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		}
+		else {
+			JLabel inningsLabel = new JLabel("2nd Innings");
+			inningsLabel.setBounds(707, 21, 143, 38);
+			panel.add(inningsLabel);
+			inningsLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		}
+
+		
+		
+		
 		if (iterativeNum == 3) {
 			String outcomeMessage;
 			if (environment.getClub().getRuns() > matchManager.getOpponent().getRuns()) {

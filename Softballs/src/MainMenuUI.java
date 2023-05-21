@@ -62,8 +62,20 @@ public class MainMenuUI {
 				environment.launchStadium();
 			}
 		});
+		
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+			}
+		});
+		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnExit.setBounds(466, 436, 76, 23);
+		frmMainMenu.getContentPane().add(btnExit);
+		
+		
 		btnStadium.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnStadium.setBounds(552, 270, 147, 33);
+		btnStadium.setBounds(430, 270, 147, 33);
 		frmMainMenu.getContentPane().add(btnStadium);
 		
 		JButton btnBye = new JButton("Bye");
@@ -74,7 +86,7 @@ public class MainMenuUI {
 			}
 		});
 		btnBye.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnBye.setBounds(588, 314, 76, 23);
+		btnBye.setBounds(466, 314, 76, 23);
 		frmMainMenu.getContentPane().add(btnBye);
 		
 		JButton btnMarket = new JButton("Market");
@@ -85,7 +97,7 @@ public class MainMenuUI {
 			}
 		});
 		btnMarket.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnMarket.setBounds(552, 348, 147, 33);
+		btnMarket.setBounds(430, 348, 147, 33);
 		frmMainMenu.getContentPane().add(btnMarket);
 		
 		JButton btnManageClub = new JButton("Manage Club");
@@ -96,39 +108,13 @@ public class MainMenuUI {
 			}
 		});
 		btnManageClub.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnManageClub.setBounds(552, 400, 147, 33);
+		btnManageClub.setBounds(430, 392, 147, 33);
 		frmMainMenu.getContentPane().add(btnManageClub);
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnExit.setBounds(552, 450, 147, 33);
-		frmMainMenu.getContentPane().add(btnExit);
-		
-		JLabel lblWeek = new JLabel("Week: " + Integer.toString(environment.getCurrentWeek()));
-		lblWeek.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblWeek.setBounds(33, 42, 122, 33);
-		frmMainMenu.getContentPane().add(lblWeek);
-		
-		JLabel lblPoints = new JLabel("Points: " + Integer.toString(environment.getPoints()));
-		lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblPoints.setBounds(583, 206, 132, 33);
-		frmMainMenu.getContentPane().add(lblPoints);
-		
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/baseball.png")));
-		lblNewLabel_2.setBounds(1144, 566, 110, 104);
-		frmMainMenu.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblSoftballsLogo = new JLabel("");
 		lblSoftballsLogo.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/Softballs_logo.png")));
-		lblSoftballsLogo.setBounds(228, 10, 780, 185);
+		lblSoftballsLogo.setBounds(114, 25, 780, 185);
 		frmMainMenu.getContentPane().add(lblSoftballsLogo);
-		
-		JLabel lblMoney = new JLabel("Money: " + Integer.toString(environment.getMoney()));
-		lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblMoney.setBounds(1089, 42, 132, 33);
-		frmMainMenu.getContentPane().add(lblMoney);
 		
 		JLabel lblBackgroundimg = new JLabel("");
 		lblBackgroundimg.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/MainMenuImg.jpg")));
