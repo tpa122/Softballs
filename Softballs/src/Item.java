@@ -9,6 +9,11 @@ public class Item {
 	private int pitching;
 	private int price;
 
+	
+
+	
+// Constructor
+	
 	public Item(String itemName, int itemStamina, int itemBatting, int itemFielding, int itemPitching, int itemPrice)	{
 		name = itemName;
 		stamina = itemStamina;
@@ -18,12 +23,16 @@ public class Item {
 		price = itemPrice;
 	}
 	
-	public String getName() {
-		return name;
+	public String toString() {
+		return getName() + getStats();
 	}
 	
-	public void setName(String newName) {
-		name = newName;
+	
+
+// Getters
+	
+	public String getName() {
+		return name;
 	}
 	
 	public ArrayList<Integer> getStats() {
@@ -36,14 +45,22 @@ public class Item {
 		return statsList;
 	}
 	
+	public int getPrice()	{
+		return price;
+	}
+
+	
+	
+//Setters
+	
+	public void setName(String newName) {
+		name = newName;
+	}
+		
 	public void setStats(ArrayList<Integer> newList) {
 		stamina = newList.get(0);
 		batting = newList.get(1);
 		fielding = newList.get(2);
 		pitching = newList.get(3);
 	}
-	public int getPrice()	{
-		return price;
-	}
-
 }

@@ -29,7 +29,7 @@ public class Club {
 		Random rand  = new Random();
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
 		
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 10; i++) {
 			Athlete addAthlete = new Athlete(currentWeek);
 			athletes.add(addAthlete);
 			if (i < 2) {

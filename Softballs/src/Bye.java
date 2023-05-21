@@ -26,27 +26,35 @@ public class Bye {
 		trainingAthlete.addStats(trainedStats);
 
 		//Chance for players to quit and increase
-		ArrayList<Integer> increasedStats = new ArrayList<Integer>();
-		increasedStats.add(10);
-		increasedStats.add(10);
-		increasedStats.add(10);
-		increasedStats.add(10);
+		ArrayList<Integer> chanceStats = new ArrayList<Integer>();
+		chanceStats.add(5);
+		chanceStats.add(5);
+		chanceStats.add(5);
+		chanceStats.add(5);
+		
+		ArrayList<Athlete> removeList = new ArrayList<Athlete>();
+
 		for (Athlete currentAthlete : playerClub.getAthletes()) {
 			var quitRoll = Math.random();
 			var statRoll = Math.random();
 
-			if (currentAthlete.getChanceToQuit() <= quitRoll) {
-				playerClub.removePlayer(currentAthlete);
+
+			if (statRoll <= currentAthlete.getChanceToIncrease()) {
+				currentAthlete.addStats(chanceStats);
 			}
-			else if (currentAthlete.getChanceToQuit() <= statRoll) {
-				currentAthlete.addStats(increasedStats);
+			if (quitRoll <= currentAthlete.getChanceToQuit()) {
+				removeList.add(currentAthlete);
 			}
+		}
+		
+		for (Athlete removingAthlete : removeList) {
+			playerClub.removePlayer(removingAthlete);
 		}
 		
 		//Chance for new player joins team
 		if (playerClub.getReserves().size() < 5) {
 			var joinRoll = Math.random();
-			if (0.1 <= joinRoll) {
+			if (joinRoll <= 0.1) {
 				Athlete joinedAthlete = new Athlete(environment.getCurrentWeek());
 				playerClub.getAthletes().add(joinedAthlete);
 				playerClub.getReserves().add(joinedAthlete);

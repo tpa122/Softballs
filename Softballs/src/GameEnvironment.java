@@ -7,7 +7,7 @@ public class GameEnvironment {
 	
 //Dynamic Objects
 	private Club club;
-	private ArrayList<Item> items;
+	private ArrayList<Item> items = new ArrayList<Item>();
 
 //Dynamic Figures
 	private int points = 0;
@@ -124,6 +124,11 @@ public class GameEnvironment {
 //Other
 	
 	public void refresh() {
+		opponents.clear();
+		purchasableAthletes.clear();
+		purchasedAthletes.clear();
+		purchasableItems.clear();
+		purchasedItems.clear();
 		//Create opponents
 		for (int i = 0; i <= 3; i ++) {
 			Club newClub = new Club();
@@ -143,6 +148,7 @@ public class GameEnvironment {
 		purchasableItems.add(item2);
 		purchasableItems.add(item3);
 		purchasableItems.add(item4);
+		items.add(item1);
 		purchasedItems.add(3);
 		purchasedItems.add(3);
 		purchasedItems.add(3);
