@@ -4,10 +4,11 @@ public class GameEnvironment {
 //Permanent sets
 	private int endWeek;
 	private int difficulty;	
+	//private ArrayList<Item> itemTypes = new ArrayList<Item>();
 	
 //Dynamic Objects
 	private Club club;
-	private ArrayList<Item> items = new ArrayList<Item>();
+	private ArrayList<Integer> items = new ArrayList<Integer>();
 
 //Dynamic Figures
 	private int points = 0;
@@ -21,11 +22,17 @@ public class GameEnvironment {
 //Market
 	private ArrayList<Athlete> purchasableAthletes = new ArrayList<Athlete>();
 	private ArrayList<Athlete> purchasedAthletes = new ArrayList<Athlete>();
-	private ArrayList<Item> purchasableItems = new ArrayList<Item>();
-	private ArrayList<Integer> purchasedItems = new ArrayList<Integer>();
+	private ArrayList<Integer> purchasableItems = new ArrayList<Integer>();
+	//private ArrayList<Integer> purchasedItems = new ArrayList<Integer>();
 
 
 	
+	
+//Constructor
+	public GameEnvironment() {
+		for (int i = 0; i < 4; i ++)
+		items.add(0);		
+	}
 	
 //Getters
 	
@@ -42,7 +49,7 @@ public class GameEnvironment {
 		return club;
 	}
 	
-	public ArrayList<Item> getItems(){
+	public ArrayList<Integer> getItems(){
 		return items;
 	}
 	
@@ -77,13 +84,10 @@ public class GameEnvironment {
 		return purchasedAthletes;
 	}
 	
-	public ArrayList<Item> getPurchasableItems(){
+	public ArrayList<Integer> getPurchasableItems(){
 		return purchasableItems;
 	}
-	
-	public ArrayList<Integer> getPurchasedItems(){
-		return purchasedItems;
-	}
+
 	
 	
 	
@@ -102,8 +106,12 @@ public class GameEnvironment {
 		club = newClub;
 	}
 		
-	public void setItems(ArrayList<Item> newItems) {
-		items = newItems;
+	public void addItems(int itemIndex) {
+		items.set(itemIndex, items.get(itemIndex) + 1);
+	}
+	
+	public void removeItem(int itemIndex) {
+		items.set(itemIndex, items.get(itemIndex) - 1);
 	}
 	
 	
@@ -128,7 +136,6 @@ public class GameEnvironment {
 		purchasableAthletes.clear();
 		purchasedAthletes.clear();
 		purchasableItems.clear();
-		purchasedItems.clear();
 		//Create opponents
 		for (int i = 0; i <= 3; i ++) {
 			Club newClub = new Club();
@@ -140,19 +147,11 @@ public class GameEnvironment {
 		for(int i = 0; i < 4; i ++)	{
 			purchasableAthletes.add(new Athlete(currentWeek));
 		}
-		Item item1 = new Item("Treadmill", 10, 0, 0, 0, 10);
-		Item item2 = new Item("Improved Bat", 0, 10, 0, 0, 10);
-		Item item3 = new Item("Improved Gloves", 0, 0, 10, 0, 10);
-		Item item4 = new Item("Wrist Roller", 0, 0, 0, 10, 10);
-		purchasableItems.add(item1);
-		purchasableItems.add(item2);
-		purchasableItems.add(item3);
-		purchasableItems.add(item4);
-		items.add(item1);
-		purchasedItems.add(3);
-		purchasedItems.add(3);
-		purchasedItems.add(3);
-		purchasedItems.add(3);
+
+		purchasableItems.add(3);
+		purchasableItems.add(3);
+		purchasableItems.add(3);
+		purchasableItems.add(3);
 		
 		for (Athlete currentAthlete : club.getAthletes()) {
 			currentAthlete.refreshStanima();
@@ -190,7 +189,8 @@ public class GameEnvironment {
 	
 	public void launchManage() {
 		Manage gameManage = new Manage(this);
-		ManageUI manageWindow = new ManageUI(this, gameManage);
+		ManageAthleteUI manageWindow = new ManageAthleteUI(this, gameManage);
+		//ManageUI manageWindo = new ManageUI(this, gameManage);
 	}
 	
 	public void launchMarket() {

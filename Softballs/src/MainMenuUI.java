@@ -51,7 +51,7 @@ public class MainMenuUI {
 	private void initialize() {
 		frmMainMenu = new JFrame();
 		frmMainMenu.setTitle("Main Menu");
-		frmMainMenu.setBounds(100, 100, 1280, 720);
+		frmMainMenu.setBounds(100, 100, 1024, 576);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainMenu.getContentPane().setLayout(null);
 		
@@ -129,6 +129,11 @@ public class MainMenuUI {
 		lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblMoney.setBounds(1089, 42, 132, 33);
 		frmMainMenu.getContentPane().add(lblMoney);
+		
+		JLabel lblBackgroundimg = new JLabel("");
+		lblBackgroundimg.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/MainMenuImg.jpg")));
+		lblBackgroundimg.setBounds(0, 0, 1008, 537);
+		frmMainMenu.getContentPane().add(lblBackgroundimg);
 	}
 
 }

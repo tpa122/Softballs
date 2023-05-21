@@ -75,6 +75,16 @@ public class Athlete {
 		return statsList;
 	}
 	
+	public int getStat(int statNum) {
+		ArrayList<Integer> statsList = new ArrayList<Integer>();
+		statsList.add(stanima);
+		statsList.add(batting);
+		statsList.add(fielding);
+		statsList.add(pitching);
+		
+		return statsList.get(statNum);
+	}
+	
 	
 	
 	public int getPrice() {
