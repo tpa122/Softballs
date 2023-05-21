@@ -11,7 +11,7 @@ public class GameEnvironment {
 
 //Dynamic Figures
 	private int points = 0;
-	private int money = 0;
+	private int money = 10000;
 	private int currentWeek = 1;
 
 //Stadium
@@ -137,7 +137,7 @@ public class GameEnvironment {
 		}
 		
 		//Create market arrays
-		for(int i = 0; i < 3; i ++)	{
+		for(int i = 0; i < 4; i ++)	{
 			purchasableAthletes.add(new Athlete(currentWeek));
 		}
 		Item item1 = new Item("Treadmill", 10, 0, 0, 0, 10);
@@ -224,6 +224,7 @@ public class GameEnvironment {
 		playerClub.opponentClub(2);
 		mainGame.setClub(playerClub);
 		mainGame.refresh();
+		System.out.println(mainGame.getPurchasableAthletes());
 		mainGame.launchMainMenu();
 //		mainGame.launchSetup(setUpGame);
 				
