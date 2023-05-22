@@ -26,6 +26,7 @@ public class SelectTeam {
 	private ArrayList<Athlete> chosenAthletes = new ArrayList<Athlete>();
 	private ArrayList<Athlete> startingAthletes;
 	private int playerSelectedCount = 0;
+	private Club playerClub;
 	
 	/**
 	 * Launch the application.
@@ -52,6 +53,7 @@ public class SelectTeam {
 		startingAthletes = setupGame.getStartAthletes();
 		initialize();
 		frame.setVisible(true);
+		playerClub = environment.getClub();
 	}
 	
 	public void addToTeam(Athlete athleteToAdd)	{
@@ -61,8 +63,7 @@ public class SelectTeam {
 		chosenAthletes.add(athleteToAdd);
 	}
 	public void setPlayerCountText()	{
-		playerSelectedCount = (12 - chosenAthletes.size());
-		System.out.println(playerSelectedCount);
+		playerSelectedCount = (10 - chosenAthletes.size());
 	}
 
 	/**
@@ -75,15 +76,31 @@ public class SelectTeam {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(165, 46, 700, 491);
+		panel.setBounds(165, 46, 600, 375);
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 5, 0, 0));
 		
 		JButton btnNewButton = new JButton("Start Season");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(chosenAthletes.size() == (12))	{
+				if(chosenAthletes.size() == (10))	{
 					environment.getClub().setAthletes(chosenAthletes);
+					for (int i = 0; i < 10; i ++) {
+						Athlete currentAthlete = chosenAthletes.get(i);
+						if (i < 2) {
+							playerClub.getPlaying().add(currentAthlete);
+							playerClub.getPitchers().add(currentAthlete);
+						}
+						else if (i < 7) {
+							playerClub.getPlaying().add(currentAthlete);
+							playerClub.getBatters().add(currentAthlete);
+						}
+						else {
+							playerClub.getReserves().add(currentAthlete);
+						}
+						
+					}
+					
 					frame.dispose();
 					environment.refresh();
 					environment.launchMainMenu();
@@ -109,25 +126,31 @@ public class SelectTeam {
 			Athlete startingAthlete = currentAthlete;
 			AthleteSmallUI athleteCard = new AthleteSmallUI(startingAthlete);
 			
-			JCheckBox chckbxSelectPlayer = new JCheckBox("test");
+			JCheckBox chckbxSelectPlayer = new JCheckBox("");
+			chckbxSelectPlayer.setHorizontalAlignment(SwingConstants.RIGHT);
 			chckbxSelectPlayer.setVerticalAlignment(SwingConstants.TOP);
+			chckbxSelectPlayer.setBounds(0,0,120,125);
+			chckbxSelectPlayer.setOpaque(false);
+			athleteCard.add(chckbxSelectPlayer);
+			
+			
 			chckbxSelectPlayer.addActionListener(new ActionListener()	{
 				public void actionPerformed(ActionEvent e) {
 //					Check if checkbox selected
 					if(chckbxSelectPlayer.isSelected())	{
 //						Check if team not full
-						if(chosenAthletes.size() == (12)) {
-//							If full, tell the player they have selected 12 players
-							lblSelectPlayerCount.setText("You have selected 12 players");
+						if(chosenAthletes.size() == (10)) {
+//							If full, tell the player they have selected 10 players
+							lblSelectPlayerCount.setText("You have selected 10 players");
 							chckbxSelectPlayer.setSelected(false);
 						}	else	{
 //							Else the player has not chosen enough athletes
-							if(chosenAthletes.size() < 12) {
+							if(chosenAthletes.size() < 10) {
 //								
 								chosenAthletes.add(currentAthlete);
 								setPlayerCountText();
-								if(chosenAthletes.size() == 12) {
-									lblSelectPlayerCount.setText("You have selected 12 players");
+								if(chosenAthletes.size() == 10) {
+									lblSelectPlayerCount.setText("You have selected 10 players");
 								}else	{
 									lblSelectPlayerCount.setText("Select " + String.valueOf(playerSelectedCount) + " more players.");
 								}
@@ -141,19 +164,14 @@ public class SelectTeam {
 						setPlayerCountText();
 						lblSelectPlayerCount.setText("Select " + String.valueOf(playerSelectedCount) + " more players.");
 					}
-					System.out.println(chosenAthletes);
 				}
 			});
-			chckbxSelectPlayer.setHorizontalAlignment(SwingConstants.RIGHT);
-			chckbxSelectPlayer.setOpaque(false);
 			
-			chckbxSelectPlayer.setBounds(0, 0, 150, 206);;
 			
-			athleteCard.add(chckbxSelectPlayer);
 			panel.add(athleteCard);
 		}
 		
-		lblSelectPlayerCount.setText("Select 12 more players.");
+		lblSelectPlayerCount.setText("Select 10 more players.");
 		
 	}
 }
