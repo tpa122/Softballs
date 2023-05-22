@@ -170,7 +170,7 @@ public class Athlete {
 	
 	public int getPrice() {
 		int totalStats = stanima + batting +fielding + pitching; 
-		float floatPrice = 20 + totalStats / 400;
+		float floatPrice = 20 + totalStats / 4;
 		return Math.round(floatPrice);		
 	}
 	

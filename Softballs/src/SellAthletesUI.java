@@ -77,19 +77,20 @@ public class SellAthletesUI {
 		}
 		lblNoAthletesPopup.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNoAthletesPopup.setFont(new Font("Tahoma", Font.PLAIN, 52));
-		lblNoAthletesPopup.setBounds(109, 55, 598, 357);
+		lblNoAthletesPopup.setBounds(109, 88, 598, 357);
 		frmSellAthletes.getContentPane().add(lblNoAthletesPopup);
 		
-
+		JPanel pnlTopBar = new TopBar(environment);
+		frmSellAthletes.getContentPane().add(pnlTopBar);
 		
 		JLabel lblSellTitle = new JLabel("Sell Athletes");
 		lblSellTitle.setFont(new Font("Tahoma", Font.PLAIN, 41));
 		lblSellTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSellTitle.setBounds(0, 11, 1008, 45);
+		lblSellTitle.setBounds(0, 44, 1008, 45);
 		frmSellAthletes.getContentPane().add(lblSellTitle);
 		
 		JPanel PnlAthlete = new JPanel();
-		PnlAthlete.setBounds(795, 67, 203, 320);
+		PnlAthlete.setBounds(795, 100, 203, 320);
 		frmSellAthletes.getContentPane().add(PnlAthlete);
 		PnlAthlete.setLayout(null);
 		
@@ -161,16 +162,24 @@ public class SellAthletesUI {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(22, 67, 763, 320);
+		panel.setBounds(22, 100, 763, 320);
 		
 		ButtonGroup group = new ButtonGroup();
 		
 		for (Athlete currentAthlete : environment.getClub().getAthletes())	{
 			AthleteSmallUI athlete = new AthleteSmallUI(currentAthlete);
+//			Display cost
+			JLabel lblCost = new JLabel("$" + String.valueOf(currentAthlete.getPrice()));
+			lblCost.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblCost.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblCost.setVerticalAlignment(SwingConstants.TOP);
+			lblCost.setBounds(0, 0, 125, 206);
+			athlete.add(lblCost);
+//			Display select button
 			JRadioButton athleteRadioButton = new JRadioButton();
 			athleteRadioButton.setHorizontalAlignment(SwingConstants.RIGHT);
 			athleteRadioButton.setVerticalAlignment(SwingConstants.TOP);
-			athleteRadioButton.setBounds(0, 0, 120, 125);
+			athleteRadioButton.setBounds(0, 0, 150, 125);
 			athleteRadioButton.setOpaque(false);
 			athleteRadioButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -208,7 +217,7 @@ public class SellAthletesUI {
 		btnBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
-				environment.launchMainMenu();
+				environment.launchMarket();
 			}
 		});
 		btnBackButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
