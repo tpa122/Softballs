@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -55,6 +56,7 @@ public class MainMenuUI {
 		frmMainMenu.setBounds(100, 100, 1024, 576);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainMenu.getContentPane().setLayout(null);
+		frmMainMenu.setResizable(false);
 
 //Top bar containing currentWeek, points and money
 		JPanel pnlTopBar = new TopBar(environment);

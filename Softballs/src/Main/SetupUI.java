@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -94,6 +95,7 @@ public class SetupUI {
 		frmSetup.setBounds(100, 100, 1024, 576);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
+		frmSetup.setResizable(false);
 		
 		JLabel lblSoftballsTitle = new JLabel("");
 		lblSoftballsTitle.setBounds(-3, 0, 1014, 191);
@@ -162,7 +164,8 @@ public class SetupUI {
 		sliderWeek.setMaximum(15);
 		sliderWeek.setBounds(404, 375, 200, 26);
 		frmSetup.getContentPane().add(sliderWeek);
-		
+
+//Gets all the information selected and passes through to setupManager to assign to Game Environment
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -1,3 +1,4 @@
+package Main;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;

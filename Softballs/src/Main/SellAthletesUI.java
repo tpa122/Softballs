@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -87,6 +88,7 @@ public class SellAthletesUI {
 		frmSellAthletes.setBounds(100, 100, 1024, 576);
 		frmSellAthletes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSellAthletes.getContentPane().setLayout(null);
+		frmSellAthletes.setResizable(false);
 		
 		JLabel lblNoAthletesPopup = new JLabel("");
 		if(environment.getClub().getAthletes().size() == 0)	{

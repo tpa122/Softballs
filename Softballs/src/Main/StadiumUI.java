@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,29 +15,29 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.Color;
 
+/**
+ * This class allows the player to choose which opponent they would like to play
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class StadiumUI {
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
 	
+	/**
+	 * Game Environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Selected opponent to play
+	 */
 	private Club selectedOpponent;
 	
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					StadiumUI window = new StadiumUI();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
@@ -48,14 +49,25 @@ public class StadiumUI {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Close window
+	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
 	
+	/**
+	 * Gets Selected opponent to play
+	 * @return: Selected opponent to play
+	 */
 	public Club getSelectedOpponent() {
 		return selectedOpponent;
 	}
 	
+	/**
+	 * determines if player is able to play
+	 * @return: message telling player to update
+	 */
 	public String canPlay() {
 		if (environment.getPlayed().contains(getSelectedOpponent())) {
 			return "Already Played";
@@ -86,31 +98,16 @@ public class StadiumUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
+	
 		
-		
-//		JPanel pnlCanPlay = new JPanel();
-//		pnlCanPlay.setBounds(341, 171, 326, 195);
-//		frame.getContentPane().add(pnlCanPlay);
-//		pnlCanPlay.setLayout(null);
-//		pnlCanPlay.setVisible(false);
-//		
-//		JButton btnOk = new JButton("Ok");
-//		btnOk.setBounds(118, 161, 89, 23);
-//		pnlCanPlay.add(btnOk);
-//		
-//		JLabel lblUnableToPlay = new JLabel();
-//		lblUnableToPlay.setHorizontalAlignment(SwingConstants.CENTER);
-//		lblUnableToPlay.setBounds(140, 11, 46, 14);
-//		pnlCanPlay.add(lblUnableToPlay);
-		
-		
-		
+//Top Bar
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
 		
 		
 		
-		
+//ErrorMesage box		
 		JLabel lblErrorMessage = new JLabel();
 		lblErrorMessage.setVerticalAlignment(SwingConstants.TOP);
 		lblErrorMessage.setHorizontalAlignment(SwingConstants.LEFT);
@@ -119,17 +116,19 @@ public class StadiumUI {
 		lblErrorMessage.setBounds(458, 471, 370, 34);
 		frame.getContentPane().add(lblErrorMessage);
 		
+
 		
-		
+//Create a panel for opponent cards		
 		ButtonGroup btnGroupOpponentCard = new ButtonGroup();
 
+		//Oponnent1
 		JPanel pnlOpponent1Card = new JPanel();
 		pnlOpponent1Card.setBounds(75, 137, 230, 285);
 		frame.getContentPane().add(pnlOpponent1Card);
 		pnlOpponent1Card.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		OpponentUI Opponent1Card = new OpponentUI(environment, environment.getOpponents().get(0));
-		
+		//Add radio button on top of opponent cards
 		JRadioButton rdbtnOpponent1Card = new JRadioButton("");
 		rdbtnOpponent1Card.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -146,6 +145,7 @@ public class StadiumUI {
 		pnlOpponent1Card.add(Opponent1Card);
 		
 		
+		//Oponnent2
 		JPanel pnlOpponent2Card = new JPanel();
 		pnlOpponent2Card.setBounds(389, 137, 230, 285);
 		frame.getContentPane().add(pnlOpponent2Card);
@@ -170,6 +170,7 @@ public class StadiumUI {
 		pnlOpponent2Card.add(Opponent2Card);
 		
 		
+		//Oponnent3
 		JPanel pnlOpponent3Card = new JPanel();
 		pnlOpponent3Card.setBounds(703, 137, 230, 285);
 		frame.getContentPane().add(pnlOpponent3Card);
@@ -194,7 +195,7 @@ public class StadiumUI {
 		pnlOpponent3Card.add(Opponent3Card);
 		
 
-		
+//Button back to main menu
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -207,11 +208,13 @@ public class StadiumUI {
 		frame.getContentPane().add(btnBack);
 		
 		
+//Continue button sends through selected opponent to Match
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (environment.getOpponents().contains(getSelectedOpponent())) {
 					String outMessage = canPlay();
+					//If player can't play output reason why
 					if (outMessage != "true") {
 						lblErrorMessage.setText(outMessage);						
 					} 

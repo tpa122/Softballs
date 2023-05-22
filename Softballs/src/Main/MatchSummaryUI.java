@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -41,6 +42,7 @@ public class MatchSummaryUI {
 		matchManager = incomingMatch;
 		initialize();
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	
 	/**

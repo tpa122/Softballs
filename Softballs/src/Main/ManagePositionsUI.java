@@ -1,3 +1,4 @@
+package Main;
 import java.util.ArrayList;
 
 
@@ -82,6 +83,7 @@ public class ManagePositionsUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 
 		
 

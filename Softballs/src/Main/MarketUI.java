@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -74,6 +75,7 @@ public class MarketUI {
 		initialize();
 //		Show Market Window
 		frmMarket.setVisible(true);
+		frmMarket.setResizable(false);
 	}
 	
 	/**
@@ -291,8 +293,6 @@ public class MarketUI {
 			panel_1.add(itemUIPurchase);
 		}
 		
-//		System.out.println("Athlete:" + athleteToBuy);
-//		System.out.println("Item: " + itemToBuy);
 		
 		JLabel lblNewLabel = new JLabel("Add player to:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

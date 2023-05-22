@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -46,6 +47,7 @@ public class MatchInjuryUI {
 		lose = incomingLose;
 		initialize();
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	
 	public void closeWindow() {
@@ -60,6 +62,7 @@ public class MatchInjuryUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 
 //Import top bar panel
 		JPanel pnlTopBar = new TopBar(environment);

@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -53,6 +54,7 @@ public class RandomEventUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		if (environment.getClub().getAthletes().contains(newAthlete)) {
 			JLabel lblNewPlayer = new JLabel("<html>A new Athlete has joined your team!</html>");

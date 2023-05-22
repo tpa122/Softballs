@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -63,6 +64,7 @@ public class SellItemsUI {
 //		Initialize the application window and display
 		initialize();
 		frmSellItems.setVisible(true);
+		frmSellItems.setResizable(false);
 	}
 	
 	/**

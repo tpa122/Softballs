@@ -1,3 +1,4 @@
+package Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -48,6 +49,7 @@ public class MatchUI {
 		iterativeNum = incomingNum;
 		initialize();
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	
 	/**

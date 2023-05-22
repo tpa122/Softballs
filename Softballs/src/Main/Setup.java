@@ -1,5 +1,5 @@
+package Main;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * @author Tobias Paull, Daniel Bensley
@@ -95,7 +95,6 @@ public class Setup {
 		else {
 			environment.getClub().setName(clubName);			
 		}
-//		System.out.println("Team name:" + clubName);
 	}
 	
 	/**
