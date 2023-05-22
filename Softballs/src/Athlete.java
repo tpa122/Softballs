@@ -2,29 +2,74 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+/**
+ * The Athlete class holds the information of a given Athlete
+ * Athletes have different stats that will affect how different areas of the game behave
+ * 
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class Athlete {
 //Names	
+	/**
+	 * List of possible first names when generating new athlete
+	 */
 	private static String[] firstNames = {"James","Robert", "John", "David", "Sam", "Ben", "Oliver", "Thomas", "Daniel", "Tobias", "Joe", "Guy", "Matt", "Graham", "Steve"};
+	/**
+	 * List of possible last names when generating new athlete
+	 */
 	private static String[] lastNames = {"Smith", "Anderson", "Jones", "Taylor", "Williams", "Paull", "Bensley", "Allen", "Steel", "Rogers", "Whall", "Brown"};
 
-//Info and Stats
+//Info and Stats	
+	/**
+	 * Name of the Athlete
+	 */
 	private String name;
+	/**
+	 * The currentStamina of the Athlete
+	 */
 	private int currentStanima;
+	/**
+	 * The maximum stamina of the Athlete
+	 */
 	private int stanima = 0;
+	/**
+	 * The batting stat of the Athlete
+	 */
 	private int batting = 0;
+	/**
+	 * The fielding stat of the Athlete
+	 */
 	private int fielding = 0;
+	/**
+	 * The pitching stat of the Athlete
+	 */
 	private int pitching = 0;
-	
+
+	/**
+	 * Information on whether the Athlete is injured or not 
+	 */
 	private boolean isInjured;
+	/**
+	 * The probability that the Athlete will quit when a bye is taken
+	 */
 	private double chanceToQuit = 0;
+	/**
+	 * The probability that the Athletes stats will increase when a bye is taken
+	 */
 	private double chanceToIncrease = 0.02;
 	
 
 	
 	
 //Constructor
-	
-	public Athlete(int currentWeek) {		
+	/**
+	 * Generates Athlete with random stats and Name
+	 * @param currentWeek	The current week in the season, determines strength of Athlete
+	 */
+	public Athlete(int currentWeek) {
+		//Randomly picks first and last name
 		Random rand  = new Random();
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
 		
