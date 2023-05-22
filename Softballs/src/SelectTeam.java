@@ -18,14 +18,43 @@ import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
+/**
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0,  May 2023.
+ *
+ */
 public class SelectTeam {
 
+	/**
+	 * The application window frame
+	 */
 	private JFrame frame;
+	
+	/**
+	 * The game environment to interact with
+	 */
 	private GameEnvironment environment;
+	
+	/**
+	 * The setup class to interact with
+	 */
 	private Setup setupManager;
+	
+	/**
+	 * An array of the player's chosen athletes
+	 */
 	private ArrayList<Athlete> chosenAthletes = new ArrayList<Athlete>();
+	
+	/**
+	 * A copy of the starting athletes from the setup class
+	 */
 	private ArrayList<Athlete> startingAthletes;
+	
+	/**
+	 * A counter for the number of athletes' selected
+	 */
 	private int playerSelectedCount = 0;
+	
 	private Club playerClub;
 	
 	/**
