@@ -71,10 +71,14 @@ public class SellAthletesUI {
 		frmSellAthletes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSellAthletes.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 83));
-		lblNewLabel_1.setBounds(117, 38, 563, 302);
-		frmSellAthletes.getContentPane().add(lblNewLabel_1);
+		JLabel lblNoAthletesPopup = new JLabel("");
+		if(environment.getClub().getAthletes().size() == 0)	{
+			lblNoAthletesPopup.setText("No Athletes To Sell");
+		}
+		lblNoAthletesPopup.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNoAthletesPopup.setFont(new Font("Tahoma", Font.PLAIN, 52));
+		lblNoAthletesPopup.setBounds(109, 55, 598, 357);
+		frmSellAthletes.getContentPane().add(lblNoAthletesPopup);
 		
 
 		
@@ -145,9 +149,11 @@ public class SellAthletesUI {
 		JButton btnNewButton = new JButton("Sell Athlete");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sellAthlete();
-				environment.launchSellUI(marketManager);
-				closeWindow();
+				if(athleteToSell != null) {
+					sellAthlete();
+					environment.launchSellUI(marketManager);
+					closeWindow();
+				}
 			}
 		});
 		btnNewButton.setBounds(795, 456, 203, 34);
@@ -198,16 +204,16 @@ public class SellAthletesUI {
 		frmSellAthletes.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(2, 6, 0, 0));
 		
-		JButton btnNewButton_1 = new JButton("Back");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnBackButton = new JButton("Back");
+		btnBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
 				environment.launchMainMenu();
 			}
 		});
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton_1.setBounds(22, 456, 109, 30);
-		frmSellAthletes.getContentPane().add(btnNewButton_1);
+		btnBackButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnBackButton.setBounds(22, 456, 109, 30);
+		frmSellAthletes.getContentPane().add(btnBackButton);
 		
 	}
 }
