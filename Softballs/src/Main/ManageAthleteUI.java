@@ -57,6 +57,12 @@ public class ManageAthleteUI {
 	 */
 	private JTextField txtAthleteName;
 	
+	
+	/**
+	 * Button to use item
+	 */
+	private JButton btnItemCard;
+	
 
 
 
@@ -84,6 +90,23 @@ public class ManageAthleteUI {
 	 */
 	public Athlete getSelectedAthlete() {
 		return selectedAthlete;
+	}
+	
+	/**
+	 * for J unit testing
+	 * @param incomingAthlete for J Unit testing
+	 */
+	public void setSelected(Athlete incomingAthlete) {
+		selectedAthlete = incomingAthlete;
+	}
+	
+	
+	/**
+	 * Button the uses items
+	 * @return Button that uses items
+	 */
+	public JButton getBtnItemCard() {
+		return btnItemCard;
 	}
 	
 	/**
@@ -279,7 +302,7 @@ public class ManageAthleteUI {
 
 			//If the player holds at least one of those items then overlay a button overtop of the card
 			if (itemAmount > 0) {
-				JButton btnItemCard = new JButton("");
+				btnItemCard = new JButton("");
 				btnItemCard.setBounds(0, 0, 120, 125);
 				btnItemCard.setOpaque(false);
 				pnlItemCard.add(btnItemCard);
@@ -357,6 +380,7 @@ public class ManageAthleteUI {
 							if (rdbtnAthleteCard.isSelected() == true) {
 								String newAthleteName = txtAthleteName.getText();
 								if (newAthleteName.length() >= 3 && newAthleteName.length() <= 12) {
+									
 									currentAthlete.setName(txtAthleteName.getText());
 									pnlAthleteCard.getLblAthleteName().setText(txtAthleteName.getText());
 								}

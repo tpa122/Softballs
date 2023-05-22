@@ -251,7 +251,6 @@ public class MarketUI {
 		purchasableItemsIndex = environment.getPurchasableItems();
 		for(int i = 0; i <= 3; i++)	{
 			Item itemForPurchase = new Item(i);
-			System.out.println("Item to buy: " + itemForPurchase);
 			ItemUI itemUIPurchase = new ItemUI(itemForPurchase);
 			
 			
@@ -271,7 +270,6 @@ public class MarketUI {
 				rdbtnItem.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						itemToBuy = itemForPurchase;
-						System.out.println(itemToBuy);
 						athleteToBuy = null;
 			}
 		});

@@ -39,35 +39,35 @@ public class Manage {
 	 * sets the playing line up to new line up
 	 * @param playersList: new Playing line up
 	 */
-	public void setPlayers(ArrayList<Athlete> playersList) {
-		playerClub.setPlaying(playersList);
-	}
+//	public void setPlayers(ArrayList<Athlete> playersList) {
+//		playerClub.setPlaying(playersList);
+//	}
 	
 	
 	/**
 	 * removes player from playing
 	 * @param newReserve: playing being added to reserve
 	 */
-	public void setPlayerReserve(Athlete newReserve) {
-		//If they are in playing them remove
-		if (playerClub.getPlaying().contains(newReserve)) {
-			playerClub.getPlaying().remove(newReserve);
-		}
-	
-	}
+//	public void setPlayerReserve(Athlete newReserve) {
+//		//If they are in playing them remove
+//		if (playerClub.getPlaying().contains(newReserve)) {
+//			playerClub.getPlaying().remove(newReserve);
+//		}
+//	
+//	}
 	
 	/**
 	 * Updates reserve line up
 	 * @param newReserves: New Reserve line up
 	 */
-	public void setReserves(ArrayList<Athlete> newReserves) {
-		//Add all players to reserve
-		for (Athlete currentReserve : newReserves) {
-			setPlayerReserve(currentReserve);
-		}
-		
-		playerClub.setReserves(newReserves);
-	}
+//	public void setReserves(ArrayList<Athlete> newReserves) {
+//		//Add all players to reserve
+//		for (Athlete currentReserve : newReserves) {
+//			setPlayerReserve(currentReserve);
+//		}
+//		
+//		playerClub.setReserves(newReserves);
+//	}
 	
 	
 	/**

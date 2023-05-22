@@ -47,7 +47,12 @@ public class ManagePositionsUI {
 	 * Jframe window
 	 */
 	private JFrame frame;
-
+	
+	
+	/**
+	 * Updates pitchers
+	 */
+	private JButton btnUpdatePitchers;
 	
 
 
@@ -61,6 +66,15 @@ public class ManagePositionsUI {
 		
 		initialize();
 		frame.setVisible(true);
+	}
+	
+	
+	/**
+	 * Button to update pitchers
+	 * @return Button to update pitchers
+	 */
+	public JButton getBtnUpdatePitchers() {
+		return  btnUpdatePitchers;
 	}
 	
 	/**
@@ -245,7 +259,7 @@ public class ManagePositionsUI {
 
 		
 //Button to update players postion
-		JButton btnUpdatePitchers = new JButton("Update Pitchers");
+		btnUpdatePitchers = new JButton("Update Pitchers");
 		btnUpdatePitchers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Ensure team size is correct

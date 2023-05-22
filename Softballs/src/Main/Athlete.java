@@ -145,7 +145,35 @@ public class Athlete {
 		
 		refreshStanima();
 	}
-
+	
+	
+	/**
+	 * Used for making fixed Athletes in JUnit tests
+	 * 
+	 * @param firstName: index of the Athletes first name
+	 * @param lastName: index of the Athletes last name
+	 * @param stam: Athletes stamina stat
+	 * @param bat: Athletes batting stat
+	 * @param field: Athletes fielding stat
+	 * @param pitch: Athletes stamina stat
+	 */
+	public Athlete(int firstName, int lastName, int stam, int bat, int field, int pitch) {
+		//Randomly picks first and last name
+		name = firstNames[firstName] + " " + lastNames[lastName];
+		
+		//Randomly create a base stat and then add more depending on the current week
+		stanima = stam;
+		batting = bat;
+		fielding = field;
+		pitching = pitch;
+		
+		//Set the current stamina to the max
+		refreshStanima();
+	}
+	
+	
+	
+	
 	/**
 	 *Displays the name and stats of athlete when printed
 	 */

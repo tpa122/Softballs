@@ -40,6 +40,21 @@ public class ManagePlayingUI {
 	 * Jframe window
 	 */
 	private JFrame frame;
+	
+	/**
+	 * Update button
+	 */
+	private JButton btnUpdate;
+	
+	/**
+	 * Select from playing
+	 */
+	private JCheckBox chkPlayingCard;
+	
+	/**
+	 * Select from reserves
+	 */
+	private JCheckBox chkReserveCard;
 
 
 
@@ -59,6 +74,30 @@ public class ManagePlayingUI {
 	 */
 	public void closeWindow() {
 		frame.dispose();
+	}
+	
+	
+	/**
+	 * Gets update button
+	 * @return update button
+	 */
+	public JButton getBtnUpdate() {
+		return btnUpdate;
+	}
+	
+	/**
+	 * Gets playing checkbox
+	 * @return playing checkbox
+	 */
+	public JCheckBox getChkPlayingCard() {
+		return chkPlayingCard;
+	}
+	
+	/**gets reserve checkbox
+	 * @return reserve checkbox
+	 */
+	public JCheckBox getChkReserveCard() {
+		return chkReserveCard;
 	}
 
 	/**
@@ -138,7 +177,7 @@ public class ManagePlayingUI {
 			AthleteSmallUI pnlPlayingCard = new AthleteSmallUI(currentAthlete);
 			
 //Overlay checkbox on top of card
-			JCheckBox chkPlayingCard = new JCheckBox("");
+			chkPlayingCard = new JCheckBox("");
 			chkPlayingCard.setHorizontalAlignment(SwingConstants.RIGHT);
 			chkPlayingCard.setVerticalAlignment(SwingConstants.TOP);
 			chkPlayingCard.setBounds(0, 0, 120, 125);
@@ -184,7 +223,7 @@ public class ManagePlayingUI {
 			AthleteSmallUI pnlReserveCard = new AthleteSmallUI(currentAthlete);
 			
 //Overlay checkbox on top of card
-			JCheckBox chkReserveCard = new JCheckBox("");
+			chkReserveCard = new JCheckBox("");
 			chkReserveCard.setHorizontalAlignment(SwingConstants.RIGHT);
 			chkReserveCard.setVerticalAlignment(SwingConstants.TOP);
 			chkReserveCard.setBounds(0, 0, 120, 125);
@@ -217,7 +256,7 @@ public class ManagePlayingUI {
 
 		
 //Button to update players
-		JButton btnUpdate = new JButton("Update Playing");
+		btnUpdate = new JButton("Update Playing");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Insure team size is right
