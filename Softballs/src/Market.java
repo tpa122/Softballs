@@ -99,6 +99,7 @@ public class Market {
 		int currentFunds = environment.getMoney();
 		int amountRemaining = environment.getPurchasableItems().get(itemIndex);
 
+		//Check player has enough money to buy item
 		if (currentFunds >= itemToBuy.getPrice()) {
 			if (amountRemaining > 0) {
 				environment.addMoney(-itemToBuy.getPrice());			
@@ -123,7 +124,7 @@ public class Market {
 	
 	
 	public void commandLine() {
-		System.out.println("0: Main menu");
+		System.out.println("0: Main");
 		System.out.println(environment.getPurchasableAthletes());
 		String input = myObj.nextLine();
 		if (input.equals("0")) {
