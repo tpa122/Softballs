@@ -95,7 +95,8 @@ public class Market {
 	 * @param itemToBuy			The item the player wants to purchase
 	 */
 	public void purchaseItem(int itemIndex)	{
-		Item itemToBuy = new Item(0);
+		System.out.println("Index of item: " + itemIndex);
+		Item itemToBuy = new Item(itemIndex);
 		int currentFunds = environment.getMoney();
 		int amountRemaining = environment.getPurchasableItems().get(itemIndex);
 

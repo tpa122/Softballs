@@ -12,7 +12,7 @@ public class GameEnvironment {
 
 //Dynamic Figures
 	private int points = 0;
-	private int money = 0;
+	private int money = 10000;
 	private int currentWeek = 1;
 
 //Stadium
@@ -235,6 +235,11 @@ public class GameEnvironment {
 		EndScreenUI gameEnd = new EndScreenUI(this, moneyEnd);
 	}
 	
+	public void launchSellUI(Market gameMarket)	{
+		SellAthletesUI sellAthletes = new SellAthletesUI(this, gameMarket);
+	}
+
+	
 	
 	
 	
@@ -247,7 +252,7 @@ public class GameEnvironment {
 
 	public void launchTeamSelect(SetupUI setupMenu, Setup setupGame)	{
 		setupMenu.closeWindow();
-		SelectTeam teamSelectWindow = new SelectTeam(setupGame);
+		SelectTeam teamSelectWindow = new SelectTeam(setupGame, this);
 	}
 	
 	
@@ -257,7 +262,7 @@ public class GameEnvironment {
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();
 		mainGame.setEndWeek(10);
-//		Setup setUpGame = new Setup(mainGame);
+		Setup setUpGame = new Setup(mainGame);
 		Club playerClub = new Club();
 		playerClub.setIsPlayer(true);
 		playerClub.opponentClub(2);
