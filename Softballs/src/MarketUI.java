@@ -22,7 +22,13 @@ public class MarketUI {
 
 	private JFrame frmMarket;
 	
+	/**
+	 * 
+	 */
 	private GameEnvironment environment;
+	/**
+	 * 
+	 */
 	private Market marketManager;
 	private Item itemToBuy;
 	private Athlete athleteToBuy;
@@ -102,23 +108,22 @@ public class MarketUI {
 		lblNotEnoughMoney.setBounds(807, 260, 135, 33);
 		frmMarket.getContentPane().add(lblNotEnoughMoney);
 		
-		JLabel lblPlayerMoney = new JLabel("");
-		lblPlayerMoney.setBounds(822, 11, 135, 14);
-		frmMarket.getContentPane().add(lblPlayerMoney);
-		lblPlayerMoney.setText("Money: " + String.valueOf(environment.getMoney()));
-		
 		JLabel lblTeamFull = new JLabel("");
 		lblTeamFull.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTeamFull.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblTeamFull.setBounds(807, 312, 135, 33);
 		frmMarket.getContentPane().add(lblTeamFull);
 
+		JPanel pnlTopBar = new TopBar(environment);
+		frmMarket.getContentPane().add(pnlTopBar);
 		
 		JLabel lblMarket = new JLabel("Market");
 		lblMarket.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMarket.setFont(new Font("Tahoma", Font.PLAIN, 36));
-		lblMarket.setBounds(0, 0, 1008, 44);
+		lblMarket.setBounds(749, 96, 249, 44);
 		frmMarket.getContentPane().add(lblMarket);
+		
+		
 		
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
@@ -150,7 +155,7 @@ public class MarketUI {
 
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(25, 47, 700, 204);
+		panel.setBounds(25, 47, 700, 214);
 		panel.setLayout(new GridLayout(0, 4, 0, 0));
 		ButtonGroup group = new ButtonGroup();
 		
@@ -162,6 +167,14 @@ public class MarketUI {
 		for(int i=0; i<=3; i++) {
 			Athlete athleteForPurchase = purchasableAthletes.get(i);
 			AthleteUI athlete = new AthleteUI(athleteForPurchase);
+//			Display cost
+			JLabel lblCost = new JLabel("$" + String.valueOf(athleteForPurchase.getPrice()));
+			lblCost.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblCost.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblCost.setVerticalAlignment(SwingConstants.TOP);
+			lblCost.setBounds(0, 0, 145, 206);
+			athlete.add(lblCost);
+			
 //			Check if athlete already purchased
 			if(environment.getPurchasedAthletes().contains(athleteForPurchase))	{
 						;
@@ -206,6 +219,14 @@ public class MarketUI {
 			Item itemForPurchase = new Item(i);
 			System.out.println("Item to buy: " + itemForPurchase);
 			ItemUI itemUIPurchase = new ItemUI(itemForPurchase);
+			
+			
+			JLabel lblItemCost = new JLabel("$" + String.valueOf(itemForPurchase.getPrice()));
+			lblItemCost.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblItemCost.setVerticalAlignment(SwingConstants.TOP);
+			lblItemCost.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblItemCost.setBounds(0, 0, 145, 125);
+			itemUIPurchase.add(lblItemCost);
 			
 			if(purchasableItemsIndex.get(i) > 0) {
 				JRadioButton rdbtnItem = new JRadioButton("");

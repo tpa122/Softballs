@@ -74,6 +74,9 @@ public class SellItemsUI {
 		
 		ButtonGroup group = new ButtonGroup();
 		
+		JPanel pnlTopBar = new TopBar(environment);
+		frmSellItems.getContentPane().add(pnlTopBar);
+		
 		JLabel lblNoItems = new JLabel("");
 		lblNoItems.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNoItems.setHorizontalAlignment(SwingConstants.CENTER);
@@ -88,7 +91,7 @@ public class SellItemsUI {
 		JLabel lblSellItems = new JLabel("Sell Items");
 		lblSellItems.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblSellItems.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSellItems.setBounds(0, 11, 1008, 55);
+		lblSellItems.setBounds(0, 46, 1008, 55);
 		frmSellItems.getContentPane().add(lblSellItems);
 		
 		JButton btnSellItem = new JButton("Sell Item");
@@ -154,12 +157,19 @@ public class SellItemsUI {
 			Item itemForSale = new Item(i);
 			System.out.println("Item to sell: " + itemForSale);
 			ItemUI itemUISell = new ItemUI(itemForSale);
+//			Display cost
+			JLabel lblItemCost = new JLabel("$" + String.valueOf(itemForSale.getPrice()));
+			lblItemCost.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblItemCost.setVerticalAlignment(SwingConstants.TOP);
+			lblItemCost.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblItemCost.setBounds(0, 0, 130, 125);
+			itemUISell.add(lblItemCost);
 			
 			if(environment.getItems().get(i) > 0) {
 				JRadioButton rdbtnItem = new JRadioButton("");
 				rdbtnItem.setHorizontalAlignment(SwingConstants.RIGHT);
 				rdbtnItem.setVerticalAlignment(SwingConstants.TOP);
-				rdbtnItem.setBounds(0, 0, 120, 125);
+				rdbtnItem.setBounds(0, 0, 150, 125);
 				rdbtnItem.setOpaque(false);
 				rdbtnItem.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
