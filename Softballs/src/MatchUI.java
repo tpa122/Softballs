@@ -79,11 +79,11 @@ public class MatchUI {
 			if (i == 0) {
 				JLabel lblInjuries = new JLabel("Injuries:");
 				lblInjuries.setFont(new Font("Tahoma", Font.PLAIN, 25));
-				lblInjuries.setBounds(25, 250, 232, 25);
+				lblInjuries.setBounds(25, 250, 500, 25);
 				frame.getContentPane().add(lblInjuries);
 			}
 			String team = matchManager.getTeamName(matchManager.getInjuryList().get(i));
-			JLabel lblInjury = new JLabel("(" + team + ")" + matchManager.getInjuryList().get(i).getName() + ", (Sub) " + matchManager.getInjuryList().get(i+1).getName());
+			JLabel lblInjury = new JLabel("(" + team + ") " + matchManager.getInjuryList().get(i).getName() + ", (Sub) " + matchManager.getInjuryList().get(i+1).getName());
 			lblInjury.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblInjury.setBounds(25, 286 + i *21, 377, 32);
 			frame.getContentPane().add(lblInjury);
@@ -99,7 +99,8 @@ public class MatchUI {
 					MatchSummaryUI gameSummary = new MatchSummaryUI(environment, matchManager);
 				}
 				else {
-					matchManager.innings(environment.getClub(), matchManager.getOpponent(), iterativeNum + 1);
+					//
+					matchManager.innings(matchManager.getPitching(), matchManager.getBatting(), iterativeNum + 1);
 				}
 			}
 		});
@@ -145,12 +146,24 @@ public class MatchUI {
 		
 		if (iterativeNum == 3) {
 			if (environment.getClub().getRuns() > matchManager.getOpponent().getRuns()) {
-				environment.addMoney(100);
-				environment.addPoints(1000);
+				if (environment.getDifficulty() == 0) {
+					environment.addMoney(100);
+					environment.addPoints(1000);
+				}
+				else {
+					environment.addMoney(70);
+					environment.addPoints(1500);
+				}
 			}
 			else if (environment.getClub().getRuns() == matchManager.getOpponent().getRuns()) {
-				environment.addMoney(30);
-				environment.addPoints(300);
+				if (environment.getDifficulty() == 0) {
+					environment.addMoney(30);
+					environment.addPoints(300);
+				}
+				else {
+					environment.addMoney(10);
+					environment.addPoints(600);
+				}
 			}
 		}
 	}

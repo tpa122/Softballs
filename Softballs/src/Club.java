@@ -25,18 +25,12 @@ public class Club {
 	
 //Create opponent Club
 	
-	public void opponentClub(int currentWeek) {		
+	public void opponentClub(int currentWeek, int difficulty) {		
 		Random rand  = new Random();
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
 		
 		for (int i = 0; i < 10; i++) {
-			Athlete addAthlete;
-			if (isPlayer == false) {
-				addAthlete = new Athlete(currentWeek, true);
-			}
-			else {
-				addAthlete = new Athlete(currentWeek, false);
-			}
+			Athlete addAthlete = new Athlete(currentWeek, true, difficulty);
 			athletes.add(addAthlete);
 			if (i < 2) {
 				playing.add(addAthlete);

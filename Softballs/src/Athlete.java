@@ -50,14 +50,19 @@ public class Athlete {
 		refreshStanima();
 	}
 	
-	public Athlete(int currentWeek, boolean opponent) {		
+	public Athlete(int currentWeek, boolean opponent, int difficulty) {		
 		Random rand  = new Random();
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
 		
 		int baseStat = rand.nextInt(11);
 		baseStat = baseStat + 15 + currentWeek;
 		if (opponent == true) {
-			baseStat = baseStat * 8;
+			if (difficulty == 0) {
+				baseStat = baseStat * 8;
+			}
+			else {
+				baseStat = baseStat * 10;
+			}
 		}
 		else {
 			baseStat = baseStat * 10;
@@ -146,6 +151,7 @@ public class Athlete {
 	
 	public void refreshStanima() {
 		isInjured = false;
+		chanceToQuit = 0;
 		chanceToIncrease = 0.02;
 		currentStanima = stanima;
 	}
@@ -180,7 +186,7 @@ public class Athlete {
 	
 	public void setIsInjured(boolean setInjury) {
 		isInjured = setInjury;
-		addChanceToQuit(0.01);
+		addChanceToQuit(0.03);
 	}
 	
 	public void addChanceToQuit(double addedChance) {
@@ -188,7 +194,7 @@ public class Athlete {
 	}
 	
 	public void addChanceToIncrease(double addedChance) {
-		chanceToQuit += addedChance;
+		chanceToIncrease += addedChance;
 	}
 	
 	
