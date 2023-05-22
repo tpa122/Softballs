@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
+import java.awt.Color;
 
 public class StadiumUI {
 
@@ -61,7 +62,7 @@ public class StadiumUI {
 		if (environment.getPlayed().contains(getSelectedOpponent())) {
 			return "Already Played";
 		}
-		else if (environment.getClub().getAthletes().size() < 7) {
+		else if (environment.getClub().getPlaying().size() < 7) {
 			//Display GUI: Not enough players on team
 			return "Not enough players on team";
 		}
@@ -108,6 +109,17 @@ public class StadiumUI {
 		
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
+		
+		
+		
+		
+		JLabel lblErrorMessage = new JLabel();
+		lblErrorMessage.setVerticalAlignment(SwingConstants.TOP);
+		lblErrorMessage.setHorizontalAlignment(SwingConstants.LEFT);
+		lblErrorMessage.setForeground(Color.RED);
+		lblErrorMessage.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblErrorMessage.setBounds(458, 471, 370, 34);
+		frame.getContentPane().add(lblErrorMessage);
 		
 		
 		
@@ -203,8 +215,7 @@ public class StadiumUI {
 				if (environment.getOpponents().contains(getSelectedOpponent())) {
 					String outMessage = canPlay();
 					if (outMessage != "true") {
-//Pop up Menu
-						
+						lblErrorMessage.setText(outMessage);						
 					} 
 					else {
 						environment.getClub().resetRuns();
@@ -227,5 +238,6 @@ public class StadiumUI {
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnContinue.setBounds(838, 465, 120, 40);
 		frame.getContentPane().add(btnContinue);
+
 	}
 }

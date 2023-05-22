@@ -125,14 +125,10 @@ public class Match {
 
 	public void innings(Club clubOne, Club clubTwo, int iterativeNum) {
 		int inningsNum = iterativeNum / 2;
-		if (iterativeNum % 2 == 0) {
+		
+
 			batting = clubOne;
 			pitching = clubTwo;
-		}
-		else {
-			batting = clubTwo;
-			pitching = clubOne;
-		}
 
 		if (lostCheck == true) {
 			return;

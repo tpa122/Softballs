@@ -42,18 +42,19 @@ public class AthleteSmallUI extends JPanel{
 		batting = Integer.toString(stats.get(1));
 		fielding = Integer.toString(stats.get(2));
 		pitching = Integer.toString(stats.get(3));
-		totalStats = stats.get(0) + stats.get(1) + stats.get(2) + stats.get(3);
-		if (totalStats == 400) {
-			setBorder(new LineBorder(new Color(255, 200, 0)));
-		}
-		else if (totalStats >= 320){
-			setBorder(new LineBorder(new Color(255, 0, 255)));
-		} else if (totalStats >= 250) {
-			setBorder(new LineBorder(new Color(0, 0, 255)));
-		} else {
-			setBorder(new LineBorder(new Color(0, 255, 0)));
-			
-		}
+		setBorder(new LineBorder(new Color(0, 0, 0)));
+//		totalStats = stats.get(0) + stats.get(1) + stats.get(2) + stats.get(3);
+//		if (totalStats == 400) {
+//			setBorder(new LineBorder(new Color(255, 200, 0)));
+//		}
+//		else if (totalStats >= 320){
+//			setBorder(new LineBorder(new Color(255, 0, 255)));
+//		} else if (totalStats >= 250) {
+//			setBorder(new LineBorder(new Color(0, 0, 255)));
+//		} else {
+//			setBorder(new LineBorder(new Color(0, 255, 0)));
+//			
+//		}
 		
 		
 		initialize();

@@ -220,9 +220,15 @@ public class GameEnvironment {
 		//ManageUI manageWindo = new ManageUI(this, gameManage);
 	}
 	
-	public void launchManageReserves() {
+	
+	public void launchManagePlaying() {
 		Manage gameManage = new Manage(this);
-		ManageReservesUI manageReservesWindow = new ManageReservesUI(this, gameManage);
+		ManagePlayingUI managePlayingWindow = new ManagePlayingUI(this, gameManage);
+	}
+	
+	public void launchManagePositions() {
+		Manage gameManage = new Manage(this);
+		ManagePositionsUI managePositionWindow = new ManagePositionsUI(this, gameManage);
 	}
 	
 	public void launchMarket() {

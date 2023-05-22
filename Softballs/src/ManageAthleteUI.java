@@ -59,6 +59,12 @@ public class ManageAthleteUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		String errorClubMessage = "New Club name must be between 3 and 15 characters";
+		String errorAthleteMessage = "New Athlete name must be between 3 and 12 characters";
+
+		
+		
+		
 //Create new window
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1024, 576);
@@ -80,11 +86,11 @@ public class ManageAthleteUI {
 		lblAthletes.setBounds(0, 28, 400, 40);
 		frame.getContentPane().add(lblAthletes);
 		
-		JButton btnReserves = new JButton("Reserves");
+		JButton btnReserves = new JButton("Line Up");
 		btnReserves.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
-				environment.launchManageReserves();
+				environment.launchManagePlaying();
 			}
 		});
 		btnReserves.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -92,9 +98,26 @@ public class ManageAthleteUI {
 		frame.getContentPane().add(btnReserves);
 		
 		JButton btnPositions = new JButton("Positions");
+		btnPositions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchManagePositions();
+			}
+		});
 		btnPositions.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnPositions.setBounds(704, 28, 304, 40);
 		frame.getContentPane().add(btnPositions);
+		
+	
+		
+//Empty J label to display error if occurs	
+		JLabel lblErrorMessage = new JLabel();
+		lblErrorMessage.setVerticalAlignment(SwingConstants.TOP);
+		lblErrorMessage.setForeground(Color.RED);
+		lblErrorMessage.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblErrorMessage.setHorizontalAlignment(SwingConstants.LEFT);
+		lblErrorMessage.setBounds(530, 391, 230, 120);
+		frame.getContentPane().add(lblErrorMessage);
 		
 		
 		
@@ -107,7 +130,13 @@ public class ManageAthleteUI {
 		JButton btnChangeClubName = new JButton("Change");
 		btnChangeClubName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.getClub().setName(txtClubName.getText());
+				String newName = txtClubName.getText();
+				if (newName.length() >= 3 && newName.length() <= 15) {
+					environment.getClub().setName(txtClubName.getText());
+				}
+				else {
+					lblErrorMessage.setText("<html>"+ errorClubMessage +"</html>");
+				}
 			}
 		});
 		btnChangeClubName.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -285,8 +314,15 @@ public class ManageAthleteUI {
 					btnChangeName.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							if (rdbtnAthleteCard.isSelected() == true) {
-								currentAthlete.setName(txtAthleteName.getText());
-								pnlAthleteCard.getLblAthleteName().setText(txtAthleteName.getText());
+								String newAthleteName = txtAthleteName.getText();
+								if (newAthleteName.length() >= 3 && newAthleteName.length() <= 12) {
+									currentAthlete.setName(txtAthleteName.getText());
+									pnlAthleteCard.getLblAthleteName().setText(txtAthleteName.getText());
+								}
+								else {
+									lblErrorMessage.setText("<html>"+ errorAthleteMessage +"</html>");
+								}
+
 							}
 
 						}
@@ -319,6 +355,8 @@ public class ManageAthleteUI {
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBack.setBounds(819, 483, 100, 28);
 		frame.getContentPane().add(btnBack);
+		
+
 	}
 
 }

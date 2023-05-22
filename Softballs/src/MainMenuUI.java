@@ -79,7 +79,7 @@ public class MainMenuUI {
 		
 		
 		btnStadium.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnStadium.setBounds(430, 270, 147, 33);
+		btnStadium.setBounds(424, 270, 160, 33);
 		frmMainMenu.getContentPane().add(btnStadium);
 		
 		JButton btnBye = new JButton("Bye");
@@ -101,7 +101,7 @@ public class MainMenuUI {
 			}
 		});
 		btnMarket.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnMarket.setBounds(430, 348, 147, 33);
+		btnMarket.setBounds(424, 348, 160, 33);
 		frmMainMenu.getContentPane().add(btnMarket);
 		
 		JButton btnManageClub = new JButton("Manage Club");
@@ -112,7 +112,7 @@ public class MainMenuUI {
 			}
 		});
 		btnManageClub.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnManageClub.setBounds(430, 392, 147, 33);
+		btnManageClub.setBounds(424, 392, 160, 33);
 		frmMainMenu.getContentPane().add(btnManageClub);
 		
 		JLabel lblSoftballsLogo = new JLabel("");
