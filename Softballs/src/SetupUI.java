@@ -22,43 +22,65 @@ import javax.swing.event.ChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
+/**
+ * This setup UI allows the player to set the initial conditions for their
+ * game, such as their team name, difficulty and season length
+ * 
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 public class SetupUI {
 
+	/**
+	 * The application window frame
+	 */
 	private JFrame frmSetup;
+	
+	/**
+	 * The text field for the team name
+	 */
 	private JTextField textFieldTeamName;
+	
+	/**
+	 * The manager class to interact with
+	 */
 	private Setup setupManager;
+	
+	/**
+	 * The difficulty of the game
+	 */
 	private int Difficulty = 0;
+	
+	/**
+	 * The game environment to interact with
+	 */
 	private GameEnvironment environment;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					SetupUI window = new SetupUI(this);
-//					window.frmSetup.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
-	 * Create the application.
+	 * Create the application window
+	 * 
+	 * @param incomingSetup			the setup class to interact with
 	 */
 	public SetupUI(Setup incomingSetup) {
+//		Set initial values for the variables
 		setupManager = incomingSetup;
 		environment = setupManager.environment;
+//		Initialize and display on the screen
 		initialize();
 		frmSetup.setVisible(true);
 	}
 
+	/**
+	 * Closes itself
+	 */
 	public void closeWindow()	{
 		frmSetup.dispose();
 	}
+	/**
+	 * Launches the application window to select your initial team
+	 */
 	public void launchTeamSelect()	{
 		environment.launchTeamSelect(this, setupManager);
 	}
@@ -149,9 +171,6 @@ public class SetupUI {
 					setupManager.chooseWeek(sliderWeek.getValue());
 					setupManager.chooseDifficulty(String.valueOf(Difficulty));
 					launchTeamSelect();
-				}	else	{
-					System.out.println("Must be between 3 and 15 characters");
-					
 				}
 			}
 		});

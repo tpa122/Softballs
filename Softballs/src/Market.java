@@ -13,33 +13,27 @@ import java.util.Scanner;
  */
 public class Market {
 // Game environment
-	private GameEnvironment environment;
-	private Club playerClub;
-	public Scanner myObj = new Scanner(System.in);
-
+	
 	/**
-	 * The game environment to interact with
+	 * 	The game environment to interact with
 	 */
-
+	private GameEnvironment environment;
 	/**
 	 * The player club to send the athletes to
 	 */
-	/**
-	 * The purchasable athletes available on the market
-	 */
+	private Club playerClub;
+
 
 	/**
-	 * The purchasable items available on the market
+	 * Constructor for the Market class
+	 * 
+	 * @param incomingEnvironment		the game environment to interact with
 	 */
-
-	
-	
-//	On creation of market, generate items and athletes
 	public Market(GameEnvironment incomingEnvironment)	{
 //		Set initial values for the market
 		environment = incomingEnvironment;
 		playerClub = environment.getClub();
-		//commandLine();
+
 	}
 	
 	/**
@@ -82,60 +76,46 @@ public class Market {
 					}
 				}		
 			}	
-			else {
-				System.out.println("Missing funds required to purchase");
-			}
 		}	
-		else {
-			System.out.println("Team already full, sell a member to make room.");
-		}
 	}
 	
 	/**
+	 * The player purchases an item from the market
+	 * 
 	 * @param itemToBuy			The item the player wants to purchase
 	 */
 	public void purchaseItem(int itemIndex)	{
-		System.out.println("Index of item: " + itemIndex);
+//		Set the item to buy
 		Item itemToBuy = new Item(itemIndex);
+//		Get player's balance
 		int currentFunds = environment.getMoney();
+//		Get amount remaining of specific item at Index
 		int amountRemaining = environment.getPurchasableItems().get(itemIndex);
 
 		//Check player has enough money to buy item
 		if (currentFunds >= itemToBuy.getPrice()) {
+//			If they have enough money, check the item has stock
 			if (amountRemaining > 0) {
+//				Remove money, add item to player inventory and decrease the stock
 				environment.addMoney(-itemToBuy.getPrice());			
 				environment.addItems(itemIndex);	
 				environment.getPurchasableItems().set(itemIndex, amountRemaining - 1);
 			}
-			else {
-				System.out.println("Item sold out");
-			}
-		}
-		else {
-			System.out.println("Missing funds required to purchase");
 		}
 	}
 	
 	
 	
+	/**
+	 * The player sells an athlete
+	 * 
+	 * @param athleteToSell		The athlete the player wants to sell 
+	 */
 	public void sellAthlete(Athlete athleteToSell) {
+//		Remove athlete from player's club and add money
 		playerClub.removePlayer(athleteToSell);
 		environment.addMoney(athleteToSell.getPrice());
 	}
 	
-	
-	public void commandLine() {
-		System.out.println("0: Main");
-		System.out.println(environment.getPurchasableAthletes());
-		String input = myObj.nextLine();
-		if (input.equals("0")) {
-			environment.launchMainMenu();
-		}
-		else {
-			int parsedInput = Integer.parseInt(input);
-			purchaseAthlete(environment.getPurchasableAthletes().get(parsedInput - 1), 0);
-		}
-		
-		
-	}
+
 }

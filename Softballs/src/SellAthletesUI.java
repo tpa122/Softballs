@@ -15,47 +15,64 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * This application window allows the player to sell their athletes to the market
+ * 
+ * 
+ * @author Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 public class SellAthletesUI {
 
-	private JFrame frmSellAthletes;
-	private GameEnvironment environment;
-	private Market marketManager;
-	private Athlete athleteToSell;
-	private String athleteName;
-	private ArrayList<Integer> playerStats;
-
 	/**
-	 * Launch the application.
+	 * Application window frame
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					SellAthletesUI window = new SellAthletesUI();
-//					window.frmSellAthletes.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	private JFrame frmSellAthletes;
+	
+	/**
+	 * The game environment to interact with
+	 */
+	private GameEnvironment environment;
+	/**
+	 * The market to interact with
+	 */
+	private Market marketManager;
+	/**
+	 * The athlete chosen to be sold
+	 */
+	private Athlete athleteToSell;
+	/**
+	 * The name of the athlete to be sold
+	 */
+	private String athleteName;
+
 
 	/**
 	 * Create the application.
+	 * @param incomingEnvironment
+	 * @param incomingMarket
 	 */
 	public SellAthletesUI(GameEnvironment incomingEnvironment, Market incomingMarket) {
 		environment = incomingEnvironment;
 		marketManager = incomingMarket;
+//		Initialize the application window
 		initialize();
 		
 		frmSellAthletes.setVisible(true);
 	}
 	
+	/**
+	 * Sells the athlete picked to sell
+	 */
 	public void sellAthlete()	{
 		marketManager.sellAthlete(athleteToSell);
 		
 	}
 	
+	/**
+	 * Closes its own window
+	 */
 	public void closeWindow() {
 		frmSellAthletes.dispose();
 	}
@@ -166,6 +183,7 @@ public class SellAthletesUI {
 		
 		ButtonGroup group = new ButtonGroup();
 		
+//		Generate the athlete cards
 		for (Athlete currentAthlete : environment.getClub().getAthletes())	{
 			AthleteSmallUI athlete = new AthleteSmallUI(currentAthlete);
 //			Display cost

@@ -14,40 +14,60 @@ import java.util.ArrayList;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 
+/**
+ * The Sell Items UI implements an interactable UI that allows
+ * the player to sell their items
+ * 
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023;
+ *
+ */
 public class SellItemsUI {
 
+	/**
+	 * The application window frame
+	 */
 	private JFrame frmSellItems;
+	
+	/**
+	 * The game environment to interact with
+	 */
 	private GameEnvironment environment;
+	
+	/**
+	 * The market to interact with
+	 */
 	private Market marketManager;
+	
+	/**
+	 * A copy of the list of the player's items
+	 */
 	private ArrayList<Item> playerItems;
+	
+	/**
+	 * The chosen item to sell
+	 */
 	private Item itemToSell;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					SellItemsUI window = new SellItemsUI();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
-	 * Create the application.
+	 * Create the Sell Items application
+	 * 
+	 * @param incomingEnvironment			the incoming environment to interact with
+	 * @param incomingMarket				the incoming market to interact with
 	 */
 	public SellItemsUI(GameEnvironment incomingEnvironment, Market incomingMarket) {
+//		Set initial values for the environment and market manager
 		environment = incomingEnvironment;
 		marketManager = incomingMarket;
+//		Initialize the application window and display
 		initialize();
 		frmSellItems.setVisible(true);
 	}
 	
+	/**
+	 * Sells the chosen item
+	 */
 	public void sellItem()	{
 		for(int i = 0; i<=3; i++) {
 			Item tempItem = new Item(i);
@@ -58,6 +78,9 @@ public class SellItemsUI {
 		}
 		
 	}
+	/**
+	 * Closes itself
+	 */
 	public void closeWindow()	{
 		frmSellItems.dispose();
 	}

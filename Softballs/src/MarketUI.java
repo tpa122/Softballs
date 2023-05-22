@@ -18,59 +18,85 @@ import javax.swing.JRadioButton;
 
 import java.awt.GridLayout;
 
+/**
+ * This class implents an interactable UI to sell and purchase
+ * items and athletes from the market
+ * 
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 public class MarketUI {
 
+	/**
+	 * The application window frame
+	 */
 	private JFrame frmMarket;
 	
 	/**
-	 * 
+	 * The environment to interact with
 	 */
 	private GameEnvironment environment;
 	/**
-	 * 
+	 * The market to interact with
 	 */
 	private Market marketManager;
-	private Item itemToBuy;
-	private Athlete athleteToBuy;
-	private int playOrReserve = 0;
-	private ArrayList<Athlete> purchasableAthletes;
-	private ArrayList<Integer> purchasableItemsIndex;
-
 	/**
-	 * Launch the application.
+	 * The chosen item to purchase
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MarketUI window = new MarketUI();
-//					window.frmMarket.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	private Item itemToBuy;
+	/**
+	 * The chosen athlete to purchase
+	 */
+	private Athlete athleteToBuy;
+	/**
+	 * Whether a purchased athlete should be put into
+	 * player or reserves
+	 */
+	private int playOrReserve = 0;
+	/**
+	 * The array of purchasable athletes
+	 */
+	private ArrayList<Athlete> purchasableAthletes;
+	/**
+	 * The array of purchasable items indexes
+	 */
+	private ArrayList<Integer> purchasableItemsIndex;
 
 	/**
 	 * Create the application.
 	 */
 	public MarketUI(GameEnvironment incomingEnvironment, Market incomingMarket) {
+//		Set game environment and marketManager
 		environment = incomingEnvironment;
 		marketManager = incomingMarket;
+//		Create application frame
 		initialize();
-		
+//		Show Market Window
 		frmMarket.setVisible(true);
 	}
 	
+	/**
+	 * Sets the athlete chosen to be bought
+	 * 
+	 * @param incomingAthlete		Athlete chosen to be purchased
+	 */
 	public void setAthleteToBuy(Athlete incomingAthlete)	{
 		athleteToBuy = incomingAthlete;
 	}
 	
+	/**
+	 * Purchases the chosen athlete along with whether they
+	 * are in the playing team or reserve team
+	 */
 	public void purchaseAthlete()	{
 		marketManager.purchaseAthlete(athleteToBuy, playOrReserve);
 	}
+	/**
+	 * Purchase the chosen item
+	 */
 	public void purchaseItem()	{
+//		Generate temporary items to match with indexes
 		for(int i = 0; i<=3; i++) {
 			Item tempItem = new Item(i);
 			if(itemToBuy.getName() == tempItem.getName()){
@@ -80,14 +106,18 @@ public class MarketUI {
 		
 	}
 	
+	/**
+	 * Launches the sell athletes menu
+	 */
 	public void launchSellMenu()	{
 		environment.launchSellUI(marketManager);
 		closeWindow();
 	}
 	
 	
-//	public void isPlaying()
-	
+	/**
+	 * Closes its' own window application
+	 */
 	public void closeWindow() {
 		frmMarket.dispose();
 	}
@@ -96,6 +126,8 @@ public class MarketUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//		Set labels, athletes, items
+		
 		frmMarket = new JFrame();
 		frmMarket.setTitle("Market");
 		frmMarket.setBounds(100, 100, 1024, 576);
@@ -286,8 +318,6 @@ public class MarketUI {
 //				If buying player or item
 //				Check if there are athletes/items left to purchase
 				if(athleteToBuy == null && itemToBuy == null)	{
-					System.out.println("All athletes and items purchased");
-//					If item or athlete is a valid object, check which is valid
 				}	else	{
 //					If athleteToBuy is not valid, purchase item
 					if(athleteToBuy == null)	{
@@ -297,8 +327,8 @@ public class MarketUI {
 							environment.launchMarket();
 							closeWindow();
 						}	else	{
+//							If the player doesn't have enough money, display error text
 							lblNotEnoughMoney.setText("Not enough money");
-							System.out.println("Not enough Money to purchase Item");
 						}
 //						Assume itemToBuy is not valid, purchase Athlete
 					}	else	{
@@ -314,8 +344,9 @@ public class MarketUI {
 							}
 							
 						}	else	{
+//							If the player doesn't have enough money, display error text
 							lblNotEnoughMoney.setText("Not enough money");
-							System.out.println("Not enough Money");
+
 						}
 					}
 						
