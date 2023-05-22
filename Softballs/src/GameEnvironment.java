@@ -12,7 +12,8 @@ public class GameEnvironment {
 
 //Dynamic Figures
 	private int points = 0;
-	private int money = 10000;
+	private int moneyGained = 0;
+	private int money = 0;
 	private int currentWeek = 1;
 
 //Stadium
@@ -61,6 +62,10 @@ public class GameEnvironment {
 	public int getMoney() {
 		return money;
 	}	
+	
+	public int getMoneyGained() {
+		return moneyGained;
+	}
 	
 	public int getCurrentWeek() {
 		return currentWeek;
@@ -120,6 +125,9 @@ public class GameEnvironment {
 	}
 	
 	public void addMoney(int newMoney) {
+		if (newMoney > 0) {
+			moneyGained += newMoney;
+		}
 		money += newMoney;
 	}
 	
@@ -139,7 +147,7 @@ public class GameEnvironment {
 		//Create opponents
 		for (int i = 0; i <= 3; i ++) {
 			Club newClub = new Club();
-			newClub.opponentClub(getCurrentWeek());
+			newClub.opponentClub(getCurrentWeek(), getDifficulty());
 			opponents.add(newClub);		
 		}
 		
@@ -267,19 +275,17 @@ public class GameEnvironment {
 	
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();
-		mainGame.setEndWeek(10);
-		Setup setUpGame = new Setup(mainGame);
-		Club playerClub = new Club();
-		playerClub.setIsPlayer(true);
-		playerClub.opponentClub(2);
-		mainGame.setClub(playerClub);
-		mainGame.refresh();
-		mainGame.addItems(0);
-		mainGame.addItems(0);
-		mainGame.addItems(3);
-
-		mainGame.launchMainMenu();
-//		mainGame.launchSetup(setUpGame);
-				
+		Setup setupGame = new Setup(mainGame);
+		mainGame.launchSetup(setupGame);
+		
+		
+		
+//		mainGame.setEndWeek(10);
+//		mainGame.setDifficulty(1);
+//		Club playerClub = new Club();
+//		playerClub.opponentClub(2, 1);
+//		mainGame.setClub(playerClub);
+//		mainGame.refresh();
+//		mainGame.launchMainMenu();
 	}
 }

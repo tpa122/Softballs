@@ -117,7 +117,7 @@ public class MainMenuUI {
 		
 		JLabel lblSoftballsLogo = new JLabel("");
 		lblSoftballsLogo.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/Softballs_logo.png")));
-		lblSoftballsLogo.setBounds(114, 25, 780, 185);
+		lblSoftballsLogo.setBounds(114, 36, 780, 185);
 		frmMainMenu.getContentPane().add(lblSoftballsLogo);
 		
 		JLabel lblBackgroundimg = new JLabel("");

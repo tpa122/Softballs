@@ -44,7 +44,7 @@ public class OpponentUI extends JPanel {
 		add(lblPoints);
 		
 		if (environment.getDifficulty() == 0) {
-			JLabel lblMoneyNum = new JLabel("120");
+			JLabel lblMoneyNum = new JLabel("100");
 			lblMoneyNum.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblMoneyNum.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblMoneyNum.setBounds(130, 157, 80, 20);
@@ -57,11 +57,17 @@ public class OpponentUI extends JPanel {
 			add(lblPointsNum);
 		}
 		else {
-			JLabel lblMoneyNum = new JLabel("1500");
+			JLabel lblMoneyNum = new JLabel("70");
 			lblMoneyNum.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblMoneyNum.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblMoneyNum.setBounds(130, 157, 80, 20);
 			add(lblMoneyNum);
+			
+			JLabel lblPointsNum = new JLabel("1500");
+			lblPointsNum.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblPointsNum.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblPointsNum.setBounds(130, 209, 80, 20);
+			add(lblPointsNum);
 		}
 			
 		

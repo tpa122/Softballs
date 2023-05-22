@@ -45,13 +45,13 @@ public class EndScreenUI {
 		JLabel lblGameOver = new JLabel("GAME OVER");
 		lblGameOver.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGameOver.setFont(new Font("Impact", Font.PLAIN, 83));
-		lblGameOver.setBounds(239, 106, 529, 116);
+		lblGameOver.setBounds(239, 70, 529, 116);
 		frame.getContentPane().add(lblGameOver);
 		
 		JLabel lblPoints = new JLabel("Points " + Integer.toString(environment.getPoints()));
 		lblPoints.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPoints.setBounds(314, 218, 380, 82);
+		lblPoints.setBounds(314, 177, 380, 40);
 		frame.getContentPane().add(lblPoints);
 		
 		JPanel pnlButtonHolder = new JPanel();
@@ -62,7 +62,9 @@ public class EndScreenUI {
 		JButton btnYes = new JButton("Yes");
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Launch setup
+				GameEnvironment newGame = new GameEnvironment();
+				Setup setUpGame = new Setup(newGame);
+				newGame.launchSetup(setUpGame);
 			}
 		});
 		btnYes.setBounds(143, 7, 100, 40);
@@ -84,6 +86,18 @@ public class EndScreenUI {
 		lblPlayAgain.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayAgain.setBounds(410, 352, 188, 40);
 		frame.getContentPane().add(lblPlayAgain);
+		
+		JLabel lblMoney = new JLabel("Money Gained " + Integer.toString(environment.getMoneyGained()));
+		lblMoney.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMoney.setBounds(314, 228, 380, 40);
+		frame.getContentPane().add(lblMoney);
+		
+		JLabel lblSeasonLength = new JLabel("Season length " + Integer.toString(environment.getEndWeek()));
+		lblSeasonLength.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSeasonLength.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblSeasonLength.setBounds(314, 282, 380, 40);
+		frame.getContentPane().add(lblSeasonLength);
 		
 		if (moneyEnd == true) {
 			JLabel lblMoneyEnd = new JLabel("You did not have enough money or players to continue");

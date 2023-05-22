@@ -79,7 +79,7 @@ public class MatchUI {
 			if (i == 0) {
 				JLabel lblInjuries = new JLabel("Injuries:");
 				lblInjuries.setFont(new Font("Tahoma", Font.PLAIN, 25));
-				lblInjuries.setBounds(25, 250, 350, 25);
+				lblInjuries.setBounds(25, 250, 500, 25);
 				frame.getContentPane().add(lblInjuries);
 			}
 			String team = matchManager.getTeamName(matchManager.getInjuryList().get(i));
@@ -146,12 +146,24 @@ public class MatchUI {
 		
 		if (iterativeNum == 3) {
 			if (environment.getClub().getRuns() > matchManager.getOpponent().getRuns()) {
-				environment.addMoney(100);
-				environment.addPoints(1000);
+				if (environment.getDifficulty() == 0) {
+					environment.addMoney(100);
+					environment.addPoints(1000);
+				}
+				else {
+					environment.addMoney(70);
+					environment.addPoints(1500);
+				}
 			}
 			else if (environment.getClub().getRuns() == matchManager.getOpponent().getRuns()) {
-				environment.addMoney(30);
-				environment.addPoints(300);
+				if (environment.getDifficulty() == 0) {
+					environment.addMoney(30);
+					environment.addPoints(300);
+				}
+				else {
+					environment.addMoney(10);
+					environment.addPoints(600);
+				}
 			}
 		}
 	}

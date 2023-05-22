@@ -69,37 +69,37 @@ public class SetupUI {
 	private void initialize() {
 		frmSetup = new JFrame();
 		frmSetup.setTitle("Set Up Team");
-		frmSetup.setBounds(100, 100, 1280, 720);
+		frmSetup.setBounds(100, 100, 1024, 576);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
 		
 		JLabel lblSoftballsTitle = new JLabel("");
-		lblSoftballsTitle.setBounds(0, 0, 1264, 185);
+		lblSoftballsTitle.setBounds(-3, 0, 1014, 191);
 		lblSoftballsTitle.setIcon(new ImageIcon(SetupUI.class.getResource("/img/Softballs_logo.png")));
 		lblSoftballsTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSoftballsTitle.setFont(new Font("Tahoma", Font.PLAIN, 47));
 		frmSetup.getContentPane().add(lblSoftballsTitle);
 		
 		JLabel lblTeamName = new JLabel("Enter Team Name:");
-		lblTeamName.setBounds(10, 281, 1264, 21);
+		lblTeamName.setBounds(-128, 228, 1264, 21);
 		frmSetup.getContentPane().add(lblTeamName);
 		lblTeamName.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblTeamName.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		textFieldTeamName = new JTextField();
 		textFieldTeamName.setToolTipText("3 to 15 letters");
-		textFieldTeamName.setBounds(502, 313, 275, 20);
+		textFieldTeamName.setBounds(366, 260, 275, 20);
 		frmSetup.getContentPane().add(textFieldTeamName);
 		textFieldTeamName.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Season Length:");
-		lblNewLabel_2.setBounds(544, 387, 182, 26);
+		lblNewLabel_2.setBounds(413, 338, 182, 26);
 		frmSetup.getContentPane().add(lblNewLabel_2);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JLabel lblNewLabel_3 = new JLabel("Difficulty:");
-		lblNewLabel_3.setBounds(593, 461, 85, 21);
+		lblNewLabel_3.setBounds(461, 412, 85, 21);
 		frmSetup.getContentPane().add(lblNewLabel_3);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
@@ -109,22 +109,22 @@ public class SetupUI {
 				Difficulty = 0;
 			}
 		});
-		btnNormalDifficulty.setBounds(544, 506, 89, 23);
+		btnNormalDifficulty.setBounds(400, 444, 89, 23);
 		frmSetup.getContentPane().add(btnNormalDifficulty);
 		btnNormalDifficulty.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JButton btnHardDifficulty = new JButton("Hard");
-		btnHardDifficulty.setBounds(649, 506, 89, 23);
+		btnHardDifficulty.setBounds(501, 444, 89, 23);
 		frmSetup.getContentPane().add(btnHardDifficulty);
 		btnHardDifficulty.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JLabel lblWeek = new JLabel("Weeks");
-		lblWeek.setBounds(768, 424, 75, 26);
+		lblWeek.setBounds(637, 375, 75, 26);
 		frmSetup.getContentPane().add(lblWeek);
 		lblWeek.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JLabel lblWeekCount = new JLabel("10");
-		lblWeekCount.setBounds(731, 424, 45, 26);
+		lblWeekCount.setBounds(600, 375, 45, 26);
 		frmSetup.getContentPane().add(lblWeekCount);
 		lblWeekCount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWeekCount.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -138,7 +138,7 @@ public class SetupUI {
 		});
 		sliderWeek.setValue(10);
 		sliderWeek.setMaximum(15);
-		sliderWeek.setBounds(538, 424, 200, 26);
+		sliderWeek.setBounds(404, 375, 200, 26);
 		frmSetup.getContentPane().add(sliderWeek);
 		
 		JButton btnNewButton = new JButton("Next");
@@ -156,12 +156,12 @@ public class SetupUI {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnNewButton.setBounds(593, 607, 89, 23);
+		btnNewButton.setBounds(459, 491, 89, 23);
 		frmSetup.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Team name must be between 3 and 15 characters");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(512, 335, 246, 20);
+		lblNewLabel.setBounds(381, 291, 246, 20);
 		frmSetup.getContentPane().add(lblNewLabel);
 		
 		btnHardDifficulty.addActionListener(new ActionListener() {
