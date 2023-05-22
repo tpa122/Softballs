@@ -12,29 +12,32 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 
+/**
+ * Display innings of match and batting teams score, whos out and whos injured
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class MatchUI {
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
 	
+	/**
+	 * Game Environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 *  Match class for methods
+	 */
 	private Match matchManager;
+	/**
+	 * How far through match the player is
+	 */
 	private int iterativeNum;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MatchUI window = new MatchUI();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
@@ -47,6 +50,9 @@ public class MatchUI {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * close window
+	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
@@ -59,7 +65,8 @@ public class MatchUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
+//Display the outlist and pitcher
 		JLabel out1Label = new JLabel("(Out) " + matchManager.getOutList().get(1).getName() + ", (Pitcher) " + matchManager.getOutList().get(0).getName());
 		out1Label.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		out1Label.setBounds(25, 100, 377, 32);
@@ -74,7 +81,8 @@ public class MatchUI {
 		out3Label.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		out3Label.setBounds(25, 184, 346, 32);
 		frame.getContentPane().add(out3Label);
-		
+
+//If any injured then display who was injured and they got subbed by
 		for (int i = 0; i < matchManager.getInjuryList().size(); i += 2) {
 			if (i == 0) {
 				JLabel lblInjuries = new JLabel("Injuries:");
@@ -89,11 +97,12 @@ public class MatchUI {
 			frame.getContentPane().add(lblInjury);
 		}
 		
-		
+//Continue in Match
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
+				//If that was the last innings then launch the summary screen
 				if (iterativeNum == 3) {
 					closeWindow();
 					MatchSummaryUI gameSummary = new MatchSummaryUI(environment, matchManager);
@@ -126,7 +135,7 @@ public class MatchUI {
 		batttingRunsLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 
-		
+//Display the innings
 		int innings = iterativeNum / 2;
 		if (innings == 0) {
 			JLabel inningsLabel = new JLabel("1st Innings");
@@ -142,8 +151,8 @@ public class MatchUI {
 		}
 
 		
-		
-		
+//If was the final innings then check outcome of match and reward player accordingly 
+//Check difficulty
 		if (iterativeNum == 3) {
 			if (environment.getClub().getRuns() > matchManager.getOpponent().getRuns()) {
 				if (environment.getDifficulty() == 0) {

@@ -9,21 +9,61 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
+/**
+ * Creates a JPanel or the athletes to be displayed in a small card
+ * Used when not enough room for big card
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class AthleteSmallUI extends JPanel{
 	
+	/**
+	 * name of Athlete
+	 */
 	private String name;
+	/**
+	 * Current stamina of Athlete
+	 */
 	private String currentStamina;
+	/**
+	 * max stamina of Athlete
+	 */
 	private String stamina;	
+	/**
+	 * Batting stat of Athlete
+	 */
 	private String batting;
+	/**
+	 * Fielding stat of Athlete
+	 */
 	private String fielding;
+	/**
+	 * Pitching stat of Athlete
+	 */
 	private String pitching;
-	private int totalStats;
 	
-	private JPanel athletePanel;
+
+//Stored in a way such that methods in UIs can get them without having to refresh the page
+	/**
+	 * Label for athlete name
+	 */
 	private JLabel lblAthleteName;
+	/**
+	 * Label for stamina stat
+	 */
 	private JLabel lblAthleteStaminaNum;
+	/**
+	 * Label for batting stat
+	 */
 	private JLabel lblAthleteBattingNum;
+	/**
+	 * Label for fielding stat
+	 */
 	private JLabel lblAthleteFieldingNum;
+	/**
+	 * label for pitching stat
+	 */
 	private JLabel lblAthletePitchingNum;
 	
 
@@ -31,7 +71,7 @@ public class AthleteSmallUI extends JPanel{
 
 
 	/**
-	 * Create the application.
+	 * Gets info then creates label
 	 */
 	public AthleteSmallUI(Athlete incomingAthlete) {
 		name = incomingAthlete.getName();
@@ -43,31 +83,21 @@ public class AthleteSmallUI extends JPanel{
 		fielding = Integer.toString(stats.get(2));
 		pitching = Integer.toString(stats.get(3));
 		setBorder(new LineBorder(new Color(0, 0, 0)));
-//		totalStats = stats.get(0) + stats.get(1) + stats.get(2) + stats.get(3);
-//		if (totalStats == 400) {
-//			setBorder(new LineBorder(new Color(255, 200, 0)));
-//		}
-//		else if (totalStats >= 320){
-//			setBorder(new LineBorder(new Color(255, 0, 255)));
-//		} else if (totalStats >= 250) {
-//			setBorder(new LineBorder(new Color(0, 0, 255)));
-//		} else {
-//			setBorder(new LineBorder(new Color(0, 255, 0)));
-//			
-//		}
 		
 		
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the card
 	 */
 	private void initialize() {
+		//Size of card
 		setBounds(100, 100, 120, 125);
 		setLayout(null);
+
 		
-		
+//Displays info of athlete
 		lblAthleteName = new JLabel(name);
 		lblAthleteName.setBounds(10, 15, 100, 14);
 		lblAthleteName.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -89,7 +119,9 @@ public class AthleteSmallUI extends JPanel{
 		JLabel lblAthletePitching = new JLabel("Pitching");
 		lblAthletePitching.setBounds(10, 103, 46, 14);
 		add(lblAthletePitching);
+
 		
+//Numerical stats of athlete
 		lblAthleteStaminaNum = new JLabel(currentStamina + "/" + stamina);
 		lblAthleteStaminaNum.setBounds(64, 37, 46, 14);
 		lblAthleteStaminaNum.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -113,22 +145,42 @@ public class AthleteSmallUI extends JPanel{
 
 	}
 	
+	/**
+	 * gets name of athlete
+	 * @return name of athlete
+	 */
 	public JLabel getLblAthleteName() {
 		return lblAthleteName;
 	}
 	
+	/**
+	 * gets athlete stamina stat
+	 * @return athlete stamina stat
+	 */
 	public JLabel getLblAthleteStaminaNum() {
 		return lblAthleteStaminaNum;
 	}
 	
+	/**
+	 * gets athlete stamina stat
+//	 * @return athlete batting stat
+	 */
 	public JLabel getLblAthleteBattingNum() {
 		return lblAthleteBattingNum;
 	}
 	
+	/**
+	 * gets athlete fielding stat
+	 * @return athlete fielding stat
+	 */
 	public JLabel getLblAthleteFieldingNum() {
 		return lblAthleteFieldingNum;
 	}
 	
+	/**
+	 * gets athlete fielding stat
+//	 * @return athlete pitching stat
+	 */
 	public JLabel getLblAthletePitchingNum() {
 		return lblAthletePitchingNum;
 	}

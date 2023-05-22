@@ -10,12 +10,30 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
+/**
+ * Display when a team has lost due to to many injured players
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class MatchInjuryUI {
 
+	/**
+	 * Jframe Window
+	 */
 	private JFrame frame;
 	
+	/**
+	 * Game Environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Match class
+	 */
 	private Match matchManager;
+	/**
+	 * Whether the player lost or the opponent
+	 */
 	private boolean lose;
 
 
@@ -42,11 +60,14 @@ public class MatchInjuryUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
+//Import top bar panel
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
+	
 		
 		
+//	Create message depending on who lost
 		String injuredClub;
 		String outcomeMessage;
 		if (lose == true) {
@@ -57,6 +78,8 @@ public class MatchInjuryUI {
 			injuredClub = matchManager.getOpponent().getName();
 			outcomeMessage = "You Win";
 		}
+		
+		
 		JLabel outcomeLabel = new JLabel(injuredClub + " does not have enough un-injured players to continue and therefore forfeits");
 		outcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		outcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -68,7 +91,8 @@ public class MatchInjuryUI {
 		outcomeMessageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		outcomeMessageLabel.setBounds(372, 96, 264, 73);
 		frame.getContentPane().add(outcomeMessageLabel);
-		
+
+//Button back to main menu
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

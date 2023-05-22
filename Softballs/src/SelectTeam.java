@@ -117,8 +117,9 @@ public class SelectTeam {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblSelectPlayerCount = new JLabel("Select " + String.valueOf(playerSelectedCount) + " more players.");
+		lblSelectPlayerCount.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSelectPlayerCount.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblSelectPlayerCount.setBounds(625, 9, 165, 33);
+		lblSelectPlayerCount.setBounds(372, 9, 398, 33);
 		frame.getContentPane().add(lblSelectPlayerCount);
 		
 

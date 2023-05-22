@@ -5,9 +5,21 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * Display opponents in card like form
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class OpponentUI extends JPanel {
 	
+	/**
+	 * Game Environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Name of club
+	 */
 	private String name;
 
 	/**
@@ -21,12 +33,16 @@ public class OpponentUI extends JPanel {
 
 	}
 	
+	/**
+	 * Initialize the contents of the panel
+	 */
 	public void initialize() {
 		setBounds(100, 100, 230, 280);
 		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(null);
-		
+
+//Display general info
 		JLabel lblOpponentName = new JLabel(name);
 		lblOpponentName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpponentName.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -42,7 +58,9 @@ public class OpponentUI extends JPanel {
 		lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPoints.setBounds(20, 209, 80, 20);
 		add(lblPoints);
+
 		
+//Depending on difficulty display different rewards
 		if (environment.getDifficulty() == 0) {
 			JLabel lblMoneyNum = new JLabel("100");
 			lblMoneyNum.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -68,9 +86,6 @@ public class OpponentUI extends JPanel {
 			lblPointsNum.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblPointsNum.setBounds(130, 209, 80, 20);
 			add(lblPointsNum);
-		}
-			
-		
+		}				
 	}
-
 }

@@ -20,13 +20,31 @@ import javax.swing.border.LineBorder;
 import javax.swing.JCheckBox;
 import java.awt.Color;
 
+/**
+ * Allows the user to change the positions of players in the club
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class ManagePositionsUI {
 
+	/**
+	 * Game environment 
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Manage class 
+	 */
 	private Manage manageManager;
+	/**
+	 * List of athletes to go to selected position 
+	 */
 	private ArrayList<Athlete> newPosition = new ArrayList<Athlete>();
 
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
 
 	
@@ -44,6 +62,9 @@ public class ManagePositionsUI {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Close window 
+	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
@@ -52,7 +73,7 @@ public class ManagePositionsUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
+//Error messages
 		String errorBatterSize = "Maximum number of Batters is 5";
 		String errorPitcherSize = "Maximum number of Pitchers is 2";
 		
@@ -131,7 +152,7 @@ public class ManagePositionsUI {
 			chkPlayingCard.setBounds(0, 0, 120, 125);
 			chkPlayingCard.setOpaque(false);
 
-//
+//if player is selected then add to newPosition list
 			chkPlayingCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (newPosition.contains(currentAthlete)) {
@@ -207,27 +228,7 @@ public class ManagePositionsUI {
 			pitcherCounter += 1;
 			AthleteSmallUI pnlPitcherCard = new AthleteSmallUI(currentAthlete);
 			pnlPitcherCard.setBorder(new LineBorder(new Color(0, 255, 0)));
-			
-//Overlay checkbox on top of card
-//			JCheckBox chkPicherCard = new JCheckBox("");
-//			chkPicherCard.setHorizontalAlignment(SwingConstants.RIGHT);
-//			chkPicherCard.setVerticalAlignment(SwingConstants.TOP);
-//			chkPicherCard.setBounds(0, 0, 120, 125);
-//			chkPicherCard.setOpaque(false);
-//
-//
-//			chkPicherCard.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					if (newPlaying.contains(currentAthlete)) {
-//						newPlaying.remove(currentAthlete);
-//					}
-//					else {
-//						newPlaying.add(currentAthlete);
-//					}
-//				}
-//			});
-//			
-//			pnlPicherCard.add(chkPicherCard);
+
 			pnlPichers.add(pnlPitcherCard);
 		}
 				
@@ -241,10 +242,11 @@ public class ManagePositionsUI {
 			
 
 		
-//Button to update players
+//Button to update players postion
 		JButton btnUpdatePitchers = new JButton("Update Pitchers");
 		btnUpdatePitchers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Ensure team size is correct
 				if (newPosition.size() < 3) {
 					environment.getClub().setPitchers(newPosition);
 					closeWindow();
@@ -310,9 +312,5 @@ public class ManagePositionsUI {
 		lblPitchers.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblPitchers.setBounds(691, 296, 121, 34);
 		frame.getContentPane().add(lblPitchers);
-
-		
-
-
 	}
 }

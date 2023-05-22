@@ -14,12 +14,31 @@ import java.awt.GridLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ * Displays the bye Screen
+ * allows player to select athlete for special training
+ * @author Tobias Paull
+ *
+ */
 public class ByeUI {
 
+	/**
+	 * Store window
+	 */
 	private JFrame frame;
 	
+	/**
+	 * Game environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Import Bye class to perform methods
+	 */
 	private Bye byeManager;
+	/**
+	 * athlete selected for training
+	 */
 	private Athlete trainingAthlete;
 
 
@@ -44,13 +63,17 @@ public class ByeUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//Window
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
 		
+//Top bar displaying week, points and money
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
+
 		
 		JLabel infoLabel = new JLabel("Select a Athlete for special traning");
 		infoLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -58,17 +81,15 @@ public class ByeUI {
 		infoLabel.setBounds(354, 72, 300, 60);
 		frame.getContentPane().add(infoLabel);
 		
-		JPanel pnlAthletes = new JPanel();
-		pnlAthletes.setBounds(144, 143, 720, 250);
-		frame.getContentPane().add(pnlAthletes);
-		pnlAthletes.setLayout(new GridLayout(2, 0, 0, 0));
 		
+		
+//Panel to store buttons
 		JPanel pnlButtons = new JPanel();
 		pnlButtons.setBounds(304, 414, 400, 53);
 		frame.getContentPane().add(pnlButtons);
 		pnlButtons.setLayout(null);
 
-		
+		//Button to proceed to with bye		
 		JButton btnBye = new JButton("Take a Bye");
 		btnBye.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBye.setBounds(235, 6, 135, 40);
@@ -78,11 +99,11 @@ public class ByeUI {
 				if (environment.getClub().getAthletes().contains(trainingAthlete)) {
 					closeWindow();
 					byeManager.takeBye(trainingAthlete);
-					//environment.launchMainMenu();
 				}
 			}
 		});
-		
+			
+		//Button back to Main Menu
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,32 +114,48 @@ public class ByeUI {
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBack.setBounds(65, 12, 100, 28);
 		pnlButtons.add(btnBack);
+		
+	
+		
+//Panel to Store Athletes in	
+		JPanel pnlAthletes = new JPanel();
+		pnlAthletes.setBounds(144, 143, 720, 250);
+		frame.getContentPane().add(pnlAthletes);
+		pnlAthletes.setLayout(new GridLayout(2, 0, 0, 0));
+
+
+
+		//Button group so only one athlete can be selected
+		ButtonGroup btnGroupAthleteCard = new ButtonGroup();
 
 		
-		ButtonGroup btnGroupAthleteCard = new ButtonGroup();
-		
+		//Create an athlete card for each athlete in the players club
 		int counter = 1;
 		for (Athlete currentAthlete : environment.getClub().getAthletes()) {
 			counter += 1;
 			AthleteSmallUI pnlAthleteCard = new AthleteSmallUI(currentAthlete);
-			
+		
+			//Radio button on top of card
 			JRadioButton rdbtnAthleteCard = new JRadioButton("");
 			rdbtnAthleteCard.setHorizontalAlignment(SwingConstants.RIGHT);
 			rdbtnAthleteCard.setVerticalAlignment(SwingConstants.TOP);
 			rdbtnAthleteCard.setBounds(0, 0, 120, 125);
 			rdbtnAthleteCard.setOpaque(false);
 			
+			//Store information of athlete when selected
 			rdbtnAthleteCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					trainingAthlete = currentAthlete;			
 				}
 			});
 			
+			//Add to panel group for athletes
 			btnGroupAthleteCard.add(rdbtnAthleteCard);
 			pnlAthleteCard.add(rdbtnAthleteCard);
 			pnlAthletes.add(pnlAthleteCard);
 		}
 		
+		//Fill empty spaces in gril with panels so looks nice
 		for (int i = counter; i < 13; i ++) {
 			JPanel pnlFillGrid = new JPanel();
 			pnlFillGrid.setLayout(null);

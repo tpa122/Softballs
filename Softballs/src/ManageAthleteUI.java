@@ -18,15 +18,42 @@ import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
+/**
+ * Allow player to use items, change players names and change club name
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class ManageAthleteUI {
 	
+	/**
+	 * Game environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Manage class for methods
+	 */
 	private Manage manageManager;
+	/**
+	 * Selected athlete
+	 */
 	private Athlete selectedAthlete;
+	/**
+	 * Athlete cards
+	 */
 	private AthleteSmallUI selectedAthleteCard;
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
+	/**
+	 * Club name
+	 */
 	private JTextField txtClubName;
+	/**
+	 * Athlete name
+	 */
 	private JTextField txtAthleteName;
 	
 
@@ -43,14 +70,25 @@ public class ManageAthleteUI {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * close window
+	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
 	
+	/**
+	 * Gets currently selected athlete
+	 * @return currently selected athlete
+	 */
 	public Athlete getSelectedAthlete() {
 		return selectedAthlete;
 	}
 	
+	/**
+	 * Gets card of currently selected athlete
+	 * @return card of currently selected athlete
+	 */
 	public AthleteSmallUI getSelectedAthleteCard() {
 		return selectedAthleteCard;
 	}
@@ -59,6 +97,7 @@ public class ManageAthleteUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+// Error messages
 		String errorClubMessage = "New Club name must be between 3 and 15 characters";
 		String errorAthleteMessage = "New Athlete name must be between 3 and 12 characters";
 

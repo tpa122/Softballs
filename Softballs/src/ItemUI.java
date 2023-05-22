@@ -9,18 +9,39 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 
+/**
+ * Displays an item and its information in card like fashion
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class ItemUI extends JPanel{
 	
+	/**
+	 * name of item
+	 */
 	private String name;
+	/**
+	 * Stamina stat of item
+	 */
 	private String stamina;	
+	/**
+	 * Batting stat of item
+	 */
 	private String batting;
+	/**
+	 * Fielding stat of item
+	 */
 	private String fielding;
+	/**
+	 * Pitching stat of item
+	 */
 	private String pitching;
 
 
 
 	/**
-	 * Create the application.
+	 * Create the card and assign info
 	 */
 	public ItemUI(Item incomingItem) {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -36,18 +57,20 @@ public class ItemUI extends JPanel{
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the panel
 	 */
 	private void initialize() {
 		setBounds(100, 100, 120, 125);
 		setLayout(null);
-		
+
+//Name label
 		JLabel lblItemName = new JLabel(name);
 		lblItemName.setBounds(10, 15, 100, 14);
 		lblItemName.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblItemName.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblItemName);
-		
+
+//General labels
 		JLabel lblItemStamina = new JLabel("Stamina");
 		lblItemStamina.setBounds(10, 37, 58, 14);
 		add(lblItemStamina);
@@ -63,7 +86,8 @@ public class ItemUI extends JPanel{
 		JLabel lblItemPitching = new JLabel("Pitching");
 		lblItemPitching.setBounds(10, 103, 46, 14);
 		add(lblItemPitching);
-		
+
+//Stat num labels
 		JLabel lblItemStaminaNum = new JLabel("+ " + stamina);
 		lblItemStaminaNum.setBounds(64, 37, 46, 14);
 		lblItemStaminaNum.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -83,10 +107,5 @@ public class ItemUI extends JPanel{
 		lblItemPitchingNum.setBounds(64, 103, 46, 14);
 		lblItemPitchingNum.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblItemPitchingNum);
-		
-		
-
 	}
-
-
 }

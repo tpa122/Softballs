@@ -19,7 +19,6 @@ public class StadiumUI {
 	private JFrame frame;
 	
 	private GameEnvironment environment;
-	private Stadium stadiumManager;
 	private Club selectedOpponent;
 	
 
@@ -42,9 +41,8 @@ public class StadiumUI {
 	/**
 	 * Create the application.
 	 */
-	public StadiumUI(GameEnvironment incomingEnvironment, Stadium incomingStadium) {
+	public StadiumUI(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
-		stadiumManager = incomingStadium;
 		
 		initialize();
 		frame.setVisible(true);

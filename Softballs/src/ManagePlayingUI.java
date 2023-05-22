@@ -13,20 +13,34 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
+/**
+ * Allows the player to change who is in reserved and who is playing
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class ManagePlayingUI {
 	
 
+	/**
+	 * Game environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Manage class
+	 */
 	private Manage manageManager;
+	/**
+	 * List of new playing line up
+	 */
 	private ArrayList<Athlete> newPlaying = new ArrayList<Athlete>();
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
 
 
-
-	/**
-	 * Create the application.
-	 */
 
 	/**
 	 * Create the application.
@@ -39,6 +53,9 @@ public class ManagePlayingUI {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Close window
+	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
@@ -171,7 +188,7 @@ public class ManagePlayingUI {
 			chkReserveCard.setBounds(0, 0, 120, 125);
 			chkReserveCard.setOpaque(false);
 
-//
+//when checked add to newPlaying list
 			chkReserveCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (newPlaying.contains(currentAthlete)) {
@@ -201,6 +218,7 @@ public class ManagePlayingUI {
 		JButton btnUpdate = new JButton("Update Playing");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Insure team size is right
 				int totalSize= environment.getClub().getAthletes().size();
 				int newReserveSize = totalSize - newPlaying.size();
 				if (newReserveSize > 5) {
@@ -247,84 +265,6 @@ public class ManagePlayingUI {
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBack.setBounds(835, 440, 100, 28);
 		frame.getContentPane().add(btnBack);
-		
-
-
-		
-
-		
-		
-		
-		
-		
-		
-////Panel to store athlete cards
-//		JPanel pnlAthletes = new JPanel();
-//		pnlAthletes.setBounds(40, 130, 732, 127);
-//		frame.getContentPane().add(pnlAthletes);
-//		GridLayout athleteGrid = new GridLayout(1, 0, 0, 0);
-//		athleteGrid.setHgap(1);
-//		athleteGrid.setVgap(1);
-//		pnlAthletes.setLayout(athleteGrid);
-//		
-//		JButton btnUpdate = new JButton("Update");
-//		btnUpdate.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				closeWindow();
-//				manageManager.setPlaying(newPlaying);
-//				environment.launchManagePlaying();
-//			}
-//		});
-//		btnUpdate.setFont(new Font("Tahoma", Font.PLAIN, 16));
-//		btnUpdate.setBounds(843, 146, 100, 28);
-//		frame.getContentPane().add(btnUpdate);
-//		
-//		JButton btnPlayingSelected = new JButton("Playing");
-//		btnPlayingSelected.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				closeWindow();
-//				environment.launchManageReserves();
-//			}
-//		});
-//		btnPlayingSelected.setBounds(843, 208, 89, 23);
-//		frame.getContentPane().add(btnPlayingSelected);
-//		
-//
-////Loop through all athletes and create card
-//		int counter = 1;
-//		for (Athlete currentAthlete : environment.getClub().getAthletes()) {
-//			counter += 1;
-//			AthleteSmallUI pnlAthleteCard = new AthleteSmallUI(currentAthlete);
-//			
-////Overlay radio button on top of card
-//			JCheckBox chkAthleteCard = new JCheckBox("");
-//			chkAthleteCard.setHorizontalAlignment(SwingConstants.RIGHT);
-//			chkAthleteCard.setVerticalAlignment(SwingConstants.TOP);
-//			chkAthleteCard.setBounds(0, 0, 120, 125);
-//			chkAthleteCard.setOpaque(false);
-//
-////When the radio button is clicked set the display information to current athletes information
-//			chkAthleteCard.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					if (newPlaying.contains(currentAthlete)) {
-//						newPlaying.remove(currentAthlete);
-//					}
-//					else {
-//						newPlaying.add(currentAthlete);
-//					}
-//				}
-//			});
-//			
-//			pnlAthleteCard.add(chkAthleteCard);
-//			pnlAthletes.add(pnlAthleteCard);
-//		}
-//
-////Fill the remaining spots in grid with empty panels
-//		for (int i = counter; i < 8; i ++) {
-//			JPanel pnlFillGrid = new JPanel();
-//			pnlFillGrid.setLayout(null);
-//			pnlAthletes.add(pnlFillGrid);
-//		}
 
 	}
 

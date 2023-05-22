@@ -10,11 +10,26 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
+/**
+ * Display the final outcome of the match and the score
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class MatchSummaryUI {
 	
+	/**
+	 * Game Environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * Match class for methods
+	 */
 	private Match matchManager;
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
 
 
@@ -28,6 +43,9 @@ public class MatchSummaryUI {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * close window
+	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
@@ -40,16 +58,20 @@ public class MatchSummaryUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
+//Get top bar panel
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
-		
+	
+	
 		JLabel lblMatchSum = new JLabel("MatchSummary");
 		lblMatchSum.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMatchSum.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblMatchSum.setBounds(339, 39, 329, 50);
 		frame.getContentPane().add(lblMatchSum);
+
 		
+//Panel to store score
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(140, 89, 726, 78);
 		frame.getContentPane().add(panel_1);
@@ -74,6 +96,7 @@ public class MatchSummaryUI {
 		panel_1.add(lblDash);
 		
 		
+//Display message depending on outcome
 		String outcomeMessage;
 		if (environment.getClub().getRuns() > matchManager.getOpponent().getRuns()) {
 			outcomeMessage = "You Win!";
@@ -90,7 +113,9 @@ public class MatchSummaryUI {
 		lblOutcome.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblOutcome.setBounds(362, 253, 283, 87);
 		frame.getContentPane().add(lblOutcome);
+
 		
+//Button back to main menu
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

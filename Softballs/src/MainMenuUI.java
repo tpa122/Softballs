@@ -10,27 +10,24 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Allow user to navigate to differnt area of the game
+ * 
+ * @author Tobias Paull
+ *
+ */
 public class MainMenuUI {
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frmMainMenu;
 	
+	/**
+	 * Game environment
+	 */
 	private GameEnvironment environment;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MainMenuUI window = new MainMenuUI();
-//					window.frmMainMenu.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
@@ -41,6 +38,9 @@ public class MainMenuUI {
 		frmMainMenu.setVisible(true);
 	}
 	
+	/**
+	 * close the main menu window
+	 */
 	public void closeWindow() {
 		frmMainMenu.dispose();
 		
@@ -55,10 +55,12 @@ public class MainMenuUI {
 		frmMainMenu.setBounds(100, 100, 1024, 576);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainMenu.getContentPane().setLayout(null);
-		
+
+//Top bar containing currentWeek, points and money
 		JPanel pnlTopBar = new TopBar(environment);
 		frmMainMenu.getContentPane().add(pnlTopBar);
-		
+	
+//Buttons to take you to the different parts of the game
 		JButton btnStadium = new JButton("Stadium");
 		btnStadium.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -66,18 +68,6 @@ public class MainMenuUI {
 				environment.launchStadium();
 			}
 		});
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				closeWindow();
-			}
-		});
-		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnExit.setBounds(466, 436, 76, 23);
-		frmMainMenu.getContentPane().add(btnExit);
-		
-		
 		btnStadium.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnStadium.setBounds(424, 270, 160, 33);
 		frmMainMenu.getContentPane().add(btnStadium);
@@ -115,6 +105,17 @@ public class MainMenuUI {
 		btnManageClub.setBounds(424, 392, 160, 33);
 		frmMainMenu.getContentPane().add(btnManageClub);
 		
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+			}
+		});
+		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnExit.setBounds(466, 436, 76, 23);
+		frmMainMenu.getContentPane().add(btnExit);
+
+//Background and logo
 		JLabel lblSoftballsLogo = new JLabel("");
 		lblSoftballsLogo.setIcon(new ImageIcon(MainMenuUI.class.getResource("/img/Softballs_logo.png")));
 		lblSoftballsLogo.setBounds(114, 36, 780, 185);
@@ -125,5 +126,4 @@ public class MainMenuUI {
 		lblBackgroundimg.setBounds(0, 0, 1008, 537);
 		frmMainMenu.getContentPane().add(lblBackgroundimg);
 	}
-
 }
