@@ -12,7 +12,7 @@ public class GameEnvironment {
 
 //Dynamic Figures
 	private int points = 0;
-	private int money = 10000;
+	private int money = 0;
 	private int currentWeek = 1;
 
 //Stadium

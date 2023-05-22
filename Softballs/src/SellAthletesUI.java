@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class SellAthletesUI {
 
@@ -21,6 +22,7 @@ public class SellAthletesUI {
 	private Market marketManager;
 	private Athlete athleteToSell;
 	private String athleteName;
+	private ArrayList<Integer> playerStats;
 
 	/**
 	 * Launch the application.
@@ -58,9 +60,6 @@ public class SellAthletesUI {
 		frmSellAthletes.dispose();
 	}
 	
-	public void setAthletePanelStats()	{
-		athleteName = athleteToSell.getName();
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -71,6 +70,11 @@ public class SellAthletesUI {
 		frmSellAthletes.setBounds(100, 100, 1024, 576);
 		frmSellAthletes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSellAthletes.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 83));
+		lblNewLabel_1.setBounds(117, 38, 563, 302);
+		frmSellAthletes.getContentPane().add(lblNewLabel_1);
 		
 
 		
@@ -118,25 +122,25 @@ public class SellAthletesUI {
 		lblPitching.setBounds(53, 247, 74, 21);
 		PnlAthlete.add(lblPitching);
 		
-		JLabel lblPitching_1 = new JLabel("0");
-		lblPitching_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPitching_1.setBounds(129, 247, 30, 21);
-		PnlAthlete.add(lblPitching_1);
+		JLabel lblPitchingCount = new JLabel("0");
+		lblPitchingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPitchingCount.setBounds(129, 247, 30, 21);
+		PnlAthlete.add(lblPitchingCount);
 		
-		JLabel lblFielding_1 = new JLabel("0");
-		lblFielding_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFielding_1.setBounds(129, 215, 30, 21);
-		PnlAthlete.add(lblFielding_1);
+		JLabel lblFieldingCount = new JLabel("0");
+		lblFieldingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFieldingCount.setBounds(129, 215, 30, 21);
+		PnlAthlete.add(lblFieldingCount);
 		
-		JLabel lblBatting_1 = new JLabel("0");
-		lblBatting_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblBatting_1.setBounds(129, 180, 30, 21);
-		PnlAthlete.add(lblBatting_1);
+		JLabel lblBattingCount = new JLabel("0");
+		lblBattingCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblBattingCount.setBounds(129, 180, 30, 21);
+		PnlAthlete.add(lblBattingCount);
 		
-		JLabel lblNewLabel_1 = new JLabel("0");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(129, 147, 30, 21);
-		PnlAthlete.add(lblNewLabel_1);
+		JLabel lblStaminaCount = new JLabel("0");
+		lblStaminaCount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblStaminaCount.setBounds(129, 147, 30, 21);
+		PnlAthlete.add(lblStaminaCount);
 		
 		JButton btnNewButton = new JButton("Sell Athlete");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -165,7 +169,12 @@ public class SellAthletesUI {
 			athleteRadioButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					athleteToSell = currentAthlete;
-					setAthletePanelStats();
+//					Update panel stats
+					lblPlayerName.setText(athleteToSell.getName());
+					lblStaminaCount.setText(String.valueOf(athleteToSell.getStats().get(0)));
+					lblBattingCount.setText(String.valueOf(athleteToSell.getStats().get(1)));
+					lblFieldingCount.setText(String.valueOf(athleteToSell.getStats().get(2)));
+					lblPitchingCount.setText(String.valueOf(athleteToSell.getStats().get(3)));
 				}
 			});
 			group.add(athleteRadioButton);
@@ -174,10 +183,15 @@ public class SellAthletesUI {
 
 			panel.add(athlete);
 			athleteToSell = currentAthlete;
-			
+//			Set panel information
+			lblPlayerName.setText(athleteToSell.getName());
+			lblStaminaCount.setText(String.valueOf(athleteToSell.getStats().get(0)));
+			lblBattingCount.setText(String.valueOf(athleteToSell.getStats().get(1)));
+			lblFieldingCount.setText(String.valueOf(athleteToSell.getStats().get(2)));
+			lblPitchingCount.setText(String.valueOf(athleteToSell.getStats().get(3)));
 		}
-		
-		setAthletePanelStats();
+
+
 		
 		System.out.println("Athlete to sell: " + athleteToSell);
 		

@@ -96,10 +96,21 @@ public class MarketUI {
 		frmMarket.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarket.getContentPane().setLayout(null);
 		
+		JLabel lblNotEnoughMoney = new JLabel("");
+		lblNotEnoughMoney.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNotEnoughMoney.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNotEnoughMoney.setBounds(807, 260, 135, 33);
+		frmMarket.getContentPane().add(lblNotEnoughMoney);
+		
+		JLabel lblPlayerMoney = new JLabel("");
+		lblPlayerMoney.setBounds(822, 11, 135, 14);
+		frmMarket.getContentPane().add(lblPlayerMoney);
+		lblPlayerMoney.setText("Money: " + String.valueOf(environment.getMoney()));
+		
 		JLabel lblTeamFull = new JLabel("");
 		lblTeamFull.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTeamFull.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblTeamFull.setBounds(807, 270, 135, 23);
+		lblTeamFull.setBounds(807, 312, 135, 33);
 		frmMarket.getContentPane().add(lblTeamFull);
 
 		
@@ -116,7 +127,7 @@ public class MarketUI {
 				environment.launchMainMenu();
 			}
 		});
-		backButton.setBounds(833, 356, 89, 23);
+		backButton.setBounds(828, 356, 89, 23);
 		frmMarket.getContentPane().add(backButton);
 		
 		JToggleButton tglbtnTogglePlaying = new JToggleButton("Playing");
@@ -244,7 +255,7 @@ public class MarketUI {
 			}
 		});
 		btnSellButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnSellButton.setBounds(807, 503, 125, 23);
+		btnSellButton.setBounds(807, 467, 125, 23);
 		frmMarket.getContentPane().add(btnSellButton);
 		
 		JButton btnPurchase = new JButton("Purchase");
@@ -260,10 +271,12 @@ public class MarketUI {
 //					If athleteToBuy is not valid, purchase item
 					if(athleteToBuy == null)	{
 						if(playerMoney >= itemToBuy.getPrice())	{
+							lblNotEnoughMoney.setText("");
 							purchaseItem();
 							environment.launchMarket();
 							closeWindow();
 						}	else	{
+							lblNotEnoughMoney.setText("Not enough money");
 							System.out.println("Not enough Money to purchase Item");
 						}
 //						Assume itemToBuy is not valid, purchase Athlete
@@ -271,13 +284,16 @@ public class MarketUI {
 						if(playerMoney >= athleteToBuy.getPrice())	{
 							if(environment.getClub().getAthletes().size() == 12)	{
 								lblTeamFull.setText("Team is full");
+								lblNotEnoughMoney.setText("");
 							}	else	{
+								lblNotEnoughMoney.setText("");
 								purchaseAthlete();
 								environment.launchMarket();
 								closeWindow();
 							}
 							
 						}	else	{
+							lblNotEnoughMoney.setText("Not enough money");
 							System.out.println("Not enough Money");
 						}
 					}
@@ -289,6 +305,17 @@ public class MarketUI {
 		btnPurchase.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnPurchase.setBounds(807, 167, 135, 33);
 		frmMarket.getContentPane().add(btnPurchase);
+		
+		JButton btnSellItems = new JButton("Sell items");
+		btnSellItems.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SellItemsUI itemSellUI = new SellItemsUI(environment, marketManager);
+				closeWindow();
+			}
+		});
+		btnSellItems.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnSellItems.setBounds(807, 503, 125, 23);
+		frmMarket.getContentPane().add(btnSellItems);
 
 
 		
