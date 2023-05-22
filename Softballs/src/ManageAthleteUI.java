@@ -59,16 +59,21 @@ public class ManageAthleteUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//Create new window
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
+		
+//Import Top Bar
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
 
 		
+		
+//Display 3 areas of manage	
 		JLabel lblAthletes = new JLabel("Athletes");
 		lblAthletes.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblAthletes.setHorizontalAlignment(SwingConstants.CENTER);
@@ -76,6 +81,12 @@ public class ManageAthleteUI {
 		frame.getContentPane().add(lblAthletes);
 		
 		JButton btnReserves = new JButton("Reserves");
+		btnReserves.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchManageReserves();
+			}
+		});
 		btnReserves.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnReserves.setBounds(400, 28, 304, 40);
 		frame.getContentPane().add(btnReserves);
@@ -85,6 +96,9 @@ public class ManageAthleteUI {
 		btnPositions.setBounds(704, 28, 304, 40);
 		frame.getContentPane().add(btnPositions);
 		
+		
+		
+//Club name and ability to change it through textfield
 		txtClubName = new JTextField(environment.getClub().getName());
 		txtClubName.setBounds(40, 79, 450, 40);
 		frame.getContentPane().add(txtClubName);
@@ -100,12 +114,16 @@ public class ManageAthleteUI {
 		btnChangeClubName.setBounds(518, 91, 100, 28);
 		frame.getContentPane().add(btnChangeClubName);
 		
+		
+		
+//Panel for the selected Athlete card to be displayed in
 		JPanel pnlDisplayAthlete = new JPanel();
 		pnlDisplayAthlete.setBorder(new LineBorder(new Color(0, 0, 0)));
 		pnlDisplayAthlete.setBounds(770, 130, 198, 320);
 		frame.getContentPane().add(pnlDisplayAthlete);
 		pnlDisplayAthlete.setLayout(null);
 		
+//TextField that displays name so it can be changed
 		txtAthleteName = new JTextField();
 		txtAthleteName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAthleteName.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -117,6 +135,7 @@ public class ManageAthleteUI {
 		btnChangeName.setBounds(59, 162, 80, 23);
 		pnlDisplayAthlete.add(btnChangeName);
 		
+//Display Stats
 		JLabel lblDisplayStamina = new JLabel("Stamina");
 		lblDisplayStamina.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDisplayStamina.setBounds(20, 196, 83, 20);
@@ -167,11 +186,15 @@ public class ManageAthleteUI {
 		lblDisplayPitchingNum.setBounds(98, 289, 80, 20);
 		pnlDisplayAthlete.add(lblDisplayPitchingNum);
 		
+		
+		
+//Panel for item cards to be stored in
 		JPanel pnlItems = new JPanel();
 		pnlItems.setBounds(40, 391, 480, 125);
 		frame.getContentPane().add(pnlItems);
 		pnlItems.setLayout(new GridLayout(1, 0, 0, 0));
 		
+//Create an item card for each type of item
 		for (int i = 0; i < 4; i++) {
 			int index = i;
 			Item currentItem = new Item(i);
@@ -183,13 +206,15 @@ public class ManageAthleteUI {
 			lblItemAmount.setHorizontalAlignment(SwingConstants.CENTER);
 			lblItemAmount.setBounds(4, 4, 25, 25);
 			pnlItemCard.add(lblItemAmount);
-			
+
+			//If the player holds at least one of those items then overlay a button overtop of the card
 			if (itemAmount > 0) {
 				JButton btnItemCard = new JButton("");
 				btnItemCard.setBounds(0, 0, 120, 125);
 				btnItemCard.setOpaque(false);
 				pnlItemCard.add(btnItemCard);
 				btnItemCard.addActionListener(new ActionListener() {
+					//When the button is pressed add the stats to the selected athletes and update the card and display
 					public void actionPerformed(ActionEvent e) {
 						if (environment.getClub().getAthletes().contains(getSelectedAthlete())) {
 							getSelectedAthlete().addStats(currentItem.getStats());
@@ -222,25 +247,30 @@ public class ManageAthleteUI {
 		}
 		
 		
+
+//Panel to store athlete cards
 		JPanel pnlAthletes = new JPanel();
 		pnlAthletes.setBounds(40, 130, 720, 250);
 		frame.getContentPane().add(pnlAthletes);
 		pnlAthletes.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		
+//Create a new group so only one athlete can be selected at a time
 		ButtonGroup btnGroupAthleteCard = new ButtonGroup();
-		
+
+//Loop through all athletes and create card
 		int counter = 1;
 		for (Athlete currentAthlete : environment.getClub().getAthletes()) {
 			counter += 1;
 			AthleteSmallUI pnlAthleteCard = new AthleteSmallUI(currentAthlete);
 			
+//Overlay radio button on top of card
 			JRadioButton rdbtnAthleteCard = new JRadioButton("");
 			rdbtnAthleteCard.setHorizontalAlignment(SwingConstants.RIGHT);
 			rdbtnAthleteCard.setVerticalAlignment(SwingConstants.TOP);
 			rdbtnAthleteCard.setBounds(0, 0, 120, 125);
 			rdbtnAthleteCard.setOpaque(false);
-			
+
+//When the radio button is clicked set the display information to current athletes information
 			rdbtnAthleteCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					selectedAthlete = currentAthlete;
@@ -250,7 +280,8 @@ public class ManageAthleteUI {
 					lblDisplayBattingNum.setText(Integer.toString(currentAthlete.getStat(1)));
 					lblDisplayFieldingNum.setText(Integer.toString(currentAthlete.getStat(2)));
 					lblDisplayPitchingNum.setText(Integer.toString(currentAthlete.getStat(3)));
-					
+
+//Give the change name button an event handler to change for the given athlete
 					btnChangeName.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							if (rdbtnAthleteCard.isSelected() == true) {
@@ -267,14 +298,17 @@ public class ManageAthleteUI {
 			pnlAthleteCard.add(rdbtnAthleteCard);
 			pnlAthletes.add(pnlAthleteCard);
 		}
-		
+
+//Fill the remaining spots in grid with empty panels
 		for (int i = counter; i < 13; i ++) {
 			JPanel pnlFillGrid = new JPanel();
 			pnlFillGrid.setLayout(null);
 			pnlAthletes.add(pnlFillGrid);
 		}
 		
-	
+
+		
+//Back to menu
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

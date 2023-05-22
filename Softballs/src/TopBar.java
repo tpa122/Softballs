@@ -30,12 +30,12 @@ public class TopBar extends JPanel {
 	JLabel lblPoints = new JLabel("Points: " + environment.getPoints());
 	lblPoints.setHorizontalAlignment(SwingConstants.CENTER);
 	lblPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	lblPoints.setBounds(454, 4, 100, 20);
+	lblPoints.setBounds(439, 4, 130, 20);
 	add(lblPoints);
 	
 	JLabel lblMoney = new JLabel("Money: " + environment.getMoney());
 	lblMoney.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	lblMoney.setBounds(885, 4, 100, 20);
+	lblMoney.setBounds(885, 4, 123, 20);
 	add(lblMoney);
 }
 }

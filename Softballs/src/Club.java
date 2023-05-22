@@ -30,7 +30,13 @@ public class Club {
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
 		
 		for (int i = 0; i < 10; i++) {
-			Athlete addAthlete = new Athlete(currentWeek);
+			Athlete addAthlete;
+			if (isPlayer == false) {
+				addAthlete = new Athlete(currentWeek, true);
+			}
+			else {
+				addAthlete = new Athlete(currentWeek, false);
+			}
 			athletes.add(addAthlete);
 			if (i < 2) {
 				playing.add(addAthlete);

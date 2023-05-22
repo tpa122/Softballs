@@ -12,7 +12,7 @@ public class GameEnvironment {
 
 //Dynamic Figures
 	private int points = 0;
-	private int money = 10000;
+	private int money = 0;
 	private int currentWeek = 1;
 
 //Stadium
@@ -157,6 +157,30 @@ public class GameEnvironment {
 			currentAthlete.refreshStanima();
 		}
 	}
+	
+	public boolean checkFinish() {
+		int minCost = Integer.MAX_VALUE;
+		
+		for (Athlete currentAthlete : purchasableAthletes) {
+			if (!purchasedAthletes.contains(currentAthlete)) {
+				if (currentAthlete.getPrice() <= minCost) {
+					minCost = currentAthlete.getPrice();
+				}
+			}
+		}
+		
+		if (currentWeek > endWeek) {
+			launchEndScreen(false);
+			return true;
+		}
+		else if (money < minCost && club.getAthletes().size() < 7) {
+			launchEndScreen(true);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 	
 	
@@ -174,7 +198,10 @@ public class GameEnvironment {
 	
 	
 	public void launchMainMenu() {
-		MainMenuUI menu = new MainMenuUI(this);
+		boolean end = checkFinish();
+		if (end == false) {
+			MainMenuUI menu = new MainMenuUI(this);
+		}
 	}
 	
 	public void launchStadium() {
@@ -204,6 +231,11 @@ public class GameEnvironment {
 	}
 	
 	
+	public void launchEndScreen(boolean moneyEnd) {
+		EndScreenUI gameEnd = new EndScreenUI(this, moneyEnd);
+	}
+	
+	
 	
 	
 	
@@ -224,8 +256,10 @@ public class GameEnvironment {
 	
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();
+		mainGame.setEndWeek(10);
 //		Setup setUpGame = new Setup(mainGame);
 		Club playerClub = new Club();
+		playerClub.setIsPlayer(true);
 		playerClub.opponentClub(2);
 		mainGame.setClub(playerClub);
 		mainGame.refresh();

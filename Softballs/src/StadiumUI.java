@@ -56,6 +56,28 @@ public class StadiumUI {
 	public Club getSelectedOpponent() {
 		return selectedOpponent;
 	}
+	
+	public String canPlay() {
+		if (environment.getPlayed().contains(getSelectedOpponent())) {
+			return "Already Played";
+		}
+		else if (environment.getClub().getAthletes().size() < 7) {
+			//Display GUI: Not enough players on team
+			return "Not enough players on team";
+		}
+		else if (environment.getClub().getPitchers().size() < 2) {
+			//Display GUI: Not enough pitchers
+			return "Not enough pitchers on team";
+		}
+		else if (environment.getClub().getBatters().size() < 5) {
+			//Display GUI: Not enough batters
+			return "Not enough batters on team";
+		}
+		else {
+			return "true";
+		}
+		
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -65,6 +87,24 @@ public class StadiumUI {
 		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		
+//		JPanel pnlCanPlay = new JPanel();
+//		pnlCanPlay.setBounds(341, 171, 326, 195);
+//		frame.getContentPane().add(pnlCanPlay);
+//		pnlCanPlay.setLayout(null);
+//		pnlCanPlay.setVisible(false);
+//		
+//		JButton btnOk = new JButton("Ok");
+//		btnOk.setBounds(118, 161, 89, 23);
+//		pnlCanPlay.add(btnOk);
+//		
+//		JLabel lblUnableToPlay = new JLabel();
+//		lblUnableToPlay.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblUnableToPlay.setBounds(140, 11, 46, 14);
+//		pnlCanPlay.add(lblUnableToPlay);
+		
+		
 		
 		JPanel pnlTopBar = new TopBar(environment);
 		frame.getContentPane().add(pnlTopBar);
@@ -161,14 +201,24 @@ public class StadiumUI {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (environment.getOpponents().contains(getSelectedOpponent())) {
-					Match gameMatch = new Match(environment, getSelectedOpponent());
-					var startingRoll = Math.random();
-					
-					if (startingRoll <= 0.5) {
-						gameMatch.innings(environment.getClub(), selectedOpponent, 0);
-					}
+					String outMessage = canPlay();
+					if (outMessage != "true") {
+//Pop up Menu
+						
+					} 
 					else {
-						gameMatch.innings(selectedOpponent, environment.getClub(), 0);
+						environment.getClub().resetRuns();
+						closeWindow();
+						environment.getPlayed().add(getSelectedOpponent());
+						Match gameMatch = new Match(environment, getSelectedOpponent());
+						var startingRoll = Math.random();
+						
+						if (startingRoll <= 0.5) {
+							gameMatch.innings(environment.getClub(), selectedOpponent, 0);
+						}
+						else {
+							gameMatch.innings(selectedOpponent, environment.getClub(), 0);
+						}
 					}
 				}
 				

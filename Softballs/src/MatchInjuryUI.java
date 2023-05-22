@@ -3,9 +3,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class MatchInjuryUI {
 
@@ -15,21 +18,6 @@ public class MatchInjuryUI {
 	private Match matchManager;
 	private boolean lose;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MatchInjuryUI window = new MatchInjuryUI();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
@@ -51,19 +39,12 @@ public class MatchInjuryUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 925, 688);
+		frame.setBounds(100, 100, 1024, 576);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton proceedButton = new JButton("Proceed");
-		proceedButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				closeWindow();
-				environment.launchMainMenu();
-			}
-		});
-		proceedButton.setBounds(372, 522, 159, 55);
-		frame.getContentPane().add(proceedButton);
+		JPanel pnlTopBar = new TopBar(environment);
+		frame.getContentPane().add(pnlTopBar);
 		
 		
 		String injuredClub;
@@ -77,13 +58,27 @@ public class MatchInjuryUI {
 			outcomeMessage = "You Win";
 		}
 		JLabel outcomeLabel = new JLabel(injuredClub + " does not have enough un-injured players to continue and therefore forfeits");
+		outcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		outcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		outcomeLabel.setBounds(168, 147, 576, 134);
+		outcomeLabel.setBounds(134, 180, 739, 104);
 		frame.getContentPane().add(outcomeLabel);
 		
 		JLabel outcomeMessageLabel = new JLabel(outcomeMessage);
-		outcomeMessageLabel.setBounds(412, 31, 264, 73);
+		outcomeMessageLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		outcomeMessageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		outcomeMessageLabel.setBounds(372, 96, 264, 73);
 		frame.getContentPane().add(outcomeMessageLabel);
+		
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				environment.launchMainMenu();
+			}
+		});
+		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnContinue.setBounds(444, 465, 120, 40);
+		frame.getContentPane().add(btnContinue);
 	}
 
 }

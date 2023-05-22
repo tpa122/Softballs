@@ -61,21 +61,32 @@ public class MatchUI {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel out1Label = new JLabel("(Out) " + matchManager.getOutList().get(1).getName() + ", (Pitcher) " + matchManager.getOutList().get(0).getName());
-		out1Label.setBounds(60, 132, 346, 32);
+		out1Label.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		out1Label.setBounds(25, 100, 377, 32);
 		frame.getContentPane().add(out1Label);
 		
 		JLabel out2Label = new JLabel("(Out) " + matchManager.getOutList().get(3).getName() + ", (Pitcher) " + matchManager.getOutList().get(2).getName());
-		out2Label.setBounds(60, 194, 346, 32);
+		out2Label.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		out2Label.setBounds(25, 142, 346, 32);
 		frame.getContentPane().add(out2Label);
 		
 		JLabel out3Label = new JLabel("(Out) " + matchManager.getOutList().get(5).getName() + ", (Pitcher) " + matchManager.getOutList().get(4).getName());
-		out3Label.setBounds(60, 247, 346, 32);
+		out3Label.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		out3Label.setBounds(25, 184, 346, 32);
 		frame.getContentPane().add(out3Label);
 		
 		for (int i = 0; i < matchManager.getInjuryList().size(); i += 2) {
-			JLabel injuryLabel = new JLabel("(Injury) " + matchManager.getInjuryList().get(i).getName() + ", (Sub) " + matchManager.getInjuryList().get(i+1).getName());
-			injuryLabel.setBounds(60, 313 + i*20, 300, 50);
-			frame.getContentPane().add(injuryLabel);
+			if (i == 0) {
+				JLabel lblInjuries = new JLabel("Injuries:");
+				lblInjuries.setFont(new Font("Tahoma", Font.PLAIN, 25));
+				lblInjuries.setBounds(25, 250, 232, 25);
+				frame.getContentPane().add(lblInjuries);
+			}
+			String team = matchManager.getTeamName(matchManager.getInjuryList().get(i));
+			JLabel lblInjury = new JLabel("(" + team + ")" + matchManager.getInjuryList().get(i).getName() + ", (Sub) " + matchManager.getInjuryList().get(i+1).getName());
+			lblInjury.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblInjury.setBounds(25, 286 + i *21, 377, 32);
+			frame.getContentPane().add(lblInjury);
 		}
 		
 		
@@ -84,7 +95,8 @@ public class MatchUI {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
 				if (iterativeNum == 3) {
-					environment.launchMainMenu();
+					closeWindow();
+					MatchSummaryUI gameSummary = new MatchSummaryUI(environment, matchManager);
 				}
 				else {
 					matchManager.innings(environment.getClub(), matchManager.getOpponent(), iterativeNum + 1);
@@ -112,6 +124,8 @@ public class MatchUI {
 		panel.add(batttingRunsLabel);
 		batttingRunsLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
+
+		
 		int innings = iterativeNum / 2;
 		if (innings == 0) {
 			JLabel inningsLabel = new JLabel("1st Innings");
@@ -130,23 +144,14 @@ public class MatchUI {
 		
 		
 		if (iterativeNum == 3) {
-			String outcomeMessage;
 			if (environment.getClub().getRuns() > matchManager.getOpponent().getRuns()) {
-				outcomeMessage = "You Win";
 				environment.addMoney(100);
 				environment.addPoints(1000);
 			}
 			else if (environment.getClub().getRuns() == matchManager.getOpponent().getRuns()) {
-				outcomeMessage = "Draw";
 				environment.addMoney(30);
 				environment.addPoints(300);
 			}
-			else {
-				outcomeMessage = "You Lose";
-			}
-			JLabel outcomeLabel = new JLabel(outcomeMessage);
-			outcomeLabel.setBounds(689, 327, 241, 38);
-			frame.getContentPane().add(outcomeLabel);
 		}
 	}
 }

@@ -57,6 +57,16 @@ public class Match {
 	public ArrayList<Athlete> getInjuryList(){
 		return injuryList;
 	}
+	
+	public String getTeamName(Athlete incomingAthlete) {
+		if (batting.getAthletes().contains(incomingAthlete)){
+			return batting.getName();
+		}
+		else {
+			return pitching.getName();
+		}
+		
+	}
 
 	
 //Other
@@ -101,6 +111,8 @@ public class Match {
 	public void pitchingLose() {
 		if (pitching == opponent) {
 			MatchInjuryUI matchInjuryWindow = new MatchInjuryUI(environment, this, false);
+			environment.addMoney(100);
+			environment.addPoints(1000);
 		}
 		else {
 			MatchInjuryUI matchInjuryWindow = new MatchInjuryUI(environment, this, true);
@@ -185,6 +197,8 @@ public class Match {
 				if (lostCheck == true) {
 					if (batting == opponent) {
 						MatchInjuryUI matchInjuryWindow = new MatchInjuryUI(environment, this, false);
+						environment.addMoney(100);
+						environment.addPoints(1000);
 					}
 					else {
 						MatchInjuryUI matchInjuryWindow = new MatchInjuryUI(environment, this, true);
@@ -258,7 +272,7 @@ public class Match {
 		}
 		
 		for (Athlete fielder : pitching.getPlaying()) {
-			lostCheck = playerInjured(fielder, pitching, 15);
+			lostCheck = playerInjured(fielder, pitching, 7);
 			if (lostCheck == true) {
 				pitchingLose();
 				return;

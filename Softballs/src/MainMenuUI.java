@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -54,6 +55,9 @@ public class MainMenuUI {
 		frmMainMenu.setBounds(100, 100, 1024, 576);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainMenu.getContentPane().setLayout(null);
+		
+		JPanel pnlTopBar = new TopBar(environment);
+		frmMainMenu.getContentPane().add(pnlTopBar);
 		
 		JButton btnStadium = new JButton("Stadium");
 		btnStadium.addActionListener(new ActionListener() {

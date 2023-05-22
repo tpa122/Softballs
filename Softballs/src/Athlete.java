@@ -49,6 +49,37 @@ public class Athlete {
 		
 		refreshStanima();
 	}
+	
+	public Athlete(int currentWeek, boolean opponent) {		
+		Random rand  = new Random();
+		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
+		
+		int baseStat = rand.nextInt(11);
+		baseStat = baseStat + 15 + currentWeek;
+		if (opponent == true) {
+			baseStat = baseStat * 8;
+		}
+		else {
+			baseStat = baseStat * 10;
+		}
+		for (int i = 0; i <= baseStat; i ++) {
+			int type = rand.nextInt(4);
+			if (type == 0 && stanima < 100) {
+				stanima ++;
+			}
+			if (type == 1 && batting< 100) {
+				batting ++;
+			}
+			if (type == 2 && fielding< 100) {
+				fielding ++;
+			}
+			if (type == 3 && pitching< 100) {
+				pitching ++;
+			}			
+		}
+		
+		refreshStanima();
+	}
 
 	public String toString() {
 		return this.getName() + this.getStats();
@@ -153,7 +184,7 @@ public class Athlete {
 	}
 	
 	public void addChanceToQuit(double addedChance) {
-		chanceToQuit += addedChance;
+		chanceToQuit = addedChance;
 	}
 	
 	public void addChanceToIncrease(double addedChance) {
