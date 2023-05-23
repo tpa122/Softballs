@@ -117,12 +117,12 @@ public class Setup {
 	public void chooseDifficulty(String difficultyInt) {
 //		Check if normal difficulty chosen
 		if (difficultyInt.equals("0")) {
-			environment.addMoney(1000);
+			environment.addMoney(100);
 			environment.setDifficulty(0);
 		}
 //		Check if hard difficulty chosen
 		else if (difficultyInt.equals("1")) {
-			environment.addMoney(800);
+			environment.addMoney(20);
 			environment.setDifficulty(1);
 		}
 	}

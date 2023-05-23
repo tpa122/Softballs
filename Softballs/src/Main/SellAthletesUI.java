@@ -253,7 +253,6 @@ public class SellAthletesUI {
 
 
 		
-		System.out.println("Athlete to sell: " + athleteToSell);
 		
 		frmSellAthletes.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(2, 6, 0, 0));

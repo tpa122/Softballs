@@ -33,7 +33,7 @@ public class Item {
 	/**
 	 * Price of item
 	 */
-	private int price = 10;
+	private int price = 20;
 
 	
 

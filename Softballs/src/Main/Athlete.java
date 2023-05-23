@@ -338,7 +338,7 @@ public class Athlete {
 	public void setIsInjured(boolean setInjury) {
 		isInjured = setInjury;
 		//Add chance to quit because was injured
-		addChanceToQuit(0.03);
+		addChanceToQuit(0.02);
 	}
 
 	/**

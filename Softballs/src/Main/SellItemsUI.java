@@ -126,7 +126,6 @@ public class SellItemsUI {
 					sellItem();
 					closeWindow();
 					SellItemsUI itemSellUI = new SellItemsUI(environment, marketManager);
-					System.out.println(itemToSell);
 				}	else	{
 					lblNoItems.setText("No items to sell");
 				}
@@ -180,7 +179,6 @@ public class SellItemsUI {
 		
 		for(int i = 0; i <= 3; i++)	{
 			Item itemForSale = new Item(i);
-			System.out.println("Item to sell: " + itemForSale);
 			ItemUI itemUISell = new ItemUI(itemForSale);
 //			Display cost
 			JLabel lblItemCost = new JLabel("$" + String.valueOf(itemForSale.getPrice()));
