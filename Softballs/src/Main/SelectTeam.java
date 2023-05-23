@@ -58,6 +58,7 @@ public class SelectTeam {
 	
 	private Club playerClub;
 	
+	private JButton btnSeasonStart;
 
 	/**
 	 * Create the application.
@@ -80,7 +81,16 @@ public class SelectTeam {
 	public void setPlayerCountText()	{
 		playerSelectedCount = (10 - chosenAthletes.size());
 	}
-
+	
+	public ArrayList<Athlete> getChosenAthletes()	{
+		return chosenAthletes;
+	}
+	
+//	Start season button
+	public JButton getSeasonStartButton()	{
+		return btnSeasonStart;
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -96,13 +106,15 @@ public class SelectTeam {
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 5, 0, 0));
 		
-		JButton btnNewButton = new JButton("Start Season");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnSeasonStart = new JButton("Start Season");
+		btnSeasonStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(chosenAthletes.size());
 				if(chosenAthletes.size() == (10))	{
 					environment.getClub().setAthletes(chosenAthletes);
 					for (int i = 0; i < 10; i ++) {
 						Athlete currentAthlete = chosenAthletes.get(i);
+						System.out.println("Current Athlete: " + chosenAthletes.get(i));
 						if (i < 2) {
 							playerClub.getPlaying().add(currentAthlete);
 							playerClub.getPitchers().add(currentAthlete);
@@ -123,8 +135,8 @@ public class SelectTeam {
 				}
 			}
 		});
-		btnNewButton.setBounds(853, 11, 145, 33);
-		frame.getContentPane().add(btnNewButton);
+		btnSeasonStart.setBounds(853, 11, 145, 33);
+		frame.getContentPane().add(btnSeasonStart);
 		
 		JLabel lblNewLabel = new JLabel("Select Starting Players");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
