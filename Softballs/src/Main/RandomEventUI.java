@@ -13,18 +13,41 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
+/**
+ * If a random event occurred then this screen will show the player
+ * which ones happened and to whom.
+ * 
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 public class RandomEventUI {
 
+	/**
+	 * Jframe window
+	 */
 	private JFrame frame;
+	/**
+	 * The game environment
+	 */
 	private GameEnvironment environment;
+	/**
+	 * List of athletes who are quitting
+	 */
 	private ArrayList<Athlete> quitingAthletes;
+	/**
+	 * List of athletes whos stats are increasing
+	 */
 	private ArrayList<Athlete> increasingAthletes;
+	/**
+	 * Athlete joining the club
+	 */
 	private Athlete newAthlete;
 
 
 
 	/**
-	 * Create the application.
+	 * Gets info then creates the application.
 	 */
 	public RandomEventUI(GameEnvironment incomingEnvironment, ArrayList<Athlete> incomingQuiting, ArrayList<Athlete> incomingIncreasing, Athlete incomingAthlete) {
 		environment = incomingEnvironment;
@@ -56,6 +79,7 @@ public class RandomEventUI {
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
+//If the joined athlete is on the team then the random event has occurred and thus display information
 		if (environment.getClub().getAthletes().contains(newAthlete)) {
 			JLabel lblNewPlayer = new JLabel("<html>A new Athlete has joined your team!</html>");
 			lblNewPlayer.setBounds(334, 20, 340, 24);
@@ -72,7 +96,8 @@ public class RandomEventUI {
 			pnlAthleteCardPos.add(athleteCard);
 		}
 			
-		
+
+//Display information on athletes who are increasing if random event occurred
 		if (increasingAthletes.size() > 0) {
 			JPanel pnlIncreasing = new JPanel();
 			pnlIncreasing.setBounds(429, 215, 150, 125);
@@ -96,7 +121,7 @@ public class RandomEventUI {
 		}
 
 		
-		
+//Display information on athletes who are quitting if random event occurred	
 		if (quitingAthletes.size() > 0) {
 			JLabel lblQuitting = new JLabel("Oh no! These Athletes left your club");
 			lblQuitting.setHorizontalAlignment(SwingConstants.CENTER);

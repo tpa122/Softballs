@@ -22,9 +22,10 @@ import javax.swing.JCheckBox;
 import java.awt.Color;
 
 /**
- * Allows the user to change the positions of players in the club
+ * Allows the user to change the positions of players in the club.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class ManagePositionsUI {
@@ -58,7 +59,7 @@ public class ManagePositionsUI {
 
 
 	/**
-	 * Create the application.
+	 * Gets info then creates the application.
 	 */
 	public ManagePositionsUI(GameEnvironment incomingEnvironment, Manage incomingManage) {
 		environment = incomingEnvironment;

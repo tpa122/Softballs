@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 /**
  * Allows the player to change elements of club such as
- * Team name, reserved squad, positions, athlete names and use items
- * @author Tobias Paull
+ * team name, reserved squad, positions, athlete names and use items.
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class Manage {

@@ -20,6 +20,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 /**
+ * This class allows the player to select the starting athletes for their team.
+ * 
  * @author Tobias Paull, Daniel Bensley
  * @version 1.0,  May 2023.
  *

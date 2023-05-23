@@ -20,9 +20,10 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 
 /**
- * Allow player to use items, change players names and change club name
+ * Allow player to use items, change players names and change club name.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class ManageAthleteUI {

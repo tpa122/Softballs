@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * This application window allows the player to sell their athletes to the market
+ * This application window allows the player to sell their athletes to the market.
  * 
  * 
  * @author Daniel Bensley
@@ -48,13 +48,16 @@ public class SellAthletesUI {
 	 */
 	private String athleteName;
 
+	/**
+	 * Button the sell athletes
+	 */
 	private JButton btnSellAthlete;
 	
 	
 	/**
 	 * Create the application.
-	 * @param incomingEnvironment
-	 * @param incomingMarket
+	 * @param incomingEnvironment: environment to interact with
+	 * @param incomingMarket: Market class for methods
 	 */
 	public SellAthletesUI(GameEnvironment incomingEnvironment, Market incomingMarket) {
 		environment = incomingEnvironment;

@@ -12,9 +12,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * Allow user to navigate to differnt area of the game
+ * Allow user to navigate to different area of the game.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class MainMenuUI {

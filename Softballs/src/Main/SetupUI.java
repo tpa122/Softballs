@@ -25,7 +25,7 @@ import java.beans.PropertyChangeEvent;
 
 /**
  * This setup UI allows the player to set the initial conditions for their
- * game, such as their team name, difficulty and season length
+ * game, such as their team name, difficulty and season length.
  * 
  * @author Tobias Paull, Daniel Bensley
  * @version 1.0, May 2023.
@@ -34,27 +34,27 @@ import java.beans.PropertyChangeEvent;
 public class SetupUI {
 
 	/**
-	 * The application window frame
+	 * The application window frame.
 	 */
 	private JFrame frmSetup;
 	
 	/**
-	 * The text field for the team name
+	 * The text field for the team name.
 	 */
 	private JTextField textFieldTeamName;
 	
 	/**
-	 * The manager class to interact with
+	 * The manager class to interact with.
 	 */
 	private Setup setupManager;
 	
 	/**
-	 * The difficulty of the game
+	 * The difficulty of the game.
 	 */
 	private int Difficulty = 0;
 	
 	/**
-	 * The game environment to interact with
+	 * The game environment to interact with.
 	 */
 	private GameEnvironment environment;
 

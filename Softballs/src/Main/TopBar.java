@@ -6,15 +6,16 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- * Displays the current week, points and money at the top of a window
+ * Displays the current week, points and money at the top of a window.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class TopBar extends JPanel {
 	
 	/**
-	 * Game Environment
+	 * Game Environment.
 	 */
 	private GameEnvironment environment;
 

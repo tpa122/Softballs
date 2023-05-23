@@ -66,7 +66,6 @@ public class Market {
 				else if (toPlaying == 1) {
 //					If reserves are full don't buy, else add to reserves
 					if (playerClub.getReserves().size() >= 5) {
-						System.out.println("Reserves are full");
 					}
 					else {
 						environment.getPurchasedAthletes().add(athleteToBuy);

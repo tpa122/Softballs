@@ -12,9 +12,10 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 /**
- * Display when a team has lost due to to many injured players
+ * Display when a team has lost due to to many injured players.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class MatchInjuryUI {
@@ -39,7 +40,7 @@ public class MatchInjuryUI {
 
 
 	/**
-	 * Create the application.
+	 * Gets info then creates the application.
 	 */
 	public MatchInjuryUI(GameEnvironment incomingEnvironment, Match incomingMatch, boolean incomingLose) {
 		environment = incomingEnvironment;

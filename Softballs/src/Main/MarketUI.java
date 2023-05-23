@@ -20,8 +20,8 @@ import javax.swing.JRadioButton;
 import java.awt.GridLayout;
 
 /**
- * This class implents an interactable UI to sell and purchase
- * items and athletes from the market
+ * This class implements a UI to sell and purchase
+ * items and athletes from the market.
  * 
  * @author Tobias Paull, Daniel Bensley
  * @version 1.0, May 2023.

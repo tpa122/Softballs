@@ -12,9 +12,10 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
 /**
- * Display the final outcome of the match and the score
+ * Display the final outcome of the match and the score.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class MatchSummaryUI {
@@ -35,7 +36,7 @@ public class MatchSummaryUI {
 
 
 	/**
-	 * Create the application.
+	 * Gets info then creates the application.
 	 */
 	public MatchSummaryUI(GameEnvironment incomingEnvironment, Match incomingMatch) {
 		environment = incomingEnvironment;

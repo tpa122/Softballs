@@ -14,9 +14,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 
 /**
- * Display innings of match and batting teams score, whos out and whos injured
+ * Display innings of match and batting teams score
+ * Also list of players who have been injured and scored out.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class MatchUI {

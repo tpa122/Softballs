@@ -2,10 +2,11 @@ package Main;
 import java.util.ArrayList;
 
 /**
- * The players team vs an opponent in softball
- * Determines the outcome of said match
+ * The players team vs an opponent in softball.
+ * Determines the outcome of said match.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class Match {
