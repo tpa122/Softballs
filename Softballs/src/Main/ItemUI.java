@@ -11,9 +11,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 
 /**
- * Displays an item and its information in card like fashion
+ * Displays an item and its information in card like fashion.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class ItemUI extends JPanel{

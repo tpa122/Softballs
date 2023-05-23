@@ -2,6 +2,9 @@ package Main;
 import java.util.ArrayList;
 
 /**
+ * This class holds the methods required to setup the elements in game
+ * environment so the player can start the game.
+ * 
  * @author Tobias Paull, Daniel Bensley
  * @Version 1.0, May 2023.
  *

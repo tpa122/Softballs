@@ -16,29 +16,30 @@ import java.awt.GridLayout;
 import java.awt.Color;
 
 /**
- * This class allows the player to choose which opponent they would like to play
+ * This class allows the player to choose which opponent they would like to play.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class StadiumUI {
 
 	/**
-	 * Jframe window
+	 * Jframe window.
 	 */
 	private JFrame frame;
 	
 	/**
-	 * Game Environment
+	 * Game Environment.
 	 */
 	private GameEnvironment environment;
 	/**
-	 * Selected opponent to play
+	 * Selected opponent to play.
 	 */
 	private Club selectedOpponent;
 	
 	/**
-	 * Button to continue
+	 * Button to continue.
 	 */
 	private JButton btnContinue;
 	
@@ -55,15 +56,15 @@ public class StadiumUI {
 	}
 	
 	/**
-	 * Close window
+	 * Close window.
 	 */
 	public void closeWindow() {
 		frame.dispose();
 	}
 	
 	/**
-	 * Gets Selected opponent to play
-	 * @return: Selected opponent to play
+	 * Gets Selected opponent to play.
+	 * @return		 Selected opponent to play.
 	 */
 	public Club getSelectedOpponent() {
 		return selectedOpponent;
@@ -71,8 +72,8 @@ public class StadiumUI {
 	
 	
 	/**
-	 * Used in J unit testing
-	 * @param incomingOpponent: input from J Unit test
+	 * Used in J unit testing.
+	 * @param incomingOpponent			 input from J Unit test.
 	 */
 	public void setSelectedOpponent(Club incomingOpponent) {
 		selectedOpponent = incomingOpponent;
@@ -83,8 +84,8 @@ public class StadiumUI {
 	}
 	
 	/**
-	 * determines if player is able to play
-	 * @return: message telling player to update
+	 * determines if player is able to play.
+	 * @return		 message telling player to update.
 	 */
 	public String canPlay() {
 		if (environment.getPlayed().contains(getSelectedOpponent())) {
@@ -257,6 +258,5 @@ public class StadiumUI {
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnContinue.setBounds(838, 465, 120, 40);
 		frame.getContentPane().add(btnContinue);
-
 	}
 }

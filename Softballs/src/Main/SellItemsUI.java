@@ -17,7 +17,7 @@ import javax.swing.JButton;
 
 /**
  * The Sell Items UI implements an interactable UI that allows
- * the player to sell their items
+ * the player to sell their items.
  * 
  * @author Tobias Paull, Daniel Bensley
  * @version 1.0, May 2023;

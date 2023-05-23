@@ -15,9 +15,10 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 
 /**
- * Allows the player to change who is in reserved and who is playing
+ * Allows the player to change who is in reserved and who is playing.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class ManagePlayingUI {
@@ -93,7 +94,7 @@ public class ManagePlayingUI {
 		return chkPlayingCard;
 	}
 	
-	/**gets reserve checkbox
+	/**Gets reserve checkbox
 	 * @return reserve checkbox
 	 */
 	public JCheckBox getChkReserveCard() {

@@ -7,10 +7,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 /**
- * Display opponents in card like form
+ * Display opponents in card like form.
  * 
- * @author Tobias Paull
- *
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  */
 public class OpponentUI extends JPanel {
 	
@@ -24,7 +24,7 @@ public class OpponentUI extends JPanel {
 	private String name;
 
 	/**
-	 * Create the panel.
+	 * Gets info then create the panel.
 	 */
 	public OpponentUI(GameEnvironment incomingEnvironment, Club incomingClub) {
 		environment = incomingEnvironment;
