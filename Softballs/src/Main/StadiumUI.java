@@ -37,6 +37,11 @@ public class StadiumUI {
 	 */
 	private Club selectedOpponent;
 	
+	/**
+	 * Button to continue
+	 */
+	private JButton btnContinue;
+	
 
 
 	/**
@@ -62,6 +67,19 @@ public class StadiumUI {
 	 */
 	public Club getSelectedOpponent() {
 		return selectedOpponent;
+	}
+	
+	
+	/**
+	 * Used in J unit testing
+	 * @param incomingOpponent: input from J Unit test
+	 */
+	public void setSelectedOpponent(Club incomingOpponent) {
+		selectedOpponent = incomingOpponent;
+	}
+	
+	public JButton getBtnContinue() {
+		return btnContinue;
 	}
 	
 	/**
@@ -209,7 +227,7 @@ public class StadiumUI {
 		
 		
 //Continue button sends through selected opponent to Match
-		JButton btnContinue = new JButton("Continue");
+		btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (environment.getOpponents().contains(getSelectedOpponent())) {

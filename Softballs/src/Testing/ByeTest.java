@@ -8,26 +8,51 @@ import org.junit.jupiter.api.*;
 import Main.GameEnvironment;
 import Main.Athlete;
 import Main.Club;
-import Main.Item;
 import Main.Bye;
 import Main.ByeUI;
 
+/**
+ * This class runs a and tests to see that random events can occur
+ * and that the game season is progressed
+ * 
+ * @author Tobias Paull
+ *
+ */
 class ByeTest {
 
+	/**
+	 * Create team and take a bye
+	 * Random events are guaranteed to happen
+	 */
 	@Test
 	public void incraseLeaveTest() {
 		GameEnvironment mainGame = new GameEnvironment();
 		mainGame.setClub(new Club());
+		
+		//Create athlete 1 with a 100% chance to quit
+		ArrayList<Athlete> newAthletes = new ArrayList<Athlete>();
 		Athlete athlete1 = new Athlete(1,1, 50, 50, 50, 50);
 		athlete1.drainStanima(100);
 		athlete1.addChanceToQuit(1);
+		newAthletes.add(athlete1);
+		
+		//Create Athlete 2 with a 100% chance for stats to increase
 		Athlete athlete2 = new Athlete(2,2, 50, 50, 50, 50);
 		athlete2.addChanceToIncrease(1);
+		newAthletes.add(athlete2);
+		mainGame.getClub().setAthletes(newAthletes);
 		
 		
+		//Generate take a bye
 		Bye testBye = new Bye(mainGame);
 		ByeUI testByeUI = new ByeUI(mainGame, testBye);
+		testByeUI.setTrainingAthlete(athlete2);
+		//Click the continue button on take a bye
+		testByeUI.getBtnBye().doClick();
 		
+		//Confirm that player has left team and that week has progressed from 1
+		assertEquals(mainGame.getClub().getAthletes().size(), 1);
+		assertEquals(2, mainGame.getCurrentWeek());
 	}
 
 }

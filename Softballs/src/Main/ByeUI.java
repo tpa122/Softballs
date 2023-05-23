@@ -41,6 +41,11 @@ public class ByeUI {
 	 * athlete selected for training
 	 */
 	private Athlete trainingAthlete;
+	
+	/**
+	 * Button to take Bye
+	 */
+	private JButton btnBye;
 
 
 
@@ -56,8 +61,28 @@ public class ByeUI {
 	}
 	
 	
+	/**
+	 * close window
+	 */
 	public void closeWindow() {
 		frame.dispose();
+	}
+	
+	/**
+	 * button to take a bye
+	 * @return button to take a bye
+	 */
+	public JButton getBtnBye() {
+		return btnBye;
+	}
+	
+	/**
+	 * Used for junit test
+	 * @param newAthleteL passed from junit test
+	 */
+	public void setTrainingAthlete(Athlete newAthlete) {
+		trainingAthlete = newAthlete;
+		
 	}
 
 	/**
@@ -92,7 +117,7 @@ public class ByeUI {
 		pnlButtons.setLayout(null);
 
 		//Button to proceed to with bye		
-		JButton btnBye = new JButton("Take a Bye");
+		btnBye = new JButton("Take a Bye");
 		btnBye.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBye.setBounds(235, 6, 135, 40);
 		pnlButtons.add(btnBye);

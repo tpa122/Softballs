@@ -38,6 +38,11 @@ public class MatchUI {
 	 * How far through match the player is
 	 */
 	private int iterativeNum;
+	
+	/**
+	 * Continue button
+	 */
+	private JButton btnContinue;
 
 
 	/**
@@ -50,6 +55,15 @@ public class MatchUI {
 		initialize();
 		frame.setVisible(true);
 		frame.setResizable(false);
+	}
+	
+	
+	/**
+	 * Gets continue button
+	 * @return continue button
+	 */
+	public JButton getBtnContinue() {
+		return btnContinue;
 	}
 	
 	/**
@@ -100,7 +114,7 @@ public class MatchUI {
 		}
 		
 //Continue in Match
-		JButton btnContinue = new JButton("Continue");
+		btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
