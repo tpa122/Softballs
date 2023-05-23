@@ -3,9 +3,9 @@ package Testing;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import Main.Setup;
-import Main.SetupUI;
-import Main.GameEnvironment;
+import Main.general.GameEnvironment;
+import Main.general.Setup;
+import Main.gui.setup.SetupUI;
 
 /**
  * JUnit testing of setting up a game and checking the game environment

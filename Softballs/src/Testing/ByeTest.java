@@ -5,11 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 
-import Main.GameEnvironment;
-import Main.Athlete;
-import Main.Club;
-import Main.Bye;
-import Main.ByeUI;
+import Main.gui.bye.ByeUI;
+import Main.menu.Bye;
+import Main.menu.Club;
+import Main.general.Athlete;
+import Main.general.GameEnvironment;
 
 /**
  * This class runs a and tests to see that random events can occur

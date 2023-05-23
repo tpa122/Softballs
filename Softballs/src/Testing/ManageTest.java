@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import Main.Manage;
-import Main.ManagePlayingUI;
-import Main.ManageAthleteUI;
-import Main.ManagePositionsUI;
-import Main.GameEnvironment;
-import Main.Athlete;
-import Main.Club;
-import Main.Item;
+import Main.general.Athlete;
+import Main.general.GameEnvironment;
+import Main.general.Item;
+import Main.gui.manage.ManageAthleteUI;
+import Main.gui.manage.ManagePlayingUI;
+import Main.gui.manage.ManagePositionsUI;
+import Main.menu.Club;
+import Main.menu.Manage;
 
 
 /**

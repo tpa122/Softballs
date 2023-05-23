@@ -2,11 +2,10 @@ package Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-import Main.Setup;
-import Main.SelectTeam;
-import Main.GameEnvironment;
-import Main.Athlete;
+import Main.general.Athlete;
+import Main.general.GameEnvironment;
+import Main.general.Setup;
+import Main.gui.setup.SelectTeam;
 
 import org.junit.jupiter.api.Test;
 

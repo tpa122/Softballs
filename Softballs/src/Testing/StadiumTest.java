@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 
-import Main.GameEnvironment;
-import Main.Athlete;
-import Main.Club;
-import Main.Item;
-import Main.StadiumUI;
-import Main.Match;
-import Main.MatchUI;
+import Main.general.Athlete;
+import Main.general.GameEnvironment;
+import Main.general.Item;
+import Main.gui.stadium.MatchUI;
+import Main.gui.stadium.StadiumUI;
+import Main.menu.Club;
+import Main.menu.Match;
 
 
 /**

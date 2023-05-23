@@ -5,11 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 
-import Main.GameEnvironment;
-import Main.Athlete;
-import Main.Club;
-import Main.MainMenuUI;
-import Main.EndScreenUI;
+import Main.gui.other.EndScreenUI;
+import Main.gui.other.MainMenuUI;
+import Main.menu.Club;
+import Main.general.Athlete;
+import Main.general.GameEnvironment;
 
 /**
  * Run and test that the main game finishes when end week is met.
