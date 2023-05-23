@@ -27,6 +27,8 @@ class SetupTest {
 		SetupUI setupWindow = new SetupUI(setupGame);
 		//doClick();
 
+		
+//		Run setup UI
 	}
 
 }

@@ -48,7 +48,9 @@ public class SellAthletesUI {
 	 */
 	private String athleteName;
 
-
+	private JButton btnSellAthlete;
+	
+	
 	/**
 	 * Create the application.
 	 * @param incomingEnvironment
@@ -71,6 +73,16 @@ public class SellAthletesUI {
 		
 	}
 	
+	
+	/**
+	 * Sets the athlete to be sold to the market
+	 * 
+	 * @param incomingAthlete			Athlete to sell
+	 */
+	public void setAthleteToSell(Athlete incomingAthlete)	{
+		athleteToSell = incomingAthlete;
+	}
+	
 	/**
 	 * Closes its own window
 	 */
@@ -78,6 +90,16 @@ public class SellAthletesUI {
 		frmSellAthletes.dispose();
 	}
 	
+	
+	/**
+	 * Get the sell athlete button
+	 * 
+	 * @return			Returns the button to sell
+	 * 					the chosen Athlete
+	 */
+	public JButton getSellAthleteButton()	{
+		return btnSellAthlete;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -166,8 +188,8 @@ public class SellAthletesUI {
 		lblStaminaCount.setBounds(129, 147, 30, 21);
 		PnlAthlete.add(lblStaminaCount);
 		
-		JButton btnNewButton = new JButton("Sell Athlete");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnSellAthlete = new JButton("Sell Athlete");
+		btnSellAthlete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(athleteToSell != null) {
 					sellAthlete();
@@ -176,9 +198,9 @@ public class SellAthletesUI {
 				}
 			}
 		});
-		btnNewButton.setBounds(795, 456, 203, 34);
-		frmSellAthletes.getContentPane().add(btnNewButton);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnSellAthlete.setBounds(795, 456, 203, 34);
+		frmSellAthletes.getContentPane().add(btnSellAthlete);
+		btnSellAthlete.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(22, 100, 763, 320);
