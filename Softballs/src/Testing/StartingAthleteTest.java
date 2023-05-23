@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 
 /**
  * This JUnit test will test that the selected athletes by the player 
- * through the UI will be added to their team
+ * through the UI will be added to their team.
  * 
- * @author Daniel Bensley
+ * @author Tobias Paull, Daniel Bensley
  * @version 1.0, May 2023.
  *
  */

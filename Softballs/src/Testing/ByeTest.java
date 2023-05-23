@@ -13,9 +13,10 @@ import Main.ByeUI;
 
 /**
  * This class runs a and tests to see that random events can occur
- * and that the game season is progressed
+ * and that the game season is progressed.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 class ByeTest {

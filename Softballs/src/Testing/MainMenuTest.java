@@ -12,9 +12,10 @@ import Main.MainMenuUI;
 import Main.EndScreenUI;
 
 /**
- * Run and test that the main game finishes when end week is met
+ * Run and test that the main game finishes when end week is met.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class MainMenuTest {

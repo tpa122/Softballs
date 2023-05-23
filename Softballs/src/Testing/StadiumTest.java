@@ -15,9 +15,10 @@ import Main.MatchUI;
 
 
 /**
- * This class tests that a match can be played and that it can be finished and won
+ * This class tests that a match can be played and that it can be finished and won.
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 class StadiumTest {

@@ -15,9 +15,9 @@ import Main.SellAthletesUI;
 
 /**
  * This JUnit test will test the selling of Athlete and items, checking
- * that they have been removed from the player inventory
+ * that they have been removed from the player inventory.
  * 
- * @author Daniel Bensley
+ * @author Tobias Paull, Daniel Bensley
  * @version 1.0, May 2023.
  *
  */

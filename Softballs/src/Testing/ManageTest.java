@@ -14,9 +14,18 @@ import Main.Club;
 import Main.Item;
 
 
+/**
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 class ManageTest {
 
 	
+	/**
+	 * Creates a small team and changes the playing line up
+	 * then tests to see that is has changed.
+	 */
 	@Test
 	public void smallTeam() {
 		GameEnvironment mainGame = new GameEnvironment();
@@ -68,6 +77,7 @@ class ManageTest {
 		buttonPlaying.add(athlete2);
 		buttonPlaying.add(athlete3);
 		
+		//Select players and click button to update
 		Manage testManage = new Manage(mainGame);
 		ManagePlayingUI testManageUI = new ManagePlayingUI(mainGame, testManage);
 		testManageUI.getChkPlayingCard().doClick();
@@ -78,6 +88,9 @@ class ManageTest {
 		assertEquals(buttonPlaying, mainGame.getClub().getPlaying());
 	}
 	
+	/**
+	 *  Uses an item and tests that the stat of the player was increased
+	 */
 	@Test
 	public void useItemTest() {
 		GameEnvironment mainGame = new GameEnvironment();
@@ -106,7 +119,6 @@ class ManageTest {
 		Manage testManage = new Manage(mainGame);
 		ManageAthleteUI testManageAthleteUI = new ManageAthleteUI(mainGame, testManage);
 		testManageAthleteUI.setSelected(athlete1);
-		System.out.println(testManageAthleteUI.getSelectedAthlete());
 		
 
 		
@@ -115,6 +127,9 @@ class ManageTest {
 	
 	
 	
+	/**
+	 * Updates position of team and tests that it has been changed
+	 */
 	@Test
 	public void updatePositionTest() {
 		GameEnvironment mainGame = new GameEnvironment();
@@ -149,11 +164,7 @@ class ManageTest {
 		ManagePositionsUI testManagePositionsUI = new ManagePositionsUI(mainGame, testManage);
 		testManagePositionsUI.getBtnUpdatePitchers().doClick();;
 
-			
+		//Check that the pitchers are the expected Array List	
 		assertEquals(new ArrayList<Athlete>(), mainGame.getClub().getPitchers());
 	}
-	
-	
-//	Change reserves
-//	- Change positions
 }
