@@ -14,25 +14,52 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
+/**
+ * Creates an Athlete Card to display the information about
+ * the Athlete
+ * 
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 public class AthleteUI extends JPanel {
 
+	/**
+	 * Name of Athlete
+	 */
 	private String athleteName;
+	
+	/**
+	 * Current Stamina of Athlete
+	 */
 	private int athleteStamina;
+	
+	/**
+	 * Batting stat of Athlete
+	 */
 	private int athleteBatting;
+	
+	/**
+	 * Fielding stat of Athlete
+	 */
 	private int athleteFielding;
+	
+	/**
+	 * Pitching stat of Athlete
+	 */
 	private int athletePitching;
-	private SelectTeam selectTeamUI;
+	
+	/**
+	 * The athlete object
+	 */
 	private Athlete athlete;
-	private MarketUI playerMarket;
 	
 	
 	
 	
 	/**
-	 * Create the panel.
+	 * Initialize the contents of the card
 	 */
-	
-	
 	
 	public AthleteUI(Athlete incomingAthlete) {
 //		String name, int stamina, int batting, int fielding, int pitching, SelectTeam teamSelect
@@ -43,10 +70,10 @@ public class AthleteUI extends JPanel {
 		athleteFielding = athlete.getStats().get(2);;
 		athletePitching = athlete.getStats().get(3);;
 		
-		
+//		Set card size
 		setLayout(null);
 		setBounds(100, 100, 175, 206);
-		
+//		Display stats of athlete
 		JLabel lblPlayerName = new JLabel(athleteName);
 		lblPlayerName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayerName.setFont(new Font("Tahoma", Font.PLAIN, 17));

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 /**
  * Player takes a bye and refreshes market, opponents and athletes stamina
  * Random events may or may not happen
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0
  *
  */
 public class Bye {
@@ -14,7 +15,7 @@ public class Bye {
 	 */
 	private GameEnvironment environment;
 	/**
-	 * players club 
+	 * Players' club 
 	 */
 	private Club playerClub;
 	/**
@@ -22,7 +23,7 @@ public class Bye {
 	 */
 	private ArrayList<Athlete> quitingAthletes = new ArrayList<Athlete>();
 	/**
-	 * Array list of athletes who's stats are increasing due to random event
+	 * Array list of athletes whos' stats are increasing due to random event
 	 */
 	private ArrayList<Athlete> increasingAthletes = new ArrayList<Athlete>();
 
@@ -33,8 +34,8 @@ public class Bye {
 //Constructor
 	
 	/**
-	 * sets values and creates class
-	 * @param newEnvironment: the game environment
+	 * Sets values and creates the Bye class
+	 * @param newEnvironment	 	the game environment
 	 */
 	public Bye(GameEnvironment newEnvironment) {
 		environment = newEnvironment;
@@ -44,7 +45,7 @@ public class Bye {
 	/**
 	 * Player takes a bye and refreshes market, opponents and athletes stamina
 	 * Chance for random event to occurs are calculated
-	 * @param trainingAthlete: Athlete selected for special training
+	 * @param trainingAthlete		 Athlete selected for special training
 	 */
 	public void takeBye(Athlete trainingAthlete) {
 		environment.addCurrentWeek();

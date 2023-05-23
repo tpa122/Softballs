@@ -9,7 +9,7 @@ import java.util.Random;
  * 
  * 
  * @author Tobias Paull, Daniel Bensley
- *
+ *	@version 1.0, May 2023.
  */
 
 public class Athlete {
@@ -105,6 +105,8 @@ public class Athlete {
 	
 	
 	/**
+	 * Constructor for the Athlete class depending on the week and difficulty
+	 * 
 	 * @param currentWeek 	The current week in the season, determines strength of Athlete
 	 * @param opponent 	Specifies that the athlete is being made for an opponent team
 	 * @param difficulty	The difficulty of the game, determines the strength of the Athlete
@@ -185,7 +187,7 @@ public class Athlete {
 //Getters	
 	
 	/**
-	 * gets the name of the Athlet
+	 * Gets the name of the Athlet
 	 * @return 	the name of the Athlete
 	 */
 	public String getName() {
@@ -193,7 +195,7 @@ public class Athlete {
 	}
 	
 	/**
-	 * gets the current stamina of the athlete
+	 * Gets the current stamina of the athlete
 	 * @return the current stamina of the athlete
 	 */
 	public int getCurrentStanima() {
@@ -201,7 +203,7 @@ public class Athlete {
 	}
 	
 	/**
-	 * gets the stats of the Athlete in an ArrayList
+	 * Gets the stats of the Athlete in an ArrayList
 	 * @return the stats of the Athlete in an ArrayList
 	 */
 	public ArrayList<Integer> getStats() {
@@ -215,7 +217,7 @@ public class Athlete {
 	}
 	
 	/**
-	 * gets the requested stat value
+	 * Gets the requested stat value
 	 * @param statNum the index of the stat
 	 * @return the requested stat value
 	 */
@@ -232,7 +234,7 @@ public class Athlete {
 	
 	
 	/**
-	 * gets the price of the Athlete
+	 * Gets the price of the Athlete
 	 * @return the price of the Athlete
 	 */
 	public int getPrice() {
@@ -244,7 +246,7 @@ public class Athlete {
 	
 	
 	/**
-	 * gets if the athlete is injured or not
+	 * Gets if the athlete is injured or not
 	 * @return if the athlete is injured or not
 	 */
 	public boolean getIsInjured() {
@@ -252,7 +254,7 @@ public class Athlete {
 	}
 	
 	/**
-	 * gets the probability that the athlete quits the team when a bye is taken
+	 * Gets the probability that the athlete quits the team when a bye is taken
 	 * @return the probability that the athlete quits the team when a bye is taken
 	 */
 	public double getChanceToQuit() {
@@ -260,7 +262,7 @@ public class Athlete {
 	}
 	
 	/**
-	 * gets the probability that the athlete stats are increased when a bye is taken
+	 * Gets the probability that the athlete stats are increased when a bye is taken
 	 * @return the probability that the athlete stats are increased when a bye is taken
 	 */
 	public double getChanceToIncrease() {
@@ -271,7 +273,7 @@ public class Athlete {
 //Setters and Adders
 	
 	/**
-	 * sets the new Athlete name
+	 * Sets the new Athlete name
 	 * @param new Athlete name
 	 */
 	public void setName(String newName) {
@@ -279,7 +281,7 @@ public class Athlete {
 	}
 	
 	/**
-	 * refreshed the athletes current stamina to full
+	 * Refreshed the athletes current stamina to full
 	 */
 	public void refreshStanima() {
 		isInjured = false;
@@ -289,8 +291,8 @@ public class Athlete {
 	}
 	
 	/**
-	 * reduce the athletes current stamina by a given amount
-	 * sets athlete to injured if reaches 0
+	 * Reduce the athletes current stamina by a given amount
+	 * Sets athlete to injured if reaches 0
 	 * @param amount that the current stamina is reduced by 
 	 */
 	public void drainStanima(int amount) {
@@ -303,7 +305,7 @@ public class Athlete {
 	}
 		
 	/**
-	 * adds specified stats to the athlete
+	 * Adds specified stats to the athlete
 	 * @param list of stats and how much they should be added
 	 */
 	public void addStats(ArrayList<Integer> newList) {
@@ -329,7 +331,7 @@ public class Athlete {
 	
 	
 	/**
-	 * sets the athlete to injured or not
+	 * Sets the athlete to injured or not
 	 * @param whether athlete is injured or not
 	 */
 	public void setIsInjured(boolean setInjury) {
