@@ -111,12 +111,10 @@ public class SelectTeam {
 		btnSeasonStart = new JButton("Start Season");
 		btnSeasonStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(chosenAthletes.size());
 				if(chosenAthletes.size() == (10))	{
 					environment.getClub().setAthletes(chosenAthletes);
 					for (int i = 0; i < 10; i ++) {
 						Athlete currentAthlete = chosenAthletes.get(i);
-						System.out.println("Current Athlete: " + chosenAthletes.get(i));
 						if (i < 2) {
 							playerClub.getPlaying().add(currentAthlete);
 							playerClub.getPitchers().add(currentAthlete);
