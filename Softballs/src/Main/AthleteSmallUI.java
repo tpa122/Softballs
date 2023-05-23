@@ -14,13 +14,13 @@ import java.awt.Color;
  * Creates a JPanel or the athletes to be displayed in a small card
  * Used when not enough room for big card
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
  *
  */
 public class AthleteSmallUI extends JPanel{
 	
 	/**
-	 * name of Athlete
+	 * Name of Athlete
 	 */
 	private String name;
 	/**
@@ -28,7 +28,7 @@ public class AthleteSmallUI extends JPanel{
 	 */
 	private String currentStamina;
 	/**
-	 * max stamina of Athlete
+	 * Max stamina of Athlete
 	 */
 	private String stamina;	
 	/**
@@ -147,7 +147,7 @@ public class AthleteSmallUI extends JPanel{
 	}
 	
 	/**
-	 * gets name of athlete
+	 * Gets name of athlete
 	 * @return name of athlete
 	 */
 	public JLabel getLblAthleteName() {
@@ -155,7 +155,7 @@ public class AthleteSmallUI extends JPanel{
 	}
 	
 	/**
-	 * gets athlete stamina stat
+	 * Gets athlete stamina stat
 	 * @return athlete stamina stat
 	 */
 	public JLabel getLblAthleteStaminaNum() {
@@ -163,7 +163,7 @@ public class AthleteSmallUI extends JPanel{
 	}
 	
 	/**
-	 * gets athlete stamina stat
+	 * Gets athlete stamina stat
 //	 * @return athlete batting stat
 	 */
 	public JLabel getLblAthleteBattingNum() {
@@ -171,7 +171,7 @@ public class AthleteSmallUI extends JPanel{
 	}
 	
 	/**
-	 * gets athlete fielding stat
+	 * Gets athlete fielding stat
 	 * @return athlete fielding stat
 	 */
 	public JLabel getLblAthleteFieldingNum() {
@@ -179,7 +179,7 @@ public class AthleteSmallUI extends JPanel{
 	}
 	
 	/**
-	 * gets athlete fielding stat
+	 * Gets athlete fielding stat
 //	 * @return athlete pitching stat
 	 */
 	public JLabel getLblAthletePitchingNum() {

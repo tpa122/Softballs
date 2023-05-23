@@ -6,15 +6,15 @@ import java.util.Random;
 /**
  * The Athlete class holds the information of a given Athlete
  * Athletes have different stats that will affect how different areas of the game behave
- * 
- * 
+ *
+ *
  * @author Tobias Paull, Daniel Bensley
  * @version 1.0, May 2023.
  *
  */
 
 public class Athlete {
-//Names	
+//Names
 	/**
 	 * List of possible first names when generating new athlete
 	 */
@@ -24,7 +24,7 @@ public class Athlete {
 	 */
 	private static String[] lastNames = {"Smith", "Anderson", "Jones", "Taylor", "Williams", "Paull", "Bensley", "Allen", "Steel", "Rogers", "Whall", "Brown"};
 
-//Info and Stats	
+//Info and Stats
 	/**
 	 * Name of the Athlete
 	 */
@@ -51,7 +51,7 @@ public class Athlete {
 	private int pitching = 0;
 
 	/**
-	 * Information on whether the Athlete is injured or not 
+	 * Information on whether the Athlete is injured or not
 	 */
 	private boolean isInjured;
 	/**
@@ -63,10 +63,10 @@ public class Athlete {
 	 * Is higher if they perform better
 	 */
 	private double chanceToIncrease = 0.02;
-	
 
-	
-	
+
+
+
 //Constructor
 	/**
 	 * Generates Athlete with random stats and Name
@@ -76,7 +76,7 @@ public class Athlete {
 		//Randomly picks first and last name
 		Random rand  = new Random();
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
-		
+
 		//Randomly create a base stat and then add more depending on the current week
 		int baseStat = rand.nextInt(11);
 		baseStat = baseStat + 15 + currentWeek;
@@ -95,25 +95,27 @@ public class Athlete {
 			}
 			if (type == 3 && pitching< 100) {
 				pitching ++;
-			}			
+			}
 		}
-		
+
 		//Set the current stamina to the max
 		refreshStanima();
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
+	 * Constructor for the Athlete class depending on the week and difficulty
+	 *
 	 * @param currentWeek 	The current week in the season, determines strength of Athlete
 	 * @param opponent 	Specifies that the athlete is being made for an opponent team
 	 * @param difficulty	The difficulty of the game, determines the strength of the Athlete
 	 */
-	public Athlete(int currentWeek, boolean opponent, int difficulty) {		
+	public Athlete(int currentWeek, boolean opponent, int difficulty) {
 		Random rand  = new Random();
 		name = firstNames[rand.nextInt(firstNames.length)] + " " + lastNames[rand.nextInt(lastNames.length)];
-		
+
 		int baseStat = rand.nextInt(11);
 		baseStat = baseStat + 15 + currentWeek;
 		//If the difficulty is hard then make the stats higher
@@ -141,16 +143,16 @@ public class Athlete {
 			}
 			if (type == 3 && pitching< 100) {
 				pitching ++;
-			}			
+			}
 		}
-		
+
 		refreshStanima();
 	}
-	
-	
+
+
 	/**
 	 * Used for making fixed Athletes in JUnit tests
-	 * 
+	 *
 	 * @param firstName: index of the Athletes first name
 	 * @param lastName: index of the Athletes last name
 	 * @param stam: Athletes stamina stat
@@ -161,48 +163,48 @@ public class Athlete {
 	public Athlete(int firstName, int lastName, int stam, int bat, int field, int pitch) {
 		//Randomly picks first and last name
 		name = firstNames[firstName] + " " + lastNames[lastName];
-		
+
 		//Randomly create a base stat and then add more depending on the current week
 		stanima = stam;
 		batting = bat;
 		fielding = field;
 		pitching = pitch;
-		
+
 		//Set the current stamina to the max
 		refreshStanima();
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
 	 *Displays the name and stats of athlete when printed
 	 */
 	public String toString() {
 		return this.getName() + this.getStats();
 	}
-	
-	
-//Getters	
-	
+
+
+//Getters
+
 	/**
-	 * gets the name of the Athlet
+	 * Gets the name of the Athlet
 	 * @return 	the name of the Athlete
 	 */
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
-	 * gets the current stamina of the athlete
+	 * Gets the current stamina of the athlete
 	 * @return the current stamina of the athlete
 	 */
 	public int getCurrentStanima() {
 		return currentStanima;
 	}
-	
+
 	/**
-	 * gets the stats of the Athlete in an ArrayList
+	 * Gets the stats of the Athlete in an ArrayList
 	 * @return the stats of the Athlete in an ArrayList
 	 */
 	public ArrayList<Integer> getStats() {
@@ -211,12 +213,12 @@ public class Athlete {
 		statsList.add(batting);
 		statsList.add(fielding);
 		statsList.add(pitching);
-		
+
 		return statsList;
 	}
-	
+
 	/**
-	 * gets the requested stat value
+	 * Gets the requested stat value
 	 * @param statNum the index of the stat
 	 * @return the requested stat value
 	 */
@@ -226,61 +228,61 @@ public class Athlete {
 		statsList.add(batting);
 		statsList.add(fielding);
 		statsList.add(pitching);
-		
+
 		return statsList.get(statNum);
 	}
-	
-	
-	
+
+
+
 	/**
-	 * gets the price of the Athlete
+	 * Gets the price of the Athlete
 	 * @return the price of the Athlete
 	 */
 	public int getPrice() {
 		//Calculates the price of the Athlete
-		int totalStats = stanima + batting + fielding + pitching; 
+		int totalStats = stanima + batting + fielding + pitching;
 		float floatPrice = 20 + totalStats / 4;
-		return Math.round(floatPrice);		
+		return Math.round(floatPrice);
 	}
-	
-	
+
+
 	/**
-	 * gets if the athlete is injured or not
+	 * Gets if the athlete is injured or not
 	 * @return if the athlete is injured or not
 	 */
 	public boolean getIsInjured() {
 		return isInjured;
 	}
-	
+
 	/**
-	 * gets the probability that the athlete quits the team when a bye is taken
+	 * Gets the probability that the athlete quits the team when a bye is taken
 	 * @return the probability that the athlete quits the team when a bye is taken
 	 */
 	public double getChanceToQuit() {
-		return chanceToQuit;		
+		return chanceToQuit;
 	}
-	
+
 	/**
-	 * gets the probability that the athlete stats are increased when a bye is taken
+	 * Gets the probability that the athlete stats are increased when a bye is taken
 	 * @return the probability that the athlete stats are increased when a bye is taken
 	 */
 	public double getChanceToIncrease() {
 		return chanceToIncrease;
 	}
 
-	
+
 //Setters and Adders
-	
+
 	/**
-	 * sets the new Athlete name
+	 * Sets the new Athlete name
 	 * @param new Athlete name
 	 */
 	public void setName(String newName) {
 		name = newName;
 	}
-	
+
 	/**
-	 * refreshed the athletes current stamina to full
+	 * Refreshed the athletes current stamina to full
 	 */
 	public void refreshStanima() {
 		isInjured = false;
@@ -288,11 +290,11 @@ public class Athlete {
 		chanceToIncrease = 0.02;
 		currentStanima = stanima;
 	}
-	
+
 	/**
-	 * reduce the athletes current stamina by a given amount
-	 * sets athlete to injured if reaches 0
-	 * @param amount that the current stamina is reduced by 
+	 * Reduce the athletes current stamina by a given amount
+	 * Sets athlete to injured if reaches 0
+	 * @param amount that the current stamina is reduced by
 	 */
 	public void drainStanima(int amount) {
 		currentStanima -= amount;
@@ -302,9 +304,9 @@ public class Athlete {
 			setIsInjured(true);
 		}
 	}
-		
+
 	/**
-	 * adds specified stats to the athlete
+	 * Adds specified stats to the athlete
 	 * @param list of stats and how much they should be added
 	 */
 	public void addStats(ArrayList<Integer> newList) {
@@ -312,7 +314,7 @@ public class Athlete {
 		batting += newList.get(1);
 		fielding += newList.get(2);
 		pitching += newList.get(3);
-		
+
 		// Set limit of 100 for each stat
 		if (stanima > 100) {
 			stanima = 100;
@@ -327,10 +329,10 @@ public class Athlete {
 			pitching = 100;
 		}
 	}
-	
-	
+
+
 	/**
-	 * sets the athlete to injured or not
+	 * Sets the athlete to injured or not
 	 * @param whether athlete is injured or not
 	 */
 	public void setIsInjured(boolean setInjury) {
@@ -338,7 +340,7 @@ public class Athlete {
 		//Add chance to quit because was injured
 		addChanceToQuit(0.03);
 	}
-	
+
 	/**
 	 * Sets chance to quit to given amount
 	 * @param amount that chance to quit will be set to
@@ -346,7 +348,7 @@ public class Athlete {
 	public void addChanceToQuit(double addedChance) {
 		chanceToQuit = addedChance;
 	}
-	
+
 	/**
 	 * Chance to increase will be increased by a given amounts
 	 * @param amount that chance to increase will be increased by
@@ -354,6 +356,6 @@ public class Athlete {
 	public void addChanceToIncrease(double addedChance) {
 		chanceToIncrease += addedChance;
 	}
-	
-	
+
+
 }

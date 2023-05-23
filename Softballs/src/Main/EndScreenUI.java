@@ -13,7 +13,8 @@ import java.awt.event.ActionEvent;
 /**
  * Display end screen
  * Player can see their score and has the option to quit or play again
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @versin 1.0, May 2023.
  *
  */
 public class EndScreenUI {

@@ -4,7 +4,8 @@ import java.util.Random;
 
 /**
  * Club that stores athletes and the positions of said athletes
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class Club {
@@ -58,8 +59,8 @@ public class Club {
 	/**
 	 * Creates a Club with athletes and a random name
 	 * Changes depending on week and difficulty
-	 * @param currentWeek: current week in the game
-	 * @param difficulty: difficulty the player has selected
+	 * @param currentWeek 			Current week in the game
+	 * @param difficulty 			Difficulty the player has selected
 	 */
 	public void opponentClub(int currentWeek, int difficulty) {	
 		//Randomly create name
@@ -93,7 +94,7 @@ public class Club {
 	
 	/**
 	 * Gets name of club
-	 * @return name of club
+	 * @return 		Name of club
 	 */
 	public String getName() {
 		return name;
@@ -101,7 +102,7 @@ public class Club {
 	
 	/**
 	 * Gets list of athletes in the club
-	 * @return list of athletes in the club
+	 * @return 		List of athletes in the club
 	 */
 	public ArrayList<Athlete> getAthletes(){
 		return athletes;
@@ -109,7 +110,7 @@ public class Club {
 	
 	/**
 	 * Gets list of reserve athletes in the club
-	 * @return list of reserve athletes in the club
+	 * @return 		List of reserve athletes in the club
 	 */
 	public ArrayList<Athlete> getReserves(){
 		return reserves;
@@ -117,7 +118,7 @@ public class Club {
 	
 	/**
 	 * Gets list of batting athletes in the club
-	 * @return list of batting athletes in the club
+	 * @return 		List of batting athletes in the club
 	 */
 	public ArrayList<Athlete> getBatters(){
 		return batters;
@@ -125,7 +126,7 @@ public class Club {
 	
 	/**
 	 * Gets list of pitching athletes in the club
-	 * @return list of pitching athletes in the club
+	 * @return 		List of pitching athletes in the club
 	 */
 	public ArrayList<Athlete> getPitchers(){
 		return pitchers;
@@ -133,7 +134,7 @@ public class Club {
 	
 	/**
 	 * Gets list of playing athletes in the club
-	 * @return list of playing athletes in the club
+	 * @return 		List of playing athletes in the club
 	 */
 	public ArrayList<Athlete> getPlaying(){
 		return playing;
@@ -142,7 +143,7 @@ public class Club {
 	
 	/**
 	 * Gets number of runs scored
-	 * @return number of runs scored
+	 * @return 		Number of runs scored
 	 */
 	public int getRuns() {
 		return runs;
@@ -151,7 +152,7 @@ public class Club {
 	
 	/**
 	 * Gets number of athletes in the team
-	 * @return number of athletes in the team
+	 * @return 		Number of athletes in the team
 	 */
 	public int getTeamSize()	{
 		return athletes.size();
@@ -162,7 +163,7 @@ public class Club {
 	
 	/**
 	 * Sets new name of club
-//	 * @param newName: new name of club
+//	 * @param newName 		New name of club
 	 */
 	public void setName(String newName) {
 		name = newName;
@@ -170,7 +171,7 @@ public class Club {
 	
 	/**
 	 * Sets new list of athletes 
-	 * @param newAthletes: new list of athletes 
+	 * @param newAthletes 	New list of athletes 
 	 */
 	public void setAthletes(ArrayList<Athlete> newAthletes) {
 		athletes = newAthletes;
@@ -178,7 +179,7 @@ public class Club {
 	
 	/**
 	 * Sets new playing line up
-	 * @param newPlayers: new playing line up
+	 * @param newPlayers 	New playing line up
 	 */
 	public void setPlaying(ArrayList<Athlete> newPlayers) {
 		playing = newPlayers;
@@ -186,7 +187,7 @@ public class Club {
 	
 	/**
 	 * Sets new reserves line up
-	 * @param newReserves: new reserves line up
+	 * @param newReserves 	New reserves line up
 	 */
 	public void setReserves(ArrayList<Athlete> newReserves) {
 		reserves = newReserves;
@@ -194,7 +195,7 @@ public class Club {
 	
 	/**
 	 * Sets new batting athletes
-	 * @param newBatters: new batting athletes
+	 * @param newBatters 	New batting athletes
 	 */
 	public void setBatters(ArrayList<Athlete> newBatters) {
 		batters = newBatters;
@@ -202,7 +203,7 @@ public class Club {
 	
 	/**
 	 * Sets new pitching athletes
-	 * @param newPitchers: new pitching athletes
+	 * @param newPitchers 	New pitching athletes
 	 */
 	public void setPitchers(ArrayList<Athlete> newPitchers) {
 		pitchers = newPitchers;
@@ -230,8 +231,8 @@ public class Club {
 	/**
 	 * Swaps an athlete that is playing with one who is not
 	 * The positions of the initially playing athlete are transfered to the new athlete
-	 * @param playingA: Athlete that is currently playing
-	 * @param newplaying: Athlete that is not currently playing
+	 * @param playingA 			Athlete that is currently playing
+	 * @param newplaying 		Athlete that is not currently playing
 	 */
 	public void swapPlayers(Athlete playingA, Athlete newplaying) {
 		int playingIndex = playing.indexOf(playingA);
@@ -255,8 +256,8 @@ public class Club {
 	}
 	
 	/**
-	 * remove player from team and all of their positions
-	 * @param removing: player to be removed from team
+	 * Remove player from team and all of their positions
+	 * @param removing 		Player to be removed from team
 	 */
 	public void removePlayer(Athlete removing) {
 		//Check if athlete is in given position of line up and remove 

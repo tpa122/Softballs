@@ -7,8 +7,20 @@ import Main.Setup;
 import Main.SetupUI;
 import Main.GameEnvironment;
 
+/**
+ * JUnit testing of setting up a game and checking the game environment
+ * is holding the player's specified game length, difficulty and club name
+ * 
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
+ *
+ */
 class SetupTest {
 
+	/**
+	 * Tests the players' inputed game specifications match
+	 * the variables stored in the game environment
+	 */
 	@Test
 	public void setupGameTest() {
 		GameEnvironment mainGame = new GameEnvironment();
@@ -20,15 +32,6 @@ class SetupTest {
 		assertEquals(10, mainGame.getEndWeek());
 		assertEquals(0, mainGame.getDifficulty());
 	}
-	
-	public void startingAthleteTest() {
-		GameEnvironment mainGame = new GameEnvironment();
-		Setup setupGame = new Setup(mainGame);
-		SetupUI setupWindow = new SetupUI(setupGame);
-		//doClick();
 
-		
-//		Run setup UI
-	}
 
 }

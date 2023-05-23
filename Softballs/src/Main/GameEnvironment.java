@@ -3,10 +3,11 @@ import java.util.ArrayList;
 
 /**
  * Game environment contains the game and implements other function
- * Keeps track of info suck as points and money etc
+ * Keeps track of info such as points and money etc
  * Handles request from user interface
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class GameEnvironment {	
@@ -90,7 +91,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Get the length of season
-	 * @return the length of season
+	 * @return 		The length of season
 	 */
 	public int getEndWeek() {
 		return endWeek;
@@ -98,7 +99,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets the selected difficulty
-	 * @return the selected difficulty
+	 * @return 		The selected difficulty
 	 */
 	public int getDifficulty() {
 		return difficulty;
@@ -107,7 +108,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets the players club
-	 * @return the players club
+	 * @return 		The players club
 	 */
 	public Club getClub() {
 		return club;
@@ -115,7 +116,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets player items
-	 * @return player items
+	 * @return 		Player items
 	 */
 	public ArrayList<Integer> getItems(){
 		return items;
@@ -124,7 +125,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets points earned
-//	 * @return points earned
+//	 * @return 		Points earned
 	 */
 	public int getPoints() {
 		return points;
@@ -132,7 +133,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets current amount of money
-	 * @return current amount of money
+	 * @return 		Current amount of money
 	 */
 	public int getMoney() {
 		return money;
@@ -140,7 +141,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets total money gained
-	 * @return total money gained
+	 * @return 		Total money gained
 	 */
 	public int getMoneyGained() {
 		return moneyGained;
@@ -148,7 +149,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets the current week in the season
-	 * @return the current week in the season
+	 * @return 		The current week in the season
 	 */
 	public int getCurrentWeek() {
 		return currentWeek;
@@ -157,7 +158,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets list of opponents
-	 * @return list of opponents
+	 * @return 		List of opponents
 	 */
 	public ArrayList<Club> getOpponents(){
 		return opponents;
@@ -165,7 +166,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets list of played opponents
-	 * @return list of played opponents
+	 * @return 		List of played opponents
 	 */
 	public ArrayList<Club> getPlayed(){
 		return played;
@@ -174,7 +175,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets list of Athletes available for purchase in the market
-	 * @return list of Athletes available for purchase in the market
+	 * @return 		List of Athletes available for purchase in the market
 	 */
 	public ArrayList<Athlete> getPurchasableAthletes(){
 		return purchasableAthletes;
@@ -182,7 +183,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets list of Athletes already purchased from this weeks market
-	 * @return list of Athletes already purchased from this weeks market
+	 * @return 		List of Athletes already purchased from this weeks market
 	 */
 	public ArrayList<Athlete> getPurchasedAthletes(){
 		return purchasedAthletes;
@@ -190,7 +191,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets items in the market
-	 * @return items in the market
+	 * @return Items in the market
 	 */
 	public ArrayList<Integer> getPurchasableItems(){
 		return purchasableItems;
@@ -203,7 +204,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Sets the length of the season
-	 * @param newWeek: selected season length
+	 * @param newWeek Selected season length
 	 */
 	public void setEndWeek(int newWeek) {
 		endWeek = newWeek;
@@ -211,7 +212,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Sets difficulty
-	 * @param newDif: selected difficulty
+	 * @param newDif Selected difficulty
 	 */
 	public void setDifficulty(int newDif) {
 		difficulty = newDif;
@@ -220,7 +221,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Sets player club
-	 * @param newClub: new club
+	 * @param newClub New club
 	 */
 	public void setClub(Club newClub) {
 		club = newClub;
@@ -228,7 +229,7 @@ public class GameEnvironment {
 		
 	/**
 	 * adds a specified item
-	 * @param itemIndex: new item
+	 * @param itemIndex New item
 	 */
 	public void addItems(int itemIndex) {
 		items.set(itemIndex, items.get(itemIndex) + 1);
@@ -236,7 +237,7 @@ public class GameEnvironment {
 	
 	/**
 	 * removes a specified item
-	 * @param itemIndex: item to be removed
+	 * @param itemIndex Item to be removed
 	 */
 	public void removeItem(int itemIndex) {
 		items.set(itemIndex, items.get(itemIndex) - 1);
@@ -245,7 +246,7 @@ public class GameEnvironment {
 	
 	/**
 	 * adds a specified amount of points
-	 * @param newPoints: amount of points
+	 * @param newPoints Amount of points
 	 */
 	public void addPoints(int newPoints) {
 		points += newPoints;
@@ -253,7 +254,7 @@ public class GameEnvironment {
 	
 	/**
 	 * adds a specified amount of money
-	 * @param newMoney: amount of money
+	 * @param newMoney Amount of money
 	 */
 	public void addMoney(int newMoney) {
 		if (newMoney > 0) {
@@ -274,7 +275,7 @@ public class GameEnvironment {
 //Other
 	
 	/**
-	 * refreshes the market and stadium, and the stamina of all athletes
+	 * Refreshes the market and stadium, and the stamina of all athletes
 	 */
 	public void refresh() {
 		opponents.clear();
@@ -349,7 +350,7 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * closes the setup screen
+	 * Closes the setup screen
 	 */
 	public void closeSetupScreen() {
 		launchMainMenu();
@@ -358,7 +359,7 @@ public class GameEnvironment {
 	
 	
 	/**
-	 * launches the main menu and checks if game has finished
+	 * Launches the main menu and checks if game has finished
 	 */
 	public void launchMainMenu() {
 		boolean end = checkFinish();
@@ -375,7 +376,7 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Launches Bye scren
+	 * Launches Bye screen
 	 */
 	public void launchBye() {
 		Bye gameBye = new Bye(this);
@@ -419,15 +420,15 @@ public class GameEnvironment {
 	
 	/**
 	 * Launch end screen
-	 * @param moneyEnd: whether game ended due to insufficient money and athletes
+	 * @param moneyEnd 		Whether game ended due to insufficient money and athletes
 	 */
 	public void launchEndScreen(boolean moneyEnd) {
 		EndScreenUI gameEnd = new EndScreenUI(this, moneyEnd);
 	}
 	
 	/**
-	 * launch the sell screen in market
-	 * @param gameMarket: Market class
+	 * Launch the sell screen in market
+	 * @param gameMarket 	Market class
 	 */
 	public void launchSellUI(Market gameMarket)	{
 		SellAthletesUI sellAthletes = new SellAthletesUI(this, gameMarket);
@@ -437,9 +438,9 @@ public class GameEnvironment {
 	
 	
 	/**
-	 * allows the player to choose starting athlete
-	 * @param setupMenu: setupUI class
-	 * @param setupGame: setup class
+	 * Allows the player to choose starting athlete
+	 * @param setupMenu 	setupUI class
+	 * @param setupGame 	setup class
 	 */
 	public void launchTeamSelect(SetupUI setupMenu, Setup setupGame)	{
 		setupMenu.closeWindow();
@@ -452,7 +453,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Starts the game
-	 * @param args: Null
+	 * @param args 		Null
 	 */
 	public static void main(String[] args) {
 		GameEnvironment mainGame = new GameEnvironment();

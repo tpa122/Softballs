@@ -4,7 +4,8 @@ import java.util.ArrayList;
 /**
  * Item can be used to increase the stats of Ahletes
  * 
- * @author Tobias Paull
+ * @author Tobias Paull, Daniel Bensley
+ * @version 1.0, May 2023.
  *
  */
 public class Item {
@@ -14,23 +15,23 @@ public class Item {
 	 */
 	private String name;
 	/**
-	 * amount stamina stat increases when using item
+	 * Amount stamina stat increases when using item
 	 */
 	private int stamina = 0;
 	/**
-	 * amount batting stat increases when using item
+	 * Amount batting stat increases when using item
 	 */
 	private int batting = 0;
 	/**
-	 * amount fielding stat increases when using item
+	 * Amount fielding stat increases when using item
 	 */
 	private int fielding = 0;
 	/**
-	 * amount pitching stat increases when using item
+	 * Amount pitching stat increases when using item
 	 */
 	private int pitching = 0;
 	/**
-	 * price of item
+	 * Price of item
 	 */
 	private int price = 10;
 
@@ -41,9 +42,10 @@ public class Item {
 	
 	/**
 	 * Creates the item can be one of 4
-	 * @param itemType: determines type of item
+	 * @param itemType 		determines type of item
 	 */
 	public Item(int itemType)	{
+//		Set stats of item based on type
 		if (itemType == 0) {
 			stamina = 10;
 			name = "Treadmill";
@@ -72,7 +74,7 @@ public class Item {
 	
 	/**
 	 * Gets name of item
-	 * @return name of item
+	 * @return 		Name of item
 	 */
 	public String getName() {
 		return name;
@@ -80,7 +82,7 @@ public class Item {
 	
 	/**
 	 * Gets list of item stats
-	 * @return List of item stats
+	 * @return 		List of item stats
 	 */
 	public ArrayList<Integer> getStats() {
 		ArrayList<Integer> statsList = new ArrayList<Integer>();
@@ -94,7 +96,7 @@ public class Item {
 	
 	/**
 	 * Gets price of item
-	 * @return price of item
+	 * @return 		Price of item
 	 */
 	public int getPrice()	{
 		return price;
